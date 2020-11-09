@@ -1,0 +1,228 @@
+From 157be69bfc491b15d2062b1ceb3f00e4d9d1cfef Mon Sep 17 00:00:00 2001
+From: Mark Rowe <mrowe@apple.com>
+Date: Tue, 22 Apr 2008 23:32:34 -0700
+Subject: [PATCH] Remove code for calculating the glyph cache size.
+
+The SPI that is used to implement wkFontSmoothingModeIsLCD is being removed in SnowLeopard.
+The replacement has a different structure that doesn't fit well with how wkFontSmoothingModeIsLCD
+is used so I decided to push the now Tiger-only logic down into WebKitSystemInterface rather
+than leaving it cluttering up FontCacheMac.mm.
+
+* WebCore.base.exp: Remove unused symbol.
+* platform/graphics/mac/FontCacheMac.mm: Remove code that is unused now that we do not compute the glyph cache size.
+* platform/mac/WebCoreSystemInterface.h: Remove unused symbol.
+* platform/mac/WebCoreSystemInterface.mm: Ditto.
+
+* WebCoreSupport/WebSystemInterface.m:
+(InitWebCoreSystemInterface): Remove unused symbol.
+---
+ WebCore/ChangeLog                              |   11 ++++
+ WebCore/WebCore.base.exp                       |    1 -
+ WebCore/platform/graphics/mac/FontCacheMac.mm  |   77 +-----------------------
+ WebCore/platform/mac/WebCoreSystemInterface.h  |    3 +-
+ WebCore/platform/mac/WebCoreSystemInterface.mm |    3 +-
+ WebKit/mac/ChangeLog                           |    9 +++
+ WebKit/mac/WebCoreSupport/WebSystemInterface.m |    1 -
+ 7 files changed, 23 insertions(+), 82 deletions(-)
+
+diff --git a/WebCore/ChangeLog b/WebCore/ChangeLog
+index d9d99c0..d250bdc 100644
+--- a/WebCore/ChangeLog
++++ b/WebCore/ChangeLog
+@@ -2,6 +2,17 @@
+ 
+         Reviewed by NOBODY (OOPS!).
+ 
++        Remove code for calculating the glyph cache size.
++
++        * WebCore.base.exp: Remove unused symbol.
++        * platform/graphics/mac/FontCacheMac.mm: Remove code that is unused now that we do not compute the glyph cache size.
++        * platform/mac/WebCoreSystemInterface.h: Remove unused symbol.
++        * platform/mac/WebCoreSystemInterface.mm: Ditto.
++
++2008-04-22  Mark Rowe  <mrowe@apple.com>
++
++        Reviewed by NOBODY (OOPS!).
++
+         Use CFReadStream/CFWriteStreams when reading and writing property lists so that we have control
+         over which property list format is used.
+ 
+diff --git a/WebCore/WebCore.base.exp b/WebCore/WebCore.base.exp
+index ad3d112..0f74ccf 100644
+--- a/WebCore/WebCore.base.exp
++++ b/WebCore/WebCore.base.exp
+@@ -838,7 +838,6 @@ _wkDrawMediaSliderThumb
+ _wkDrawMediaSliderTrack
+ _wkDrawMediaUnMuteButton
+ _wkDrawTextFieldCellFocusRing
+-_wkFontSmoothingModeIsLCD
+ _wkGetATSStyleGroup
+ _wkGetExtensionsForMIMEType
+ _wkGetFontInLanguageForCharacter
+diff --git a/WebCore/platform/graphics/mac/FontCacheMac.mm b/WebCore/platform/graphics/mac/FontCacheMac.mm
+index 9ee4dfa..23e22c9 100644
+--- a/WebCore/platform/graphics/mac/FontCacheMac.mm
++++ b/WebCore/platform/graphics/mac/FontCacheMac.mm
+@@ -42,84 +42,9 @@ typedef int NSInteger;
+ 
+ namespace WebCore {
+ 
+-static bool getAppDefaultValue(CFStringRef key, int *v)
+-{
+-    CFPropertyListRef value;
+-
+-    value = CFPreferencesCopyValue(key, kCFPreferencesCurrentApplication,
+-                                   kCFPreferencesAnyUser,
+-                                   kCFPreferencesAnyHost);
+-    if (value == 0) {
+-        value = CFPreferencesCopyValue(key, kCFPreferencesCurrentApplication,
+-                                       kCFPreferencesCurrentUser,
+-                                       kCFPreferencesAnyHost);
+-        if (value == 0)
+-            return false;
+-    }
+-
+-    if (CFGetTypeID(value) == CFNumberGetTypeID()) {
+-        if (v != 0)
+-            CFNumberGetValue((const CFNumberRef)value, kCFNumberIntType, v);
+-    } else if (CFGetTypeID(value) == CFStringGetTypeID()) {
+-        if (v != 0)
+-            *v = CFStringGetIntValue((const CFStringRef)value);
+-    } else {
+-        CFRelease(value);
+-        return false;
+-    }
+-
+-    CFRelease(value);
+-    return true;
+-}
+-
+-static bool getUserDefaultValue(CFStringRef key, int *v)
+-{
+-    CFPropertyListRef value;
+-
+-    value = CFPreferencesCopyValue(key, kCFPreferencesAnyApplication,
+-                                   kCFPreferencesCurrentUser,
+-                                   kCFPreferencesCurrentHost);
+-    if (value == 0)
+-        return false;
+-
+-    if (CFGetTypeID(value) == CFNumberGetTypeID()) {
+-        if (v != 0)
+-            CFNumberGetValue((const CFNumberRef)value, kCFNumberIntType, v);
+-    } else if (CFGetTypeID(value) == CFStringGetTypeID()) {
+-        if (v != 0)
+-            *v = CFStringGetIntValue((const CFStringRef)value);
+-    } else {
+-        CFRelease(value);
+-        return false;
+-    }
+-
+-    CFRelease(value);
+-    return true;
+-}
+-
+-static int getLCDScaleParameters(void)
+-{
+-    int mode;
+-    CFStringRef key;
+-
+-    key = CFSTR("AppleFontSmoothing");
+-    if (!getAppDefaultValue(key, &mode)) {
+-        if (!getUserDefaultValue(key, &mode))
+-            return 1;
+-    }
+-
+-    if (wkFontSmoothingModeIsLCD(mode))
+-        return 4;
+-    return 1;
+-}
+-
+-#define MINIMUM_GLYPH_CACHE_SIZE 1536 * 1024
+-
+ void FontCache::platformInit()
+ {
+-    size_t s = MINIMUM_GLYPH_CACHE_SIZE*getLCDScaleParameters();
+-
+-    wkSetUpFontCache(s);
++    wkSetUpFontCache();
+ }
+ 
+ static int toAppKitFontWeight(FontWeight fontWeight)
+diff --git a/WebCore/platform/mac/WebCoreSystemInterface.h b/WebCore/platform/mac/WebCoreSystemInterface.h
+index a645d65..e56a12d 100644
+--- a/WebCore/platform/mac/WebCoreSystemInterface.h
++++ b/WebCore/platform/mac/WebCoreSystemInterface.h
+@@ -93,7 +93,6 @@ extern void (*wkDrawTextFieldCellFocusRing)(NSTextFieldCell*, NSRect);
+ extern void (*wkDrawCapsLockIndicator)(CGContextRef, CGRect);
+ extern void (*wkDrawBezeledTextArea)(NSRect, BOOL enabled);
+ extern void (*wkDrawFocusRing)(CGContextRef, CGColorRef, int radius);
+-extern BOOL (*wkFontSmoothingModeIsLCD)(int mode);
+ extern OSStatus (*wkGetATSStyleGroup)(ATSUStyle, void** styleGroup);
+ extern CGFontRef (*wkGetCGFontFromNSFont)(NSFont*);
+ extern NSFont* (*wkGetFontInLanguageForRange)(NSFont*, NSString*, NSRange);
+@@ -131,7 +130,7 @@ extern void (*wkSetNSURLConnectionDefersCallbacks)(NSURLConnection *, BOOL);
+ extern void (*wkSetNSURLRequestShouldContentSniff)(NSMutableURLRequest *, BOOL);
+ extern void (*wkSetPatternBaseCTM)(CGContextRef, CGAffineTransform);
+ extern void (*wkSetPatternPhaseInUserSpace)(CGContextRef, CGPoint);
+-extern void (*wkSetUpFontCache)(size_t);
++extern void (*wkSetUpFontCache)();
+ extern void (*wkSignalCFReadStreamEnd)(CFReadStreamRef stream);
+ extern void (*wkSignalCFReadStreamError)(CFReadStreamRef stream, CFStreamError *error);
+ extern void (*wkSignalCFReadStreamHasBytes)(CFReadStreamRef stream);
+diff --git a/WebCore/platform/mac/WebCoreSystemInterface.mm b/WebCore/platform/mac/WebCoreSystemInterface.mm
+index 3ee1fba..a54c420 100644
+--- a/WebCore/platform/mac/WebCoreSystemInterface.mm
++++ b/WebCore/platform/mac/WebCoreSystemInterface.mm
+@@ -36,7 +36,6 @@ void (*wkDrawTextFieldCellFocusRing)(NSTextFieldCell*, NSRect);
+ void (*wkDrawCapsLockIndicator)(CGContextRef, CGRect);
+ void (*wkDrawBezeledTextArea)(NSRect, BOOL enabled);
+ void (*wkDrawFocusRing)(CGContextRef, CGColorRef, int radius);
+-BOOL (*wkFontSmoothingModeIsLCD)(int mode);
+ OSStatus (*wkGetATSStyleGroup)(ATSUStyle, void** styleGroup);
+ NSFont* (*wkGetFontInLanguageForRange)(NSFont*, NSString*, NSRange);
+ NSFont* (*wkGetFontInLanguageForCharacter)(NSFont*, UniChar);
+@@ -70,7 +69,7 @@ void (*wkSetCGFontRenderingMode)(CGContextRef, NSFont*);
+ void (*wkSetDragImage)(NSImage*, NSPoint offset);
+ void (*wkSetPatternBaseCTM)(CGContextRef, CGAffineTransform);
+ void (*wkSetPatternPhaseInUserSpace)(CGContextRef, CGPoint point);
+-void (*wkSetUpFontCache)(size_t);
++void (*wkSetUpFontCache)();
+ void (*wkSignalCFReadStreamEnd)(CFReadStreamRef stream);
+ void (*wkSignalCFReadStreamHasBytes)(CFReadStreamRef stream);
+ void (*wkSignalCFReadStreamError)(CFReadStreamRef stream, CFStreamError *error);
+diff --git a/WebKit/mac/ChangeLog b/WebKit/mac/ChangeLog
+index f74251d..d2573b5 100644
+--- a/WebKit/mac/ChangeLog
++++ b/WebKit/mac/ChangeLog
+@@ -2,6 +2,15 @@
+ 
+         Reviewed by NOBODY (OOPS!).
+ 
++        Remove code for calculating the glyph cache size.
++
++        * WebCoreSupport/WebSystemInterface.m:
++        (InitWebCoreSystemInterface): Remove unused symbol.
++
++2008-04-22  Mark Rowe  <mrowe@apple.com>
++
++        Reviewed by NOBODY (OOPS!).
++
+         Add a definition of BUILDING_ON_LEOPARD to complement BUILDING_ON_TIGER.
+ 
+         * WebKitPrefix.h:
+diff --git a/WebKit/mac/WebCoreSupport/WebSystemInterface.m b/WebKit/mac/WebCoreSupport/WebSystemInterface.m
+index a6a98fc..13b771b 100644
+--- a/WebKit/mac/WebCoreSupport/WebSystemInterface.m
++++ b/WebKit/mac/WebCoreSupport/WebSystemInterface.m
+@@ -58,7 +58,6 @@ void InitWebCoreSystemInterface(void)
+     INIT(DrawMediaSliderThumb);
+     INIT(DrawMediaUnMuteButton);
+     INIT(DrawTextFieldCellFocusRing);
+-    INIT(FontSmoothingModeIsLCD);
+     INIT(GetATSStyleGroup);
+     INIT(GetExtensionsForMIMEType);
+     INIT(GetFontInLanguageForCharacter);
+-- 
+1.5.5.rc1.6.g5cc8f
+

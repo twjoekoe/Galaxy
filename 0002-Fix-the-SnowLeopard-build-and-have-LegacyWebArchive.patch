@@ -1,0 +1,115 @@
+From 3838175412150ee2c5fb39db1cb0dbab71cf99cd Mon Sep 17 00:00:00 2001
+From: Mark Rowe <mrowe@apple.com>
+Date: Tue, 22 Apr 2008 23:15:48 -0700
+Subject: [PATCH] Fix the SnowLeopard build and have LegacyWebArchive write binary property lists once more.
+
+CFPropertyListCreateFromXMLData and CFPropertyListCreateXMLData are deprecated in SnowLeopard, with
+no replacement available that is available on both Leopard and SnowLeopard.  This requires that we
+use API that is new to SnowLeopard.  Since the code needs updated to work on SnowLeopard I am making
+the minor changes needed to shift it to using the CFReadStream/CFWriteStream property list serialization
+APIs, which allows us to write binary web archives once more.
+---
+ WebCore/ChangeLog                              |   11 +++++
+ WebCore/loader/archive/cf/LegacyWebArchive.cpp |   50 ++++++++++++++++--------
+ 2 files changed, 44 insertions(+), 17 deletions(-)
+
+diff --git a/WebCore/ChangeLog b/WebCore/ChangeLog
+index b70cf85..d9d99c0 100644
+--- a/WebCore/ChangeLog
++++ b/WebCore/ChangeLog
+@@ -2,6 +2,17 @@
+ 
+         Reviewed by NOBODY (OOPS!).
+ 
++        Use CFReadStream/CFWriteStreams when reading and writing property lists so that we have control
++        over which property list format is used.
++
++        * loader/archive/cf/LegacyWebArchive.cpp:
++        (WebCore::LegacyWebArchive::init):
++        (WebCore::LegacyWebArchive::rawDataRepresentation):
++
++2008-04-22  Mark Rowe  <mrowe@apple.com>
++
++        Reviewed by NOBODY (OOPS!).
++
+         Add a definition of BUILDING_ON_LEOPARD to complement BUILDING_ON_TIGER.
+ 
+         * WebCorePrefix.h:
+diff --git a/WebCore/loader/archive/cf/LegacyWebArchive.cpp b/WebCore/loader/archive/cf/LegacyWebArchive.cpp
+index 68d5336..604b91b 100644
+--- a/WebCore/loader/archive/cf/LegacyWebArchive.cpp
++++ b/WebCore/loader/archive/cf/LegacyWebArchive.cpp
+@@ -273,21 +273,23 @@ bool LegacyWebArchive::init(SharedBuffer* data)
+     ASSERT(data);
+     if (!data)
+         return false;
+-        
+-    RetainPtr<CFDataRef> cfData(AdoptCF, data->createCFData());
+-    if (!cfData)
++
++    RetainPtr<CFReadStreamRef> readStream(AdoptCF, CFReadStreamCreateWithBytesNoCopy(0, reinterpret_cast<const UInt8*>(data->data()), data->size(), kCFAllocatorNull));
++    if (!readStream)
+         return false;
+-        
+-    CFStringRef errorString = 0;
+-    
+-    RetainPtr<CFDictionaryRef> plist(AdoptCF, static_cast<CFDictionaryRef>(CFPropertyListCreateFromXMLData(0, cfData.get(), kCFPropertyListImmutable, &errorString)));
++
++    if (!CFReadStreamOpen(readStream.get()))
++        return false;
++
++#if PLATFORM(WIN) || defined(BUILDING_ON_TIGER) || defined(BUILDING_ON_LEOPARD)
++    RetainPtr<CFDictionaryRef> plist(AdoptCF, static_cast<CFDictionaryRef>(CFPropertyListCreateFromStream(0, readStream.get(), 0, kCFPropertyListImmutable, 0, 0)));
++#else
++    RetainPtr<CFDictionaryRef> plist(AdoptCF, static_cast<CFDictionaryRef>(CFPropertyListCreateWithStream(0, readStream.get(), 0, kCFPropertyListImmutable, 0, 0)));
++#endif
+     if (!plist) {
+ #ifndef NDEBUG
+-        const char* cError = errorString ? CFStringGetCStringPtr(errorString, kCFStringEncodingUTF8) : "unknown error";
+-        LOG(Archives, "LegacyWebArchive - Error parsing PropertyList from archive data - %s", cError);
++        LOG(Archives, "LegacyWebArchive - Error parsing PropertyList from archive data");
+ #endif
+-        if (errorString)
+-            CFRelease(errorString);
+         return false;
+     }
+     
+@@ -374,15 +376,29 @@ RetainPtr<CFDataRef> LegacyWebArchive::rawDataRepresentation()
+         LOG(Archives, "LegacyWebArchive - Failed to create property list for archive, returning no data");
+         return 0;
+     }
+-    
+-    // FIXME: On Mac, WebArchives have been written out as Binary Property Lists until this change.
+-    // Unless we jump through CFWriteStream hoops, they'll now be textual XML data.  Is this okay?
+-    RetainPtr<CFDataRef> plistData(AdoptCF, CFPropertyListCreateXMLData(0, propertyList.get()));
+-    if (!plistData) {
++
++    RetainPtr<CFWriteStreamRef> writeStream(AdoptCF, CFWriteStreamCreateWithAllocatedBuffers(0, 0));
++    if (!writeStream)
++        return 0;
++
++    if (!CFWriteStreamOpen(writeStream.get()))
++        return 0;
++
++#if PLATFORM(WIN) || defined(BUILDING_ON_TIGER) || defined(BUILDING_ON_LEOPARD)
++    if (!CFPropertyListWriteToStream(propertyList.get(), writeStream.get(), kCFPropertyListBinaryFormat_v1_0, 0)) {
++#else
++    if (!CFPropertyListWrite(propertyList.get(), writeStream.get(), kCFPropertyListBinaryFormat_v1_0, 0, 0)) {
++#endif
+         LOG(Archives, "LegacyWebArchive - Failed to convert property list into raw data, returning no data");
+         return 0;
+     }
+-    
++
++    RetainPtr<CFDataRef> plistData(AdoptCF, static_cast<CFDataRef>(CFWriteStreamCopyProperty(writeStream.get(), kCFStreamPropertyDataWritten)));
++    if (!plistData) {
++        LOG(Archives, "LegacyWebArchive - Failed to retrieve raw data from write stream, returning no data");
++        return 0;
++    }
++
+     return plistData;
+ }
+ 
+-- 
+1.5.5.rc1.6.g5cc8f
+
