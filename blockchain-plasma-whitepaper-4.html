@@ -1,0 +1,750 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+    
+  Plasma白皮书（四） - 区块链技术博客
+  
+  </title>
+  
+  
+  
+    <link rel="stylesheet" href="static/css/foundation.min.css">
+    <link rel="stylesheet" href="static/css/docs1.css">
+    <script src="static/js/modernizr.js"></script>
+    <script src="static/js/jquery.js"></script>
+  <script src="static/js/highlight.pack.js"></script>
+  <link href="static/css/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <!-- 增加google ad -->
+  <script async="" src="static/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-6188337887319489",
+      enable_page_level_ads: true
+    });
+  </script>
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:me.tryblockchain.org ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas="">
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar="">
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index1.html" style="font-size: 18px">主页</a></li>
+        
+        <li id=""><a target="_self" href="index2.html" style="font-size: 18px">Solidity文档</a></li>
+        
+        <li id=""><a target="_self" href="index.html" style="font-size: 18px">Web3.js文档</a></li>
+        
+        <li id=""><a target="_self" href="index3.html" style="font-size: 18px">Truffle文档</a></li>
+        
+        <li id=""><a target="_self" href="index4.html" style="font-size: 18px">Open Zeppelin</a></li>
+        
+        <li id=""><a target="_self" href="aboutme.html" style="font-size: 18px">关于本站</a></li>
+        
+        <li id=""><a target="_self" href="archives.html" style="font-size: 18px">归档</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="">
+    <input tabindex="1" type="search" id="search_input" placeholder="Search">
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; 区块链技术博客</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+         <li><a href="index1.html">主页</a></li>
+        
+         <li><a href="index2.html">Solidity文档</a></li>
+        
+         <li><a href="index.html">Web3.js文档</a></li>
+        
+         <li><a href="index3.html">Truffle文档</a></li>
+        
+         <li><a href="index4.html">Open Zeppelin</a></li>
+        
+         <li><a href="aboutme.html">关于本站</a></li>
+        
+         <li><a href="archives.html">归档</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="Solidity深入浅出系列.html">Solidity深入浅出系列</a></li>
+        
+            <li><a href="文档翻译.html">文档翻译</a></li>
+        
+            <li><a href="其它.html">其它</a></li>
+        
+            <li><a href="Solidity入门系列.html">Solidity入门系列</a></li>
+        
+            <li><a href="热点.html">热点</a></li>
+        
+            <li><a href="项目.html">项目</a></li>
+        
+            <li><a href="whitepaper.html">whitepaper</a></li>
+        
+            <li><a href="热点深度.html">热点深度</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>Plasma白皮书（四）</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2018/3/24</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='whitepaper.html'>whitepaper</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <h2 id="toc_0">区块链中的区块链（Blockchain in Blockchain）</h2>
+
+<p>正如我们前面介绍过的，Plasma的核心是构建一个方法来实现可扩展的计算，我们需要应对围绕区块扣留攻击的相关问题生成欺诈证明，同时也包括区块空间可用性。在Plasma中的区块扣留攻击的解决方案是构建一个系统，它能在发生链停止或者Plasma区块扣留时，大家可以进行批量退出（mass exit）。</p>
+
+<p>然而，链上的批量退出（mass exit）成本高昂，特别是当UTXO集合非常大时，位图必须发布到链上。额外的，也许我们只期望发布单个退出（single exit）。批量取款（mass withdrawal）交易需要一个复杂的涉及许多参与者的交互游戏。它只应该被用来做最后的保障。</p>
+
+<span id="more"></span><!-- more -->
+
+<p>取而代之的是，我们成立了一个等级参差的法院体系，在这些体系中存在某个特定的场所能证明某个状态。<strong>大家可以把根链视为最高法院，所有下级法院从这里得到权力。根链的法律允许所有下级法院获得司法权。这将允许管辖地的扩展，当且仅当下层法院的状态被质疑或暂停了，那么向高一级的法院申请更具代表性的管辖权。</strong>广播级别更高的法院的证明总是可行的，但也意味着成本更高昂。</p>
+
+<p>所有的状态都将梅克尔化，并提交到根链。在最乐观的情况下，区块头会直接发布在父链上，父链也会发布到它的父链上，如此往复直到根链。区块头内信息是对在父链中看到过这个区块的一个梅克尔化的承诺。</p>
+
+<p>交易可以提交到Plasma链，或者任何父Plasma链，也包括根链（root blockchain）。这样的目的是为了保证可互换性和防止中心化。具体而言，当发生停止或不披露区块状态时，人们仍可以提取资金。</p>
+
+<p>当对一个区块的承诺提交后，要完成通过，需要等待主链可见的一定数量的确认。在这个时间，欺诈证明可以提交到根链或者任何的中间Plasma链（他们最终通过区块头提交到根链）。</p>
+
+<p>每一个独立Plasma链都会运行一个状态机，会将承诺打包进Plasma区块。独立的Plasma也许会或者不会深入到子Plasma链的详情中。相反，他们会运行一个确认，确认Plasma链价值的余额。当子Plasma链更新了状态，他们会提交他的Plasma区块头的哈希串给他的父Plasma链或者根链。</p>
+
+<p>这也意味着，某个特定的区块状态可以提交到多个父链。当发生重复时，这也许不是错误（但也会根据具体应用的某些特定共识而受到惩罚）。另一方面，如果存在不一致的状态，比如，提交到父链1和父链2的状态不同，那么父链中的押金会被没收。</p>
+
+<p>一个新的子链状态更新可以使用下述字段，并包括在他们的状态更新消息中：要支付的费用（和面额），提交到的根链区块哈希，前一个区块哈希，提交到的父链的区块哈希，存款证明，取款证明。</p>
+
+<p>无论向哪个父链提交，我们都假设子链已校验他提交到点前的所有数据，包括递归的校验所有的父节点。这将提交一个证明，证明不是不一致的数据或者双花的交易（因此如果发生不一致，将会没收押金）。</p>
+
+<p>当发生不一致时，父链的状态始终优先考虑。我们创建了激励，激励任何方都可以披露不一致。</p>
+
+<p>存款和取款可以在父链和根链上进行。</p>
+
+<p>取款也可以在Plasma链间进行，以提供充足的流动性，来让其它方可将资金带到任何其它的地方。这将通过跨链的原子交换（crosschain atomic swap）来实现。</p>
+
+<p>如果某人希望通过主链来进行清算，可以通过在链间构建HTLC来实现，这有点类似链上的闪电支付。</p>
+
+<p>所有的欺诈证明必须提供一个链承诺的梅克尔证明。证明为错误时，将会惩罚特定的Plasma链，因为他们对错误的块负有责任。</p>
+
+<p>主要的设计负责复杂度来自，为保证去中心化，实现交易状态向多个父链广播时，交易状态如何表达的问题。早期的版本假设状态转换/交易仅能在某个Plasma链中执行，与其它链的交互仅仅是提交信息到父链/子链来存取款。这种情况下，复杂度就主要是存取款相关的证明。</p>
+
+<p>数据的提交作为证明的一部分被包含进来。</p>
+
+<h2 id="toc_1">6.1 链内接收资金</h2>
+
+<p>在这个链中链的分层框架中，当一个人从其它人那里接收资金时，流程如下。比如，Alice想给Bob，在一个三级深的Plasma链中发送资金。</p>
+
+<ol>
+<li>Alice与Bob协商一致，她想向Bob发送资金。Alice向Bob公开，公开Bob将要接收资金的Plasma链。Bob决定什么时候接受支付，具体来说，Bob需要保证，在根链上的智能合约是他将接收支付的那条链（智能合约代码/机制，也包括可接受的共识退出（exit）延迟等）。</li>
+<li>如果当前的支付是为了购买某种商品，可以预签名一个声明来定义支付的条件，在很多情况下，如果足够成熟，可以实现为包含在区块中的支付证明，然而在某些环境下，也可以实现为一个合约支付哈希（pay-to-contract-hash）。这不是链上的操作，仅仅是附加解决问题的条款以向其它人证明。</li>
+<li>Alice在Plasma链中进行支付。这个区块被验证人签名，并且对区块头的承诺发布到他的父区块中。对子Plasma的梅克尔化的承诺被包含进了它的每一个父链中（译者注：多级的父链都包括），最终被包含进根链。</li>
+<li>Bob完整同步根链，然后校验要接收资金的链，以及这个链相关的父链。Bob没有必要校验与当前资金无关的链。Bob可以在最差情况下，比较成熟的保证在Plasma链中能校验Alice是否进行了支付。然而，如果期望得到快速的确定（finality）性。Alice可以提前签名会在新块完成支付（详见前面在Plasma链中接收支付的说明）。如果Alice将要对支付签名（sign off），同时Bob接受了（如果他能证明取款（withdraw）），那么我们将假设达到了确定性。Bob可以从Plasma链中取款了。</li>
+</ol>
+
+<p>这个设计的关键点在于，其中的参与者需要对子区块链的校验负责。如果Bob没有能力校验Plasma链和链对应的所有父节点（最终周期性提交到根链的也被验证了），那么这一切将不能认为已完成。与闪电网络中的构建方式类似，Bob可以不关心在其它Plasma链中发生的事情。他仅仅关注与他有关的链就好了。当他能使用币时，那么他就确信能花掉他们了。</p>
+
+<h2 id="toc_2">6.2 从父链中接收资金</h2>
+
+<p>从父链中接收资金与从父链中取款类似，区别在于，接收者需要校验所有的父Plasma链（而不是仅仅校验Plasma链）。向子Plasma链中速度非常快。</p>
+
+<h2 id="toc_3">6.3 从一个树到网</h2>
+
+<p>因为上面的描述的是单一的父链，Plasma链可以监听多个根链。这将允许大家更新子链的余额。必须要小心的是，某一个父链的失败可能不会马上被所有链识别，可以通过时延和减少跨链流动性的假设，来减轻级联系统失败。合适的构建方式当前正在讨论中。</p>
+
+<h2 id="toc_4">6.4 减轻区块扣留的问题</h2>
+
+<p>通过构建某人可以广播单个取款交易到多个场所（venues），将会存在要从多个暂停或发生区块扣留的链退出的场景。如果子链失败，于是可以在主链上执行一个简单的退出，即便交易在主链上较为昂贵。</p>
+
+<p>这使得人们持有Plasma的输出也能具有一定的可信度，前提是他们能确定至少一个父Plasma链运行正常。目标是解决这其中的主要问题，同时减少级联失败的影响。</p>
+
+<p>如果某人持有非常大的输出余额，如果对时间没有很强的要求，不用做特别的承保，然而，如果某人有单一的低价值的输出（当支付交易费变得越来越贵时），它需要有某种方式的确保其中的一个父链是可用的。如果某人希望一个更大的保证，它可以运行一个嵌入链，深度的与许多独立的在不同层级的Plasma链结合。尽管如此，其中仍有一些权衡，比如其中某个Plasma链出现Byzantine问题，那么每个链都需要向新链批量取款（mass-withdraw）。如果其中有一个父链不是byzantine的，当然，如果父链拒绝执行Byzantine链的提交，那么也可能继续运行并快速向另一条链转移。</p>
+
+<p>也可能出现一些服务，仅仅在发生子链失败时运行。服务的运行者不需要做任何事，除非子链失败（服务本身可以极为被动，我们甚至可以在故障发生时才开启服务，服务会自动跳过在这个被动服务的上一层链中广播的区块）。</p>
+
+<p>我们期望父链中的取款尽量是简单取款而不是批量取款（mass withdraw），因为父链可能有非常高的交易量（区块大小/gas限制）。</p>
+
+<h2 id="toc_5">6.5 退出</h2>
+
+<p>父链或根链的批量退出（mass exit）是可能的。如果子链出现Byzantine，我们可以假设所有的状态都将是不可用的，与一个没有嵌套父链的Plasma链类似。同样的，批量退出（mass exit）是一种快速的从一个Byzantine父链中退出的方式。可以跳过父链（或子链本身）到它的父链或直接根链。</p>
+
+<p>也许看起来设计中有一定的复杂性，假设如果有任何链出现Byzantine问题，其所有子链必须有所行动。存在一种优化方式通过心跳让退出在不需要协调一致的情况下进行（退出是默认没有签名情况下，而在用户的一方撤销它，并且Plasma链本身作出它已经接收到的承诺，但可能是不成熟的优化）。</p>
+
+<p>构建基本上与简单退出或者批量退出一样，然而有一些小的在设计上的改变来支持嵌套链。退出允许重复，但父链中的退出有优先权。如果父链出现Byzantine问题，退出也可以提交到父链。（被认为发生Byzantine的Plasma链）的责任来反映并更新其父/根链中的重复退出的状态，并撤销自身链中的重复退出。然而，如果它不能这样做，用户的资金将在根链中可用。</p>
+
+<p>如果父链发生Byzantine问题，但子链中持有的资金工作正常，可能能避免进行一个复杂的批量退出交易。参与者找一个新的接收资金的链来进行一个简单退出，其中流动性服务商在子链中接收资金，然后其它用户在新链中接收资金（不需要Byzantine父链的参与）。子链区块的提交被广播到了父链或更高一级的父链中（从而避免了Byzantine的节点）。用户将很快在新链中获得资金，流动性提供者则从根链或更高一级父链中退出资金。这一切的目的是新资金可以快速的分配到新链，且可以进行快速退出。</p>
+
+<h2 id="toc_6">6.6 可扩展性</h2>
+
+<p>这将允许UTXO位图的可扩展性，当位图（bitmap）变得越来越大时，人们可以将位图（bitmap）拆分到多个子链。对于子链，假设它们通过区块高度的随机数（候选链提示）来表示账户余额来替代一般的输出。类似的，对于倾向使用账户而不是UTXO的情况下，也可以提供只支持简单取款做为一个折衷。</p>
+
+<p>最后的结果是用户获得了最大程度的可扩展性。他们只需要关注他们资金所在Plasma链（以及其父链）。有效地将数据集分解为影响自身的验证。</p>
+
+<h2 id="toc_7">7 Plasma Pos</h2>
+
+<p>我们提议了一个简单的Pos构建。这不太会成为可选的pos构建，然而可以来说明在Plasma链中可能是什么样的。</p>
+
+<p>直到当前，我们假设Plasma链的运营者是单个实体，职责是签名区块。如果创建了一个无效的区块，任何其它有区块数据的都可以生成一个欺诈证明，回滚区块并惩罚运行者。证明是可能的，因为运营者通过签名者签名了这个区块。在根链中发布Plasma区块的梅克尔提交（因为最高的父Plasma区块包含了子链状态更新的提交），由此状态更新是有序的，且绑定到正确的状态行为中。</p>
+
+<p>然而，在许多情况下，构建一个Pos链而不是单参与方的POA链，多方参与是更期望的情况。这将减少关于区块扣留的风险（通过将一个链条嵌入一个单一方的POA以及开放的多方的POS链，可以实现两全其美）。一个代币化Pos链也将激励代币持有者来保证链的正常运行，因为代币的价值与Byzantine的行为有关。更加详细的关于代币化的价值在后面的章节中会介绍。</p>
+
+<p>在Plasma中构建Pos相对比较容易，因为他依赖于底层的根链的健壮性。关于区块扣留，确定性以及其它的关键点都被推向了根链。Plasma在最佳情况下与根链的安全性一致。如果根链是基于工作量证明机制的，那么将会是一个基于POW的POS（在根链的上的POS）。如果根链是POS的，那么就将构建一个基于POS的POS。然而Plasma链上的POS机制将比根链上的POS简单，或者不太一样。</p>
+
+<h2 id="toc_8">7.1 Nakamoto共识激励</h2>
+
+<p>我们尝试复制Nakamoto共识（工作量证明机制）的主要激励机制。其中最重要要复制的激励是，鼓励从一个矿工到其它矿工的区块传播。</p>
+
+<p>许多现存的POS提案依赖于主节点的选取，t0我们选择了某个为主节点，并在t1，这个主节点有权限来生成区块。这并没能复制Nakmoto的围绕区块传播的共识。Nakamoto共识确实也做了主节点的选取，但是它是做的一个概率性的主节点选取。如果一方发现了一个区块，它相信它也许会成为主节点，但是他仍不太确信。其它人也有可能在同时也挖出了这个区块。最好的提升成为领导节点的可能性是，尽快广播这个区块，越快，越远越好，来让其它人基于这个区块构建。这创建了信息可用性（infomation availability）的激励。</p>
+
+<p>Plasma的POS构建需要做一些类似的事。</p>
+
+<p>我们希望鼓励每个人尽可能远，尽可能广的传播区块，并从中取得平衡。这其中也许有其它的构建方式（具体来说，构建依赖于随机选择和概率性的主节点选择，通过为每个分支随机分配分数，并最终取最高分值的分支）。</p>
+
+<h2 id="toc_9">7.2 简单的POS模型的例子</h2>
+
+<p>因为这是一个简单的构建POS模型的提案，它看起来在各方面都不及预期。目标是构建一个简单的，Plasma可以使用的东西。与创建强制执行的机制不同，这里的办法是简单的创建对正确协作和正确行为的激励（目的是实现区块传播）。</p>
+
+<p>奖励（译者注：原文为fee）由根合约分配，如果一切如常的话，并周期性的分派出去，这个会计工作在链自身内完成。</p>
+
+<p>作为权益（staking）合约的一部分，权益所有者（stakers）的资金分配并指向一个代理的权益者（staker）。代理者有责任代表用户，如果出现错误，也将代为受罚。权益（staking）被承诺为某个特定的时间（如，3个月）。每个staker的最低限额是所有代币的百分之一，最高限额为5%。如果某人想分配超过5%，那么他可以使用多个权益身份（目的是为了最大化数据的分发并减少低于51%cartels的效率）。</p>
+
+<p>资金的分派取决于过去100个Plasma区块能否代表所有参与者。如果某人占3%的权益，那么那他应该占100个块中的3%。如果高于这个量，这个权益者将不会因为发布额外的区块来得到更多的奖励。如果在过去的100个块中，它的块数低于3%，那么当前的区块创建者也将得到更少的奖励。在根链上每个区块只能分派一个Plasma区块。</p>
+
+<p>这将鼓励所有参与者平等的协调并包含每个人的区块。假定人们不再需要建立强制执行机制，参与者将会协调并使用某些类型的模式（比如，轮询）来保证最大程度的奖励。</p>
+
+<p>如果他们因为不恰当的区块数量而没有得到最大化的交易费，资金会进行一个池中，以对未来的区块进行支付。</p>
+
+<p>结果将是一种经济激励，每个人必须尽量包含其它参与者。</p>
+
+<p>然而，还没有完成，因为前面我们只鼓励了权益者间的准确参与。在每一个区块中都是来自过去100个块的随机部分数据的梅克尔化的承诺。这将强制权益者拥有完整的区块数据并强制性的让区块创建者向其它权益者传播区块。</p>
+
+<p>链的头是由最大的奖励来决定的，如果有平行的分支，那么从协调中获得了最大的奖励费的将会是最终的获胜者（译者注：这里就是在做激励的协调，也许游戏是一个设计得最好的激励系统）。</p>
+
+<p>这个构建不是设计来阻止51%攻击，而是来鼓励区块传播（因为如果某人提交到扣留区块，给所有人带来的威胁都是一样的）。另外，这个构建依赖于主链上包含块的信息可用性和公正性；在主链上构建这样的Pos是不太可能的，因为这一切都基于数据可用性和中心化的激励。</p>
+
+<h2 id="toc_10">8 经济激励</h2>
+
+<p>在POS的验证模型里，可以构建与合约条款中约定的正确行为相一致的激励。尽管信用押金保证了链的精确性，我们需要创建后续关于数据可用性，阻止区块链停止的激励。通过仅允许使用每个Plasma链特定的代币，可能保证能激励人们持续运行这个链，因为代币的价值来源于所有未来收益的净现值贴现。因此，网络故障将减少所持有代币的价值，同时其中的个人有很大的动机为网络的持续运营带来最佳利益。</p>
+
+<p>Plasma链的运行者通过广播交易到链上而获得手续费（fees）。计算可能根据不同的操作收取不同的费用，费用可能会一级级向下收取，特别是对于复杂操作时。因为存在激励让更多的交易在尽可能深的子链中执行，可以在子链中创建资金已发送的承诺，或者计算，并将一步步向上传播。并将允许父链对子链中进行的计算收费，如果存在一个不正确的承诺，区块数据将不可用且不可达。这并不是必须的，在许多的情况下，人们更希望在子链中进行更多的计算，而不一定需要将费用分配到根链。</p>
+
+<p>对于系统升级，可以通过创建另一个接收同样代币的合约，并公告一个过渡期（或在分布式社区共同来决定）来解决。</p>
+
+<p>这也许会创建一个自行运行的系统。相比于大家需要在云计算中通过网站做存储和计算，来实现支付和运行服务，现在可能通过构建一系列的智能合约（与欺诈证明一起），一个代币，有足够的参与者来支付费用，那么这个系统，可以由一小部分权益所有者通过持续的运行网络和计算等基础设施，而推动其自我运行，从而真正意义上的实现了云上的计算。</p>
+
+<h2 id="toc_11">8.1 代币 vs. 币和经济安全</h2>
+
+<p>根链上的欺诈证明和最终持有的押金可以是原生代币，比如，以太坊网的ether（ETH），或者也可以是其它的维持底层区块链共识的代币。</p>
+
+<p>使用根区块链的原生代币（例如ETH）表面上看起来最为简单，但是有一些有趣的经济安全影响。</p>
+
+<p>如果我们的目标是阻止链停止和错误的行为，因为依赖于区块链的应用，如果只使用ETH，我们也许不会有足够的激励来阻止错误的行为。如果链停止或发生Byzantine，代币的价值将会下降。另外，代币价值应该接近于未来交易费的净现值贴现，这才应该是代币的价值体现。如果一个人以ETH做为权益押金，那么他就是在赌押金对应的时间价值（time-value）与收到的费用。应该来说，押金的价值应该远远低于代币的净折现值。另外，链停止和区块扣留证明起来比较困难，如果某人使用ETH做为押金，在过了押金期间后，取回了ETH，这将没有足够的驱动来应对Byzantine行为，因为代币应该因为Byzantine行为，价值应该下降。</p>
+
+<h2 id="toc_12">9 区块链的MapReduce</h2>
+
+<p>几乎所有在MapReduce中可计算的都可以在区块链上计算。这需要我们重构我们在区块链上实现计算和编程的思考方式。一个有欺诈证明（fraud proof）的MapReduce。每一个节点代表一个区块链。这与在之前章节中介绍的Plasma链的树形结构高度匹配。</p>
+
+<p>比如，如果想进行一个标准的词数统计，你可以创建一个运行reduce函数的区块链的梅克尔树。如果此时出现了欺诈证明，那犯错的节点将被惩罚。如果你能产生一个求和的reduce函数，你也可以产生一个平均值函数。例如，平均价格等等。Map函数则将计算发送到各个链，然后提交结果。显然，在数据吞吐量方面仍然存在限制，这也是reduce的欺诈证明存在的必要性。任意类型的任意计算是不可能的，但可以解决许多特定类型的问题；通常来说内存受限的问题集，可以通过一开始运行一个排序算法来解决，这也是Plasma的链内流量较大的折衷方案。</p>
+
+<p>如果节点不能生产实际的区块来证明计算，那么他们的结果将被丢弃和回滚（译者注：因为区块必有欺诈证明，假计算真区块将受惩罚）。需要注意的是，这并不能保证MapReduce所实现的计算扩容（由于，你需要观察链来维持共识），然而，它确实让活动强制执行且扩展了actors的能力。因此，主要的限制是围绕这样一个现实，受某个计算影响的各方应该关注这个计算集合。如果只需要关注一小部分，那么也很好，但如果需要关注所有的计算，那么它没有提供扩展的好处（仅在可扩展性的保证方面带来了一些好处）。也就是说，许多问题，可以这样解决，比如，去中心化的交易所（如果所有其它人的交易是正常的，你并不用关心他们的细节，只关心映射的集合中自己的交易）等。</p>
+
+<p>区块的格式必须与TrueBit构建的可计算数据相兼容。有对状态的承诺（可以构建UTXO/状态前缀树，来允许对包含/未包含的状态转换的证明），账户前缀树（子链和复杂的状态转换），对费用的承诺（关于状态转换的费用树），梅克尔交易，从父/子区块传过来的数据，见过父/子区块的承诺（阻止重排序），以及其它一些业务逻辑（如，词数统计的例子中，将具有针对单词以及它被看到的地方的排序的承诺）。通过构建梅克尔承诺，可以在根或父链创建智能合约，可以用来证明不正确的状态转换。也许存在一些问题集与这个格式不匹配，但常规的不需要太多内存计算的都是可能的。关于内存的限制，你可以这么想，把对计算所需要的最大内存限制等同于在欺诈证明中所允许的最大的数据量限制。</p>
+
+<p>一系列的map和reduce函数允许区块链按照处理数据的义务来运行。这需要父和子来创建执行的义务。子链需要包含父链传过来的数据，否则链将停止。父可以强制在子链中的计算，如果子链停止了，强制计算可以通过在父链广播数据来证明这个证据。在TrueBit的构建中主要的威胁在于围绕区块链停止的相关问题，因此如果子链停止了，需要关注构建是否允许持续性的运行，尽管这非常复杂，特别是随着时间的推移（数据集可能改变，并且具有时间一致性更难以推断某些问题）。</p>
+
+<p>通过和子链一起在一个mapReduce的框架中构建区块链计算，这可能将现有的计算机科学研究直接应用于区块链的分布式系统的问题集中。可能能构建一个solidity合约来产生许多有效的可扩展的商业应用。其中只需要计算和验证与自己有关的活动。</p>
+
+<h2 id="toc_13">10 应用的例子</h2>
+
+<p>去中心化的应用可以解构为一个mapReduce问题，并通过绑定代币以经济驱动的方式来保证正确的行为。</p>
+
+<h2 id="toc_14">10.1 区块链上的Reddit克隆</h2>
+
+<p>首先是区块链上的数据存储（CRUD）。主要的计算和证明是围绕访问控制，身份（投票和文章）以及评论。许多的web应用在后端都只有CRUD操作。</p>
+
+<p>根区块链包含智能合约共识规则和欺诈证明。最顶层的父链包含subreddits账户。每一个subreddit是父链的一个子Plasma区块链。每一个subreddit是一个Plasma的文章链。文章链的子链还包含评论。共识机制强制要求访问控制。对前一个块数据的承诺随机化（由父链提供的随机数）并提交到每一个区块的头中。一个reduce函数会周期性的运行以计算最佳文章以及其它的数据。</p>
+
+<p>个人用户的电脑下载数据和软件到本地计算机来格式化数据。提交数据需要支付交易费来激励对数据的包含，也许需要因为依赖于可用性而支付费用来下载老的区块数据。</p>
+
+<p>如果查看一个特定的文章，用户校验根链上的提交数据，然后来到最顶层的父节点的头部（返回n个块来到确定期（finality），也许一个星期），在账户状态前缀树中找到关联的subreddit。连接到一个DHT网络来发现subreddit上的节点，下载subreddit的链头（检查最近的n个区块）来查看文章列表，在一个轻节点上下载状态树和文章及其所带的评论的原始数据。用户仅仅需要关注Plasma上与自己有关的那一部分（下载文章和与自己有关的subreddit）。</p>
+
+<p>这是一个简单的在区块链上带一些计算的数据存储的例子。验证者可能完整的校验所有的节点，然而，也有可能将之分解出来。但是一旦分片太过，就会出现信息可用性的问题。一种解决办法是把子链的控制权完整的交给subreddit的所有者。</p>
+
+<h2 id="toc_15">10.2 去中心化的交易所</h2>
+
+<p>上述reddit克隆，虽然已实现了对web应用的CRUD影响，除站点统计信息外，并没有显著利用MapReduce操作。</p>
+
+<p>去中心化的交易所例子将会演示在高计算容量下也能有低延迟。因为存在许多的状态，所以输出将会定义为账户模型而不是UTXO，或者状态机里的每一步，都会有一个更大的位图（bitmap）来代表每个状态而不再使用单个布尔值来代表位图中某个位的花费状态。</p>
+
+<p>与subreddit类似，交易对会由一个子链树来表示。每一个子链树中又是一个树链，来最大化扩展性（低交易量的交易对也许只有一个Plasma树，高活跃度的交易对链也许有非常多的子链）。每一个链都有押金行为（bonded activity），每轮可以交易的数量由绑定的数量（bonded amount）来限制。</p>
+
+<p>第一步是在子链中有余额，如此一来，这就首先像一个带支付的Plasma链。</p>
+
+<p>接下来，订单会发布到子链上。作为对父链提交数据的一部分，所有的订单将被聚合成单一订单簿（order book）的梅克尔提交，被表示为那个链的一个订单。递归的将所有子链的订单簿（order book）reduce为那个链的一个订单簿（order book），直到到了父Plasma链。接收到订单后，订单的窗口将关闭，订单将批量的执行。</p>
+
+<p>reduce步骤结束后，将会提交到根区块链上，通过一个map的步骤，每个链将会得知他们的分配量。父链会告诉子链他们确定的订单完成（filled）量是怎么样的。这让子链可以看见其它的订单（这也意味着在这个步骤中也可以观察父链），他们将可以证明在map步骤中有正确执行的分配。在接收到分配后，map步骤持续递归执行到所有子链。</p>
+
+<p>当这一步执行时，最终的reduce步骤将是提交所有资金更新到根链，提交所有的区块头（header）到他们各自的父节点。</p>
+
+<p>未来的一个优化点是，在发生显著价值变化时，允许多轮MapReduce的执行（支持价格的高精准度），然而这种结构将会使得量级非常大。理论上能在这个框架上执行这个世界上所有的交易行为（只是有一些速度上的折衷），通过将它变为一个批量执行的交易所，完整的提交并绑定到根区块链上。</p>
+
+<p>这种类型的构建对于许多类型的金融活动和计算都是有用的。</p>
+
+<h2 id="toc_16">10.3 去中心化的邮件</h2>
+
+<p>要创建D-Mail，可以在Plasma链中表示一个账户，需要支付来接收邮件（往链上插入信息）。提交由那个人的公钥（public key）签名的数据。强制的保证未知的一方必须支付，未来的优化点是使用zk-SNARKS。父链包含一个链的目录来强制支付。简单的设计。</p>
+
+<h2 id="toc_17">10.4 去中化的CDN</h2>
+
+<p>存在去中化心的CDN。与以太坊的分片提案类似的构建。把每一个子区块链看作一个分片。存在一个随机信标（可以是根区块哈希或者其它）。在每n个区块的分片间混淆数据。父链有责任来提交混淆的数据。其它的也许会懒惰的保持着归档数据。数据丢失会通知，那些保持归档的将会被奖励。鼓励传播，因为只有其它分片有数据才会得到奖励。健壮性依赖于流长度的需求；越健壮，在某个时间点越需要多的分片拷贝。关键点是，存储是带宽的功能。数据不被视为磁盘上的固定数据。 所有数据实际上都在流动并移动到下一个目的地; 非常道教的做法。</p>
+
+<p>下载数据时，验证父链的分片和随机信标来知道哪个分片有数据，通过DHT认证的节点连接到他并下载数据。</p>
+
+<h2 id="toc_18">10.5 私有链</h2>
+
+<p>参与者没有义务向链上的其它人披露数据（尽管没有什么能阻止他公开），因此如果链上的参与者想要拥有一些由根链强制执行的私有区块链网络，他们可以这样做。这与internet/intranet的分离类似。交易可以发生于本地的私链，但也可以通信与公链有经济行为的绑定。</p>
+
+<h2 id="toc_19">攻击，风险和消除的方案</h2>
+
+<h3 id="toc_20">11.1 智能合约代码</h3>
+
+<p>写好智能合约代码是非常难的。安全依赖于正确执行的欺诈证明。可能有些欺诈证明应该包含但没能包含，导致不正确的状态转换会在根链上生效。</p>
+
+<h3 id="toc_21">11.2 主链上关闭交易将会非常贵</h3>
+
+<p>存在能在主链上关闭交易的风险，但不一定有执行的经济性（没有经济动力去这样做）。这也许会导致某些特定类型的欺诈，比如，通过将非常大量的小额交易凑成一个大额而引起损失。</p>
+
+<p>这可以通过设置退出条款来解决，通过退出条款对所有交易进行分类，并设置一个调解期，允许调解期满后立即退出整个链。此外，允许第三方观察者来监督某些人的行为。然而，这个构建将显著增加复杂性。这些预签名的合并交易会传播到它的父网络，传播到的父网络取决于链的可用状态，或者最终传播到根网络。然而，这也取决于所谓的各方的正确的行为，这也是为什么需要每个个体应该合并所有的未花费支付（unspent payments）为单个输出（output）或者输出集合（set of outputs），通过这样，退出交易才更具经济可行性。</p>
+
+<p>此外，可以把小额支付放到链上，并通过高价值的代币作为押金，并搭载该价值（因为有足够的抑制来完全的杀死Plasma链）。</p>
+
+<p>如果通用的递归SNARKs/STARKs变得可行了，在理论上能保证取款的实体不会有权限来做未授权的退出，即使是在发生区块扣留的区块上。</p>
+
+<h2 id="toc_22">11.3 确定性（Finality）</h2>
+
+<p>退出（exit）的调整窗口期根本上创建了一个确定（finality）的假设。如果底层链有非常大的押金成本来重组，并强制达到确定，那么它可以显著降低深链重组（deep chain rorg）的风险，从而引起链之间的同步问题。计划中的以太坊CAPSER确定性工具是一个解决方案的例子。</p>
+
+<h3 id="toc_23">11.4 根链缺乏容量以及提升成本</h3>
+
+<p>如果没有缓解措施，在手续费或者gas变得越来越贵时，在一个指定的周期内退出交易变得不太可能。如，交易费/gas增加50倍或者当前没有足够的空间来退出交易，同时矿工也不再提高空间和gas限制。</p>
+
+<p>通过暂停允许有序退出的退出计数机制，来延长退出延迟，有几种缓解措施。这可以通过暂停退出来完成，只要过去的x块中包含了某个人的交易就暂停。这样，如果最近都能有至少一个交易，这将允许每个人都能有出去的机会。如果一个退出发生于某个退出之前，那么计数器将会重置。其结果是，无法确定在收回资金之前必须等多久，这将会增加流动性提供者的（liquidity provider）手续费率。如果平均区块链gas/手续费在某个特定的非常高的值上，一个简单的机制是暂停对取款时间的限制（设置一些合理的上限时间，在这个时间内可以保持这个暂停状态）。</p>
+
+<p>持有资金的用户需要保持至少一个父链有一定程度的数据可用性（理想情况下是多个独立的父链）。</p>
+
+<h3 id="toc_24">11.5 根链的中心化</h3>
+
+<p>这个设计假设超过51%的根链节点是诚实的。如果根链的参与者联合起来通过中心化区块来攻击网络，那么会引起退出交易的强制性，状态更新，严重的丢失资金等问题。中心化是安全、价值风险和确定（finality）的主要因素，需要在未来的链中进行限制。</p>
+
+<p>这可以通过增加zk-SNARKs/zk-SNARKs的资金证明来解决，但需要在这块工程和研究投入。</p>
+
+<p>每个退出交易使用一个大额的押金的欺诈证明方式，因为矿工可以得到欺诈证明奖励，通过这样，中心化可以显著的被抑制。</p>
+
+<p>为网络提供安全的是父Plasma链的诚信和正确性，根链和余额大小的一个函数。</p>
+
+<p>关于全局范围内传输量的系统性限制（每个区块的退出[exit]速度限制），保证传输量低于确定性小工具（finality gadget）可能是一个解决方案。</p>
+
+<h3 id="toc_25">11.6 链停止</h3>
+
+<p>如果链停止了，在某个设定的时间周期后，可以有一个预提交的状态转换申请（offer）。响应的区块链可以接手这个链的所有交易，然后广播对这个链的接受（accept）以及整个链的移动。仅仅允许在某个设定的时间周期后，这个链还没有向前移动时才发生（忽略广播到父链上的交易）。欺诈证明可用于调解链头（chain tip）。</p>
+
+<p>对于涉及复杂的状态转换的金融活动，对于链停止的情况，可能还需要其它形式的激励。</p>
+
+<h3 id="toc_26">11.7 不能改变共识规则</h3>
+
+<p>由于设计是前置式的，因此不可能在没有提前编程的情况下改变共识规则。可以通过将升级路径做为系统的一部分来解决这个问题（如，在某个特定的日期后强制停止）。这种无能（inability）也将带来关于不能停止区块链的社会影响，因为，对于代币持有者来说，有经济上的驱动来持续的运行这个系统。由此，在Plasma链启动后，停止它将变得非常困难。</p>
+
+<h2 id="toc_27">12 未来的研究</h2>
+
+<p>未来研究的其它领域包括围绕安全的好处。当前研究的领域是通用递归SNARKs/STARKs，将会显著提升退出（exit）交易的安全性。深度的防御是可取的，由此防御的最后一条底线将是直接的去中心化退出机制，支持调解证明（disputed proof），前线则是新型的加密技术和安全硬件元素。配对密码术或其他形式的同态加密，在密码学上的新用途的进一步发展也将是有用的。</p>
+
+<p>在保持同步的同时，观察多个根链的能力需要更高的特异性（除了简单地强制硬同步之外）。</p>
+
+<p>未来的研究围绕确定性（finality）以及跨多个区块链的互动，也包括进一步的减少区块链退出的风险（SNARKs/STARKs也将起到一些作用）。</p>
+
+<h2 id="toc_28">13 结论和总结</h2>
+
+<p>Plasma的设计主要关注的是在数据压缩的情况下保证信息的可用性（提供关于区块扣留攻击的信息）。</p>
+
+<p>我们提出了一个机制，通过它，可以提交可强制执行的承诺，从而允许在链上持有资金，资金的状态由根链进行最终保证。</p>
+
+<p>这允许通过宽广的无定形网络计算机进行计算和存储。网络中的行为，通过经济因素来保证承诺的强制执行，强制执行由其所有父链，最终流向根链，并通过根链上的智能合约来保证了正确性。这个构建允许进行状态转换而不用担心在根链上直接运行的成本。</p>
+
+<p>区块链上的这个构建几乎可以执行全球范围内的经济活动计算（只要同一时间不需要占用过多的内存）。仅且当无效的计算证明被提交后，无效的承诺才会被回滚。不需要对链的运行者给予信任。</p>
+
+<p>为了减少链停止、以及其它Byzantine行为的动机，手续费激励了链的持续运行。如果Plasma链的行为绑定了特定的代币，链停止是不被鼓励的。因为，如果链发生了停止，那么链的价值会下降，将会对能否持续运行产生显著影响（译者注：让大家对这个链失去了信心，则代币不值钱，从而不愿意运行链）。</p>
+
+<p>这个激励和结构允许创建去中心化的自动程序，通过交易费来支持程序的自动运行。这样的去中化自动程序可以创建真正意义上的云计算，执行计算和验证数据，但其中提供服务的节点是随时变化和异构的。Plasma可以允许区块链扩容到支持不限用户量的通用应用。一个应用的创建者可以只写智能合约代码，提交到区块链上，然后通过激励，永久的运行这些合约中的计算，使用Plasma链来支付费用。</p>
+
+<h2 id="toc_29">14 致谢</h2>
+
+<p>Many thanks go out to the TrueBit authors for a design and implementation of merkleized proofs, including Chrstian Reitwießner for review. Thanks to Vlad Zamfir for many areas of inspiration and his general framing of ideas helpful in formalizing these ideas. Thanks to Thomas Greco, Piotr Dobaczewski and Pawe l Peregud for feedback and contributions.<br>
+TODO: Ask others for acknowledgements.<br>
+TODO: Improve bibliography and get more citations TODO: Finish diagrams</p>
+
+<p>References<br>
+[1] Joseph Poon and Tadge Dryja. Lightning Network. <a href="javascript:window.open('https://lightning.network/');">https://lightning.network/</a> lightning-network-paper.pdf, Mar 2015.<br>
+[2] Ethereum. Ethereum. <a href="javascript:window.open('https://ethereum.org/');">https://ethereum.org</a>.<br>
+[3] Gavin Wood. ETHEREUM: A SECURE DECENTRALISED GENERALISED<br>
+TRANSACTION LEDGER. <a href="javascript:window.open('http://gavwood.com/paper.pdf');">http://gavwood.com/paper.pdf</a>, Feb 2015.<br>
+[4] Raiden. Raiden Network. <a href="javascript:window.open('https://raiden.network/');">https://raiden.network/</a>.<br>
+[5] Jeffrey Dean and Sanjay Ghemawat. Mapreduce: Simplified data processing on large clusters. In OSDI, pages 137–150. USENIX Association, 2004.<br>
+[6] Satoshi Nakamoto. Bitcoin: A Peer-to-peer Electronic Cash System. https:// bitcoin.org/bitcoin.pdf, Oct 2008.<br>
+[7] Nick Szabo. Formalizing and Securing Relationships on Public Networks. http:// szabo.best.vwh.net/formalize.html, Sep 1997.<br>
+[8] Fred Erhsam. Blockchain Tokens and the dawn of the De- centralized Business Model. <a href="javascript:window.open('https://blog.coinbase.com/');">https://blog.coinbase.com/</a> app-coins-and-the-dawn-of-the-decentralized-business-model-8b8c951e734f.<br>
+[9] Naval Ravikant. The Bitcoin Model for Crowdfunding. <a href="javascript:window.open('https://startupboy.com/');">https://startupboy.com/</a> 2014/03/09/the-bitcoin-model-for-crowdfunding/.<br>
+[10] Jason Teutsch and Christian Reitwiessner. A scalable verification solution for blockchains. <a href="javascript:window.open('https://people.cs.uchicago.edu/~teutsch/papers/truebit.pdf');">https://people.cs.uchicago.edu/~teutsch/papers/truebit.pdf</a>, Mar 2017.<br>
+46<br>
+[11] Vitalik Buterin. Ethereum Sharding FAQ. <a href="javascript:window.open('https://github.com/ethereum/wiki/');">https://github.com/ethereum/wiki/</a> wiki/Sharding-FAQ.<br>
+[12] Adam Back, Matt Corallo, Luke Dashjr, Mark Friedenbach, Gregory Maxwell, Andrew Miller, Andrew Poelstra, Jorge Timn, and Pieter Wuille. Enabling Blockchain Inno- vations with Pegged Sidechains. <a href="javascript:window.open('https://blockstream.com/sidechains.pdf');">https://blockstream.com/sidechains.pdf</a>, Oct 2014.<br>
+[13] Paul Sztorc. Drivechain - The Simple Two Way Peg. <a href="javascript:window.open('http://www.truthcoin.info/');">http://www.truthcoin.info/</a> blog/drivechain/.<br>
+[14] Bitcoin Wiki. Merged mining specification. <a href="javascript:window.open('https://en.bitcoin.it/wiki/Merged_');">https://en.bitcoin.it/wiki/Merged_</a> mining_specification.<br>
+[15] Peter Todd. Tree Chains. <a href="javascript:window.open('https://github.com/petertodd/tree-chains-paper');">https://github.com/petertodd/tree-chains-paper</a>.<br>
+[16] Eli Ben-Sasson, Alessandro Chiesa, Eran Tromer, and Mardas Virza. Succinct Non- Interactive Zero Knowledge for a von Neumann Architecture. <a href="javascript:window.open('https://eprint.iacr/');">https://eprint.iacr</a>. org/2013/879.pdf, May 2015.<br>
+[17] Alessandro Chiesa, Eran Tromer, and Madars Virza. Cluster Computing in Zero Knowledge. <a href="javascript:window.open('https://eprint.iacr.org/2015/377.pdf');">https://eprint.iacr.org/2015/377.pdf</a>, Apr 2015.<br>
+[18] Jae Kwon. Cosmos: A Network of Distributed Ledgers. <a href="javascript:window.open('https://github.com/cosmos/');">https://github.com/cosmos/</a> cosmos/blob/master/WHITEPAPER.md, Sep 2016.<br>
+[19] Gavin Wood. POLKADOT: VISION FOR A HETEROGENEOUS MULTI-CHAIN FRAMEWORK. <a href="javascript:window.open('https://github.com/w3f/polkadot-white-paper/raw/master/');">https://github.com/w3f/polkadot-white-paper/raw/master/</a> PolkaDotPaper.pdf, Nov 2016.<br>
+[20] Sergio Demian Lerner. lumino transaction compression protocol (ltcp). https: //uploads.strikinglycdn.com/files/9dcb08c5-f5a9-430e-b7ba-6c35550a4e67/ LuminoTransactionCompressionProtocolLTCP.pdf, Feb 2017.<br>
+[21] Ilja Gerhardt and Timo Hanke. Homomorphic Payment Addresses and the Pay-to- Contract Protocol. <a href="javascript:window.open('http://arxiv.org/abs/1212.3257');">http://arxiv.org/abs/1212.3257</a>, Dec 2012.<br>
+[22] Tier Nolan. Re: Alt chains and atomic transfers. <a href="javascript:window.open('https://bitcointalk.org/index');">https://bitcointalk.org/index</a>. php?topic=193281.msg2224949#msg2224949.</p>
+
+
+        <!-- newly added20190331 
+        <h2>如需交流，可加微信: 「TryBlockchain」</h2>
+        <p><img src="https://me.tryblockchain.org/media/14873893253965/wechat-TryBlockchain.jpg" alt="wechat-qr-code"/></p>   -->
+        <!-- newly added2018 
+        <h2>感谢您对本站的支持</h2>
+        <p><img src="https://me.tryblockchain.org/media/14873893253965/wechat-zan.jpg" alt="zan-code"/></p>
+        -->
+        <blockquote>
+        <p>处于某些特定的环境下，可以看到评论框，欢迎留言交流^_^。</p>
+        </blockquote>
+        <!-- 去掉赞码，增加广告 20190914 中秋节-->
+      </div>
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="4-eras-of-blockchain-computing-d.html" title="Previous Post: 区块链计算的四个阶段">&laquo; 区块链计算的四个阶段</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a href="ethereum-blockchain-plasma-white.html" title="Next Post: Plasma白皮书（三）">Plasma白皮书（三） &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          <script async="" src="static/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-6188337887319489",
+    enable_page_level_ads: true
+  });
+</script><script id="dsq-count-scr" src="https://tryblockchain-org.disqus.com/count.js" async=""></script>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://tryblockchain-org.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="javascript:window.open('https://disqus.com/?ref_noscript');">comments powered by Disqus.</a></noscript>
+                            
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>区块链技术博客</h1>
+                <div class="site-des">区块链相关技术博客，专注基于以太坊的区块链技术，Solidity编程语言，Truffle框架，web3.js。</div>
+
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>个人微信: 「TryBlockchain」</h2>
+                </div>
+              </div>
+
+
+                <div class="social">
+                  <img src="static/picture/wechat-TryBlockchain.jpg" width="230px">
+                </div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="files/atom.xml" title="RSS">RSS</a>
+
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="Solidity深入浅出系列.html"><strong>Solidity深入浅出系列</strong></a>
+        
+            <a href="文档翻译.html"><strong>文档翻译</strong></a>
+        
+            <a href="其它.html"><strong>其它</strong></a>
+        
+            <a href="Solidity入门系列.html"><strong>Solidity入门系列</strong></a>
+        
+            <a href="热点.html"><strong>热点</strong></a>
+        
+            <a href="项目.html"><strong>项目</strong></a>
+        
+            <a href="whitepaper.html"><strong>whitepaper</strong></a>
+        
+            <a href="热点深度.html"><strong>热点深度</strong></a>
+        
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="dex-uniswap-ox-hydro.html">去中心化的交易所正在打一场恶战，新选手不断加入</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="coinbase-custody-staking.html">coinbase的托管生意又有大动作了</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15462405993032.html">基于第三代互联网的数据经济</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15462215241005.html">Curation Markets</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="4-eras-of-blockchain-computing-d.html">区块链计算的四个阶段</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+ <div class="page-bottom clearfix">
+  <div class="row">
+     <p class="copyright">Copyright &copy; 2016-2019 tryblockchain.org. All rights reserved. 
+  &nbsp; 交流微信：TryBlockchain
+</p>
+<p style="font-size: 14px;margin: 0 0.93rem;">友情链接： <a href="javascript:window.open('https://bitshuo.com/');">区块链技术中文社区</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:window.open('https://learnblockchain.cn/');">深入浅出区块链</a></p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="static/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="static/js/MathJax-TeX-AMS-MML_HTMLorMML.js"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?a7f98ca019147491b75cb037fb3aec14";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89122146-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  </body>
+</html>

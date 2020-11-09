@@ -1,0 +1,686 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+    
+  文档翻译 - 区块链技术博客
+  
+  </title>
+  
+  
+  
+    <link rel="stylesheet" href="static/css/foundation.min.css">
+    <link rel="stylesheet" href="static/css/docs1.css">
+    <script src="static/js/modernizr.js"></script>
+    <script src="static/js/jquery.js"></script>
+  <script src="static/js/highlight.pack.js"></script>
+  <link href="static/css/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <!-- 增加google ad -->
+  <script async="" src="static/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-6188337887319489",
+      enable_page_level_ads: true
+    });
+  </script>
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:me.tryblockchain.org ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas="">
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar="">
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index1.html" style="font-size: 18px">主页</a></li>
+        
+        <li id=""><a target="_self" href="index2.html" style="font-size: 18px">Solidity文档</a></li>
+        
+        <li id=""><a target="_self" href="index.html" style="font-size: 18px">Web3.js文档</a></li>
+        
+        <li id=""><a target="_self" href="index3.html" style="font-size: 18px">Truffle文档</a></li>
+        
+        <li id=""><a target="_self" href="index4.html" style="font-size: 18px">Open Zeppelin</a></li>
+        
+        <li id=""><a target="_self" href="aboutme.html" style="font-size: 18px">关于本站</a></li>
+        
+        <li id=""><a target="_self" href="archives.html" style="font-size: 18px">归档</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="">
+    <input tabindex="1" type="search" id="search_input" placeholder="Search">
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; 区块链技术博客</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+         <li><a href="index1.html">主页</a></li>
+        
+         <li><a href="index2.html">Solidity文档</a></li>
+        
+         <li><a href="index.html">Web3.js文档</a></li>
+        
+         <li><a href="index3.html">Truffle文档</a></li>
+        
+         <li><a href="index4.html">Open Zeppelin</a></li>
+        
+         <li><a href="aboutme.html">关于本站</a></li>
+        
+         <li><a href="archives.html">归档</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="Solidity深入浅出系列.html">Solidity深入浅出系列</a></li>
+        
+            <li><a href="">文档翻译</a></li>
+        
+            <li><a href="其它.html">其它</a></li>
+        
+            <li><a href="Solidity入门系列.html">Solidity入门系列</a></li>
+        
+            <li><a href="热点.html">热点</a></li>
+        
+            <li><a href="项目.html">项目</a></li>
+        
+            <li><a href="whitepaper.html">whitepaper</a></li>
+        
+            <li><a href="热点深度.html">热点深度</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
+</script>
+<div class="row">
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="blockchain-ethereum-plasma.html">
+                
+                  <h1></h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>注意：本文是一篇翻译文章，原文观点不代表译者观点，同时也不代表译者同意文中观点。在<a href="javascript:window.open('https://medium.com/chain-cloud-company-blog/plasma-in-10-minutes-c856da94e339');">这里</a>查看原文。</p>
+
+<h1 id="toc_0">Plasma简述</h1>
+
+<p>Plasma是以太坊的一种二层协议扩容方案。方案最早在twitter上公布，<a href="javascript:window.open('http://plasma.io/');">白皮书</a>。</p>
+
+<p>下面会尽量以简单的方式来说明其工作方式，来帮助大家入门。</p>
+
+<p>扩容比特币有个闪电解决方案，以太坊对应的叫<a href="javascript:window.open('https://github.com/raiden-network/raiden');">雷电网络</a>。</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="blockchain-ethereum-plasma.html">阅读更多→</a>&nbsp;&nbsp; 
+                    <span class="date">2018/1/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href=''>文档翻译</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="getting-up-to-speed-on-ethereum.html">
+                
+                  <h1>以太坊开发入门，完整入门篇（小白可以看看，高手看看自己有没有遗漏的）</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>翻译自：<a href="javascript:window.open('https://medium.com/@mattcondon/getting-up-to-speed-on-ethereum-63ed28821bbe');">https://medium.com/@mattcondon/getting-up-to-speed-on-ethereum-63ed28821bbe</a></p>
+
+<p>从入门到精通，干货篇。</p>
+
+<p>必读，如果你：</p>
+
+<ul>
+<li>是一个专业的程序员</li>
+<li>如果你想了解以太坊当前可以做到什么程度，通过什么，如何做到。</li>
+</ul>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="getting-up-to-speed-on-ethereum.html">阅读更多→</a>&nbsp;&nbsp; 
+                    <span class="date">2017/8/19</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href=''>文档翻译</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="robust-smart-contracts-with-open.html">
+                
+                  <h1>OpenZeppelin集成Truffle编写健壮安全的合约</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>原文：<a href="javascript:window.open('http://truffleframework.com/tutorials/robust-smart-contracts-with-openzeppelin');">http://truffleframework.com/tutorials/robust-smart-contracts-with-openzeppelin</a></p>
+
+<p>因为智能合约往往涉及金钱，保证Soldity代码没有错误，以及足够的安全是非常根本的。<a href="javascript:window.open('https://zeppelin.solutions/');">Zeppelin Solutions</a>，一个智能合约审查服务商，已经意识到相关的需求。建立在他们的合约审查经验之上，他们把一些最佳实践整理到了<a href="javascript:window.open('http://truffleframework.com/tutorials/robust-smart-contracts-with-openzeppelin');">OpenZeppelin</a>。</p>
+
+<p>我们可以使用和扩展这些合约，以在更少的时间内创建更安全的DAPP。OpenZeppelin为各种各样重要的功能提供了广泛的智能合约（<a href="javascript:window.open('https://github.com/OpenZeppelin/zeppelin-solidity');">在这里查看全部支持合约</a>）。而今天，我们来看看其中的代币合约。具体来说，我们打算扩展其中提供了<code>StandardToken.sol</code>来创建一个我们自己的支持ERC-20标准的代币。</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="robust-smart-contracts-with-open.html">阅读更多→</a>&nbsp;&nbsp; 
+                    <span class="date">2017/8/5</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href=''>文档翻译</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="onward-with-ethereum-smart-contr.html">
+                
+                  <h1>安全编写以太坊的智能合约指南</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>本文翻译自<code>zeppelin</code>的 <a href="javascript:window.open('https://blog.zeppelin.solutions/onward-with-ethereum-smart-contract-security-97a827e47702');">https://blog.zeppelin.solutions/onward-with-ethereum-smart-contract-security-97a827e47702</a></p>
+
+<p>如果你是以太坊开发的新手，我们推荐你在继续本文前，先读一下我们的以太坊智能合约指南（基本概念及环境搭建）：<a href="javascript:window.open('https://medium.com/bitcorps-blog/the-hitchhikers-guide-to-smart-contracts-in-ethereum-848f08001f05#.6dob381ks');">https://medium.com/bitcorps-blog/the-hitchhikers-guide-to-smart-contracts-in-ethereum-848f08001f05#.6dob381ks</a></p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="onward-with-ethereum-smart-contr.html">阅读更多→</a>&nbsp;&nbsp; 
+                    <span class="date">2017/7/30</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href=''>文档翻译</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15001618713278.html">
+                
+                  <h1>NSA后门的简史(翻译：资料来源于网络)</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>最近在Twitter上看到一篇关于加密学中常见的“坑”的文章，为扩充自己的视野，特地翻译并学习一下。原文在：<a href="javascript:window.open('http://ethanheilman.tumblr.com/post/70646748808/a-brief-history-of-nsa-backdoors');">http://ethanheilman.tumblr.com/post/70646748808/a-brief-history-of-nsa-backdoors</a></p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="15001618713278.html">阅读更多→</a>&nbsp;&nbsp; 
+                    <span class="date">2017/7/16</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href=''>文档翻译</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="javascript:window.open('https://me.tryblockchain.org/eos-whitepaper-白皮书.html');">
+                
+                  <h1>EOS白皮书</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">背景</h2>
+
+<p>区块技术在2008年随着比特币的发布而被引入，至此企业与开发者尝试在单一区块链平台上应用这一技术来支持各种各样的应用。</p>
+
+<p>当一些区块链平台积极尝试单一功能的区块链的去中心化应用，比如BitShares去中心化交易所（2014）和Steem去中心化社交平台（2016），都以被每天数以千计活跃用户使用着。为支持这么大量的用户使用，它们都通过提升性能到每秒处理上千个交易，延迟低到1.5秒，清除费用，提供与中心化服务的类似体验。</p>
+
+<p>当前已存在的区块链平台，被手续费，有限的计算容量所牵绊，阻止了区块链的广泛接纳。</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="javascript:window.open('https://me.tryblockchain.org/eos-whitepaper-白皮书.html');">阅读更多→</a>&nbsp;&nbsp; 
+                    <span class="date">2017/6/25</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href=''>文档翻译</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="javascript:window.open('https://me.tryblockchain.org/Solidity-语言介绍.html');">
+                
+                  <h1>【文档翻译系列】Solidity语言</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>Solidity是一种智能合约高级语言，运行在Ethereum虚拟机（EVM）之上。</p>
+
+<h2 id="toc_0">Solidity与其它语言相关的特点？</h2>
+
+<p>它的语法接近于Javascript，是一种面向对象的语言。但作为一种真正意义上运行在网络上的去中心合约，它又有很多的不同，下面列举一些：</p>
+
+<ul>
+<li>以太坊底层是基于帐户，而非UTXO的，所以有一个特殊的<code>Address</code>的类型。用于定位用户，定位合约，定位合约的代码（合约本身也是一个帐户）。</li>
+<li>由于语言内嵌框架是支持支付的，所以提供了一些关键字，如<code>payable</code>，可以在语言层面直接支持支付，而且超级简单。</li>
+<li>存储是使用网络上的区块链，数据的每一个状态都可以永久存储，所以需要确定变量使用内存，还是区块链。</li>
+<li>运行环境是在去中心化的网络上，会比较强调合约或函数执行的调用的方式。因为原来一个简单的函数调用变为了一个网络上的节点中的代码执行，分布式的感觉。</li>
+<li>最后一个非常大的不同则是它的异常机制，一旦出现异常，所有的执行都将会被回撤，这主要是为了保证合约执行的原子性，以避免中间状态出现的数据不一致。</li>
+</ul>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="javascript:window.open('https://me.tryblockchain.org/Solidity-语言介绍.html');">阅读更多→</a>&nbsp;&nbsp; 
+                    <span class="date">2015/12/19</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href=''>文档翻译</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="javascript:window.open('https://me.tryblockchain.org/Truffle-FAQ-是什么.html');">
+                
+                  <h1>【文档翻译系列】Truffle框架</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">Truffle是什么?</h3>
+
+<p>Truffle是针对基于以太坊的Solidity语言的一套开发框架。本身基于Javascript。</p>
+
+<h3 id="toc_1">学习Truffle前要知道什么？</h3>
+
+<p>总的来说不需要什么特别的。</p>
+
+<ul>
+<li>由于本身是基本Javascript的，但对Javascript的要求比较低，知道基本语法、模块、Promise的概念差不多就可以了，不知道也行，碰到不懂的，现查资料都来得及。(这个我做为一个后台开发勉强可以懂)。</li>
+<li>需要知道Solidity，因为本身就是针对它的一个框架，不然学这个干什么。</li>
+<li>知道一点点以太坊的基础，不过学Solidity那点就够了。</li>
+</ul>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="javascript:window.open('https://me.tryblockchain.org/Truffle-FAQ-是什么.html');">阅读更多→</a>&nbsp;&nbsp; 
+                    <span class="date">2015/12/19</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href=''>文档翻译</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
+
+
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			
+			</p>
+			  </div>
+			</div>
+		</div>
+	</div><!-- large 8 -->
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>区块链技术博客</h1>
+                <div class="site-des">区块链相关技术博客，专注基于以太坊的区块链技术，Solidity编程语言，Truffle框架，web3.js。</div>
+
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>个人微信: 「TryBlockchain」</h2>
+                </div>
+              </div>
+
+
+                <div class="social">
+                  <img src="static/picture/wechat-TryBlockchain.jpg" width="230px">
+                </div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="files/atom.xml" title="RSS">RSS</a>
+
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="Solidity深入浅出系列.html"><strong>Solidity深入浅出系列</strong></a>
+        
+            <a href=""><strong>文档翻译</strong></a>
+        
+            <a href="其它.html"><strong>其它</strong></a>
+        
+            <a href="Solidity入门系列.html"><strong>Solidity入门系列</strong></a>
+        
+            <a href="热点.html"><strong>热点</strong></a>
+        
+            <a href="项目.html"><strong>项目</strong></a>
+        
+            <a href="whitepaper.html"><strong>whitepaper</strong></a>
+        
+            <a href="热点深度.html"><strong>热点深度</strong></a>
+        
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="dex-uniswap-ox-hydro.html">去中心化的交易所正在打一场恶战，新选手不断加入</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="coinbase-custody-staking.html">coinbase的托管生意又有大动作了</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15462405993032.html">基于第三代互联网的数据经济</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15462215241005.html">Curation Markets</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="4-eras-of-blockchain-computing-d.html">区块链计算的四个阶段</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+ <div class="page-bottom clearfix">
+  <div class="row">
+     <p class="copyright">Copyright &copy; 2016-2019 tryblockchain.org. All rights reserved. 
+  &nbsp; 交流微信：TryBlockchain
+</p>
+<p style="font-size: 14px;margin: 0 0.93rem;">友情链接： <a href="javascript:window.open('https://bitshuo.com/');">区块链技术中文社区</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:window.open('https://learnblockchain.cn/');">深入浅出区块链</a></p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="static/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="static/js/MathJax-TeX-AMS-MML_HTMLorMML.js"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?a7f98ca019147491b75cb037fb3aec14";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89122146-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  </body>
+</html>

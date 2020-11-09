@@ -1,0 +1,360 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+  
+  Truffle - 以太坊Solidity编程语言开发框架
+  
+  </title>
+ <meta name="description" content="Truffle - 以太坊Solidity编程语言开发框架">
+ 
+    <link rel="stylesheet" href="static/css/foundation.min.css">
+    <link rel="stylesheet" href="static/css/docs.css">
+
+    <script src="static/js/modernizr.js"></script>
+    <script src="static/js/jquery.js"></script>
+    <script src="static/js/highlight.pack.js"></script>
+    <link href="static/css/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <!-- 增加google ad -->
+    <script async="" src="static/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-6188337887319489",
+        enable_page_level_ads: true
+      });
+    </script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body class="antialiased hide-extras">
+
+    <div class="marketing off-canvas-wrap" data-offcanvas="">
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar="">
+
+<div id="header">
+    <h1><a href="javascript:window.open('https://truffle.tryblockchain.org/index.html');">Truffle - 以太坊Solidity编程语言开发框架</a>   <a href="index1.html" style="float: right;color: lightgray;">返回博客</a></h1>
+</div>
+
+</nav>
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; Truffle - 以太坊Solidity编程语言开发框架</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+      <li><a href="index1.html">回到博客</a></li>
+      <li><a href="javascript:window.open('https://truffle.tryblockchain.org/index.html');">主页</a></li>
+      
+        <li class="divider"></li>
+        <li><label>入门</label></li>
+
+          
+            <li><a title="12. 联系开发者" href="javascript:window.open('https://truffle.tryblockchain.org/Truffle-contactTheDeveloper-联系开发者.html');">12. 联系开发者</a></li>
+          
+            <li><a title="11.工作流" href="javascript:window.open('https://truffle.tryblockchain.org/Truffle-workflow-工作流.html');">11.工作流</a></li>
+          
+            <li><a title="10. 外部脚本" href="javascript:window.open('https://truffle.tryblockchain.org/Truffle-WrtingExternalScripts-外部脚本.html');">10. 外部脚本</a></li>
+          
+            <li><a title="9. 控制台" href="javascript:window.open('https://truffle.tryblockchain.org/Truffle-UsingTheConsole-使用控制台.html');">9. 控制台</a></li>
+          
+            <li><a title="8. 测试合约" href="javascript:window.open('https://truffle.tryblockchain.org/truffle-ContractsTest-测试合约.html');">8. 测试合约</a></li>
+          
+            <li><a title="7. 合约交互" href="javascript:window.open('https://truffle.tryblockchain.org/truffle-InteractingWithContracts-与合约交互.html');">7. 合约交互</a></li>
+          
+            <li><a title="6. 构建应用" href="javascript:window.open('https://truffle.tryblockchain.org/Truffle-build-默认构建器.html');">6. 构建应用</a></li>
+          
+            <li><a title="5. 移植" href="javascript:window.open('https://truffle.tryblockchain.org/truffle-migration-移植合约.html');">5. 移植</a></li>
+          
+            <li><a title="4. 编译合约" href="javascript:window.open('https://truffle.tryblockchain.org/Truffle-CompileContracts-编译合约.html');">4. 编译合约</a></li>
+          
+            <li><a title="3. 创建一个工程" href="javascript:window.open('https://truffle.tryblockchain.org/Truffle-CreateAProjectFolder-创建工程.html');">3. 创建一个工程</a></li>
+          
+            <li><a title="2. Truffle客户端" href="javascript:window.open('https://truffle.tryblockchain.org/Truffle-client-开发及部署的客户端.html');">2. Truffle客户端</a></li>
+          
+            <li><a title="1. Truffle简介" href="javascript:window.open('https://truffle.tryblockchain.org/Truffle-introduce-介绍.html');">1. Truffle简介</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>高级</label></li>
+
+          
+            <li><a title="4. Truffle命令指南" href="javascript:window.open('https://truffle.tryblockchain.org/Truffle-CommandRefrence-命令指南.html');">4. Truffle命令指南</a></li>
+          
+            <li><a title="3. 构建流程" href="javascript:window.open('https://truffle.tryblockchain.org/Truffle-BuildProcess-构建流程.html');">3. 构建流程</a></li>
+          
+            <li><a title="2. 网络与APP部署" href="javascript:window.open('https://truffle.tryblockchain.org/truffle-NetworksAndAppDeployment-网络与APP部署.html');">2. 网络与APP部署</a></li>
+          
+            <li><a title="1. 配置文件" href="javascript:window.open('https://truffle.tryblockchain.org/14838695696327.html');">1. 配置文件</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>实战</label></li>
+
+          
+            <li><a title="Truffle3.0集成NodeJS并完全跑通（附详细实例，可能的错误）" href="javascript:window.open('https://truffle.tryblockchain.org/truffle3.0-integrate-nodejs.html');">Truffle3.0集成NodeJS并完全跑通（附详细实例，可能的错误）</a></li>
+          
+            <li><a title="Truffle 2.0升级3.0升级指南" href="javascript:window.open('https://truffle.tryblockchain.org/Truffle2.0-Truffle3.0-upgrade-guide.html');">Truffle 2.0升级3.0升级指南</a></li>
+          
+            <li><a title="Solidity的Truffle框架实战(手把手)" href="javascript:window.open('https://truffle.tryblockchain.org/Solidity-truffle-实战.html');">Solidity的Truffle框架实战(手把手)</a></li>
+          
+
+      
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+        <section id="main-content" role="main" class="scroll-container">
+
+          <div class="row">
+            <div class="large-3 medium-3 columns">
+              <div class="hide-for-small">
+                <div class="sidebar">
+                <nav>
+                  <ul id="side-nav" class="side-nav">
+
+                    
+                      <li class="side-title"><span>入门</span></li>
+                        
+                          <li><a title="12. 联系开发者" href="javascript:window.open('https://truffle.tryblockchain.org/Truffle-contactTheDeveloper-联系开发者.html');">12. 联系开发者</a></li>
+                        
+                          <li><a title="11.工作流" href="javascript:window.open('https://truffle.tryblockchain.org/Truffle-workflow-工作流.html');">11.工作流</a></li>
+                        
+                          <li><a title="10. 外部脚本" href="javascript:window.open('https://truffle.tryblockchain.org/Truffle-WrtingExternalScripts-外部脚本.html');">10. 外部脚本</a></li>
+                        
+                          <li><a title="9. 控制台" href="javascript:window.open('https://truffle.tryblockchain.org/Truffle-UsingTheConsole-使用控制台.html');">9. 控制台</a></li>
+                        
+                          <li><a title="8. 测试合约" href="javascript:window.open('https://truffle.tryblockchain.org/truffle-ContractsTest-测试合约.html');">8. 测试合约</a></li>
+                        
+                          <li><a title="7. 合约交互" href="javascript:window.open('https://truffle.tryblockchain.org/truffle-InteractingWithContracts-与合约交互.html');">7. 合约交互</a></li>
+                        
+                          <li><a title="6. 构建应用" href="javascript:window.open('https://truffle.tryblockchain.org/Truffle-build-默认构建器.html');">6. 构建应用</a></li>
+                        
+                          <li><a title="5. 移植" href="javascript:window.open('https://truffle.tryblockchain.org/truffle-migration-移植合约.html');">5. 移植</a></li>
+                        
+                          <li><a title="4. 编译合约" href="javascript:window.open('https://truffle.tryblockchain.org/Truffle-CompileContracts-编译合约.html');">4. 编译合约</a></li>
+                        
+                          <li><a title="3. 创建一个工程" href="javascript:window.open('https://truffle.tryblockchain.org/Truffle-CreateAProjectFolder-创建工程.html');">3. 创建一个工程</a></li>
+                        
+                          <li><a title="2. Truffle客户端" href="javascript:window.open('https://truffle.tryblockchain.org/Truffle-client-开发及部署的客户端.html');">2. Truffle客户端</a></li>
+                        
+                          <li><a title="1. Truffle简介" href="javascript:window.open('https://truffle.tryblockchain.org/Truffle-introduce-介绍.html');">1. Truffle简介</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>高级</span></li>
+                        
+                          <li><a title="4. Truffle命令指南" href="javascript:window.open('https://truffle.tryblockchain.org/Truffle-CommandRefrence-命令指南.html');">4. Truffle命令指南</a></li>
+                        
+                          <li><a title="3. 构建流程" href="javascript:window.open('https://truffle.tryblockchain.org/Truffle-BuildProcess-构建流程.html');">3. 构建流程</a></li>
+                        
+                          <li><a title="2. 网络与APP部署" href="javascript:window.open('https://truffle.tryblockchain.org/truffle-NetworksAndAppDeployment-网络与APP部署.html');">2. 网络与APP部署</a></li>
+                        
+                          <li><a title="1. 配置文件" href="javascript:window.open('https://truffle.tryblockchain.org/14838695696327.html');">1. 配置文件</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>实战</span></li>
+                        
+                          <li><a title="Truffle3.0集成NodeJS并完全跑通（附详细实例，可能的错误）" href="javascript:window.open('https://truffle.tryblockchain.org/truffle3.0-integrate-nodejs.html');">Truffle3.0集成NodeJS并完全跑通（附详细实例，可能的错误）</a></li>
+                        
+                          <li><a title="Truffle 2.0升级3.0升级指南" href="javascript:window.open('https://truffle.tryblockchain.org/Truffle2.0-Truffle3.0-upgrade-guide.html');">Truffle 2.0升级3.0升级指南</a></li>
+                        
+                          <li><a title="Solidity的Truffle框架实战(手把手)" href="javascript:window.open('https://truffle.tryblockchain.org/Solidity-truffle-实战.html');">Solidity的Truffle框架实战(手把手)</a></li>
+                        
+
+                    
+                  </ul>
+                </nav>
+                </div>
+              </div>
+            </div>
+            <div class="large-9 medium-9 columns">
+ 
+
+
+	
+		<div class="markdown-body">
+		<h1>【文档翻译系列】Truffle框架</h1>
+
+		<h3 id="toc_0">Truffle是什么?</h3>
+
+<p>Truffle是针对基于以太坊的Solidity语言的一套开发框架。本身基于Javascript。</p>
+
+<h3 id="toc_1">学习Truffle前要知道什么？</h3>
+
+<p>总的来说不需要什么特别的。</p>
+
+<ul>
+<li>由于本身是基本Javascript的，但对Javascript的要求比较低，知道基本语法、模块、Promise的概念差不多就可以了，不知道也行，碰到不懂的，现查资料都来得及。(这个我做为一个后台开发勉强可以懂)。</li>
+<li>需要知道Solidity，因为本身就是针对它的一个框架，不然学这个干什么。</li>
+<li>知道一点点以太坊的基础，不过学Solidity那点就够了。</li>
+</ul>
+
+<span id="more"></span><!-- more -->
+
+<h3 id="toc_2">Truffle有什么用？</h3>
+
+<p>Truffle到底为我们带来了什么呢，</p>
+
+<ul>
+<li>首先对客户端做了深度集成。开发，测试，部署一行命令都可以搞定。不用再记那么多环境地址，繁重的配置更改，及记住诸多的命令。</li>
+<li>它提供了一套类似<code>maven</code>或<code>gradle</code>这样的项目构建机制，能自动生成相关目录，默认是基于Web的。当前这个打包机制是自定义的，比较简陋，不与当前流行打包方案兼容。但自已称会弃用，与主流兼容，好在它也支持自定义打包流程。</li>
+<li>提供了合约抽象接口，可以直接通过<code>var meta = MetaCoin.deployed();</code>拿到合约对象后，在<code>Javascript</code>中直接操作对应的合约函数。原理是使用了基于<code>web3.js</code>封装的<code>Ether Pudding</code>工具包。简化开发流程。</li>
+<li>提供了控制台，使用框架构建后，可以直接在命令行调用输出结果，可极大方便开发调试。</li>
+<li>提供了监控合约，配置变化的自动发布，部署流程。不用每个修改后都重走整个流程。</li>
+</ul>
+
+<p>想试一下Truffle，简单的玩一下，<a href="javascript:window.open('http://truffle.tryblockchain.org/Solidity-truffle-实战.html');">Solidity的Truffle框架实战(手把手)</a></p>
+
+<h3 id="toc_3">入门介绍：</h3>
+
+<ul>
+<li><a href="javascript:window.open('http://truffle.tryblockchain.org/Truffle-introduce-介绍.html');">1. Truffle简介</a></li>
+<li><a href="javascript:window.open('http://truffle.tryblockchain.org/Truffle-client-开发及部署的客户端.html');">2. Truffle客户端</a></li>
+<li><a href="javascript:window.open('http://truffle.tryblockchain.org/Truffle-CreateAProjectFolder-创建工程.html');">3. 初始化Truffle</a></li>
+<li><a href="javascript:window.open('http://truffle.tryblockchain.org/Truffle-CompileContracts-编译合约.html');">4. 编译合约</a></li>
+<li><a href="javascript:window.open('http://truffle.tryblockchain.org/truffle-migration-移植合约.html');">5. 移植</a></li>
+<li><a href="javascript:window.open('http://truffle.tryblockchain.org/Truffle-build-默认构建器.html');">6. 构建应用</a></li>
+<li><a href="javascript:window.open('http://truffle.tryblockchain.org/truffle-InteractingWithContracts-与合约交互.html');">7. 合约交互</a></li>
+<li><a href="javascript:window.open('http://truffle.tryblockchain.org/truffle-ContractsTest-测试合约.html');">8. 测试合约</a></li>
+<li><a href="javascript:window.open('http://truffle.tryblockchain.org/Truffle-UsingTheConsole-使用控制台.html');">9. 控制台</a></li>
+<li><a href="javascript:window.open('http://truffle.tryblockchain.org/Truffle-WrtingExternalScripts-外部脚本.html');">10. 外部脚本</a></li>
+<li><a href="javascript:window.open('http://truffle.tryblockchain.org/Truffle-workflow-工作流.html');">11.工作流</a></li>
+<li><a href="javascript:window.open('http://truffle.tryblockchain.org/Truffle-contactTheDeveloper-联系开发者.html');">12. 联系开发者</a></li>
+</ul>
+
+<h3 id="toc_4">高级：</h3>
+
+<ul>
+<li><a href="javascript:window.open('http://truffle.tryblockchain.org/14838695696327.html');">1. 配置文件</a></li>
+<li><a href="javascript:window.open('http://truffle.tryblockchain.org/truffle-NetworksAndAppDeployment-网络与APP部署.html');">2. 网络与APP部署</a></li>
+<li><a href="javascript:window.open('http://truffle.tryblockchain.org/Truffle-BuildProcess-构建流程.html');">3. 构建流程</a></li>
+<li><a href="javascript:window.open('http://truffle.tryblockchain.org/Truffle-CommandRefrence-命令指南.html');">4. Truffle命令指南</a></li>
+<li><a href="javascript:window.open('http://truffle.tryblockchain.org/Solidity-truffle-实战.html');">Solidity的Truffle框架实战(手把手)</a></li>
+</ul>
+
+
+		</div>
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+  
+  
+</div></div>
+
+
+<div class="page-bottom">
+  <div class="row">
+  <hr>
+  <div class="small-9 columns">
+  <p class="copyright">Copyright &copy; 2016-2019 tryblockchain.org. All rights reserved. 
+  &nbsp; 交流微信：TryBlockchain
+</p>
+  </div>
+  <div class="small-3 columns">
+  <p class="copyright text-right"><a href="#header">TOP</a></p>
+  </div>
+   
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+    
+    
+    <script src="static/js/foundation.min.js"></script>
+    <script src="static/js/foundation.offcanvas.js"></script>
+    <script>
+      $(document).foundation();
+
+     
+    </script>
+    
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?35e6dbbdf185255251dd63fa5f31ac42";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89122146-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>

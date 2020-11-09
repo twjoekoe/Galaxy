@@ -1,0 +1,828 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+    
+  安全编写以太坊的智能合约指南 - 区块链技术博客
+  
+  </title>
+  
+  
+  
+    <link rel="stylesheet" href="static/css/foundation.min.css">
+    <link rel="stylesheet" href="static/css/docs1.css">
+    <script src="static/js/modernizr.js"></script>
+    <script src="static/js/jquery.js"></script>
+  <script src="static/js/highlight.pack.js"></script>
+  <link href="static/css/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <!-- 增加google ad -->
+  <script async="" src="static/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-6188337887319489",
+      enable_page_level_ads: true
+    });
+  </script>
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:me.tryblockchain.org ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas="">
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar="">
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index1.html" style="font-size: 18px">主页</a></li>
+        
+        <li id=""><a target="_self" href="index2.html" style="font-size: 18px">Solidity文档</a></li>
+        
+        <li id=""><a target="_self" href="index.html" style="font-size: 18px">Web3.js文档</a></li>
+        
+        <li id=""><a target="_self" href="index3.html" style="font-size: 18px">Truffle文档</a></li>
+        
+        <li id=""><a target="_self" href="index4.html" style="font-size: 18px">Open Zeppelin</a></li>
+        
+        <li id=""><a target="_self" href="aboutme.html" style="font-size: 18px">关于本站</a></li>
+        
+        <li id=""><a target="_self" href="archives.html" style="font-size: 18px">归档</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="">
+    <input tabindex="1" type="search" id="search_input" placeholder="Search">
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; 区块链技术博客</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+         <li><a href="index1.html">主页</a></li>
+        
+         <li><a href="index2.html">Solidity文档</a></li>
+        
+         <li><a href="index.html">Web3.js文档</a></li>
+        
+         <li><a href="index3.html">Truffle文档</a></li>
+        
+         <li><a href="index4.html">Open Zeppelin</a></li>
+        
+         <li><a href="aboutme.html">关于本站</a></li>
+        
+         <li><a href="archives.html">归档</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="Solidity深入浅出系列.html">Solidity深入浅出系列</a></li>
+        
+            <li><a href="文档翻译.html">文档翻译</a></li>
+        
+            <li><a href="其它.html">其它</a></li>
+        
+            <li><a href="Solidity入门系列.html">Solidity入门系列</a></li>
+        
+            <li><a href="热点.html">热点</a></li>
+        
+            <li><a href="项目.html">项目</a></li>
+        
+            <li><a href="whitepaper.html">whitepaper</a></li>
+        
+            <li><a href="热点深度.html">热点深度</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>安全编写以太坊的智能合约指南</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2017/7/30</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='文档翻译.html'>文档翻译</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <p>本文翻译自<code>zeppelin</code>的 <a href="javascript:window.open('https://blog.zeppelin.solutions/onward-with-ethereum-smart-contract-security-97a827e47702');">https://blog.zeppelin.solutions/onward-with-ethereum-smart-contract-security-97a827e47702</a></p>
+
+<p>如果你是以太坊开发的新手，我们推荐你在继续本文前，先读一下我们的以太坊智能合约指南（基本概念及环境搭建）：<a href="javascript:window.open('https://medium.com/bitcorps-blog/the-hitchhikers-guide-to-smart-contracts-in-ethereum-848f08001f05#.6dob381ks');">https://medium.com/bitcorps-blog/the-hitchhikers-guide-to-smart-contracts-in-ethereum-848f08001f05#.6dob381ks</a></p>
+
+<span id="more"></span><!-- more -->
+
+<p><img src="https://me.tryblockchain.org/media/15013724713780/15013725573202.jpg" alt=""></p>
+
+<p>安全的开发以太坊的智能合约，是非常需要花费精力的。已经有一些好的指南以及汇总，比如 <a href="javascript:window.open('https://github.com/ConsenSys/smart-contract-best-practices');">Consensys的智能合约最佳实践</a>，和<a href="javascript:window.open('http://solidity.readthedocs.io/en/latest/security-considerations.html');">Solidity官方文档的安全指南</a>。但除非真正写代码，这些概念很难被记住和理解。</p>
+
+<p>本文会尝试一个有点不同的办法。首先解释提升智能合约安全的一些策略，并展示一些不遵从，而引起问题的例子。最后给一些已经调整地，可以直接使用的最佳实践。希望，这能帮助你创建避免某些不安全行为的<code>肌肉记忆</code>，从而在写代码的时候意识到可能的风险。</p>
+
+<p>不啰嗦了，进入正题吧。</p>
+
+<h2 id="toc_0">尽早且明确的暴露问题</h2>
+
+<p>一个简单且强大的最佳实践是，让<a href="javascript:window.open('https://oncodingstyle.blogspot.com.ar/2008/10/fail-early-fail-loudly.html');">尽早且明确的暴露问题</a>。接下来，看一个有问题的函数实现：</p>
+
+<pre><code class="language-text">// 有问题的代码，不要使用！
+contract BadFailEarly {
+  uint constant DEFAULT_SALARY = 50000;
+  mapping(string =&gt; uint) nameToSalary;
+  function getSalary(string name) constant returns (uint) {
+    if (bytes(name).length != 0 &amp;&amp; nameToSalary[name] != 0) {
+      return nameToSalary[name];
+    } else {
+      return DEFAULT_SALARY;
+    }
+  }
+}
+</code></pre>
+
+<p>为避免合约潜在的问题，或者让合约运行于一个不稳定或不一致的状态。上面例子中的函数<code>getSalary</code>应该在返回结果前，检查参数。那现在的例子有什么问题呢，问题在于，如果条件不满足，将返回默认值。这将掩盖参数的严重问题，因为仍然可以按正常业务逻辑返回值。这虽然是一个比较极端的例子，但却非常常见，原因是大家在程序设计时，担心程序兼容性不够，所以设置一些兜底方案。但真相是，越快失败，越容易发现问题。如果我们不恰当的掩盖错误，错误将扩散到代码的其它地方，从而引起非常难以跟踪的不一致错误。下面是一个调整后的示例：</p>
+
+<pre><code class="language-text">contract GoodFailEarly {
+  mapping(string =&gt; uint) nameToSalary;
+  
+  function getSalary(string name) constant returns (uint) {
+    if (bytes(name).length == 0) throw;    
+    if (nameToSalary[name] == 0) throw;
+    
+    return nameToSalary[name];
+  }
+}
+</code></pre>
+
+<p>这个版本的代码，还展示了另外一种推荐的编码方式，一种将条件预检查分开，分开判断，验证失败的方式。原因是可以使用Solidity提供的<a href="javascript:window.open('http://solidity.readthedocs.io/en/latest/contracts.html#function-modifiers');">修改器</a>的特性，来实现重用。</p>
+
+<h2 id="toc_1">在支付时使用（pull）模式而不是（push）模式</h2>
+
+<p>每次<code>ether</code>的转移，都需要考虑对应帐户，潜在的代码执行。一个接收的合约可以实现一个默认的<a href="javascript:window.open('https://solidity.readthedocs.io/en/latest/contracts.html#fallback-function');">回退函数</a>，这个函数可能抛出错误。由此，我们永远要考虑在<code>send</code>执行中的可能的错误。一个解决方案是，我们应该<a href="javascript:window.open('https://github.com/ethereum/wiki/wiki/Safety#favor-pull-over-push-for-external-calls');">在支付时使用（pull）模式而不是（push）模式</a>。来看一个看起来没有问题的，关于竞标函数的例子：</p>
+
+<pre><code class="language-text">// 有问题的代码，请不要直接使用！
+contract BadPushPayments {
+  address highestBidder;
+  uint highestBid;
+ 
+  function bid() {
+    if (msg.value &lt; highestBid) throw;
+    if (highestBidder != 0) {
+      // return bid to previous winner
+      if (!highestBidder.send(highestBid)) {
+        throw;
+      }
+    }
+    highestBidder = msg.sender;
+    highestBid = msg.value;
+  }
+}
+</code></pre>
+
+<p>上述的合约，调用了<code>send</code>函数，检查了返回值，看起来是非常符合常理的。但它在函数中调用了<code>send</code>函数，这带来了不安全，为什么？需要时刻记住的一点是，就像之前说的，<code>send</code>会触发另外一个合约的代码执行。</p>
+
+<p>假如某个竞标的地址，它会在每次有人转帐给他时<code>throw</code>。而此时，其它人尝试追加价格竞标时会发生什么呢？那么<code>send</code>调用将总是会失败，从而错误向上抛，让<code>bid</code>函数产生一个异常。一个函数调用如果以错误结束，将会让状态不发生变更（所有的变化都将回滚）。这将意味着，没有人将能继续竞标，合约失效了。</p>
+
+<p>最简单的解决方案是，将支付分离到另一个函数中，让用户请求（pull）金额，而不依赖于余下的合约逻辑：</p>
+
+<pre><code class="language-text">contract GoodPullPayments {
+  address highestBidder;
+  uint highestBid;
+  mapping(address =&gt; uint) refunds;
+  
+  function bid() external {
+    if (msg.value &lt; highestBid) throw;
+    
+    if (highestBidder != 0) {
+      refunds[highestBidder] += highestBid;
+    }
+    
+    highestBidder = msg.sender;
+    highestBid = msg.value;
+  }
+  
+  function withdrawBid() external {
+    uint refund = refunds[msg.sender];
+    refunds[msg.sender] = 0;
+    if (!msg.sender.send(refund)) {
+      refunds[msg.sender] = refund;
+    }
+  }
+}
+</code></pre>
+
+<p>这次，我们使用一个<code>mapping</code>来存储每个待退款的竞标者的信息，提供了一个<code>withdraw</code>用于退款。如果在<code>send</code>调用时抛出异常，仅仅只是那个有问题的竞标者受到影响。这是一个非常简单的模式，却解决了非常多的问题（比如，<a href="javascript:window.open('http://hackingdistributed.com/2016/07/13/reentrancy-woes/');">可重入</a>）。所以，记住一点，当发送<code>ether</code>时，使用（pull）模式而不是（push）模式。</p>
+
+<p>我已经实现了一个<a href="javascript:window.open('https://github.com/OpenZeppelin/zeppelin-solidity/blob/master/contracts/payment/PullPayment.sol');">使用这个模式的合约，可以方便的继承使用</a>。</p>
+
+<h2 id="toc_2">函数代码的顺序：条件，行为，交互</h2>
+
+<p>作为尽可能早的暴露问题的原则的一个延伸，一个好的实践是将你的函数结构化为：首先，检查所有前置的条件；然后，对合约的状态进行修改；最后，与其它合约进行交互。</p>
+
+<p>条件，行为，交互。坚持使用这样的函数结构，将会让你避免大部分的问题。下面来看使用了这个模式的一个例子：</p>
+
+<pre><code class="language-text">function auctionEnd() {
+  // 1. Conditions
+  if (now &lt;= auctionStart + biddingTime)
+    throw; // auction did not yet end
+  if (ended)
+    throw; // this function has already been called
+
+  // 2. Effects
+  ended = true;
+  AuctionEnded(highestBidder, highestBid);
+
+  // 3. Interaction
+  if (!beneficiary.send(highestBid))
+    throw;
+  }
+}
+</code></pre>
+
+<p>这首先符合尽可能早的暴露问题的原则，因为条件在一开始就进行了检查。它让存在潜在交互风险的，与其它合约的交互，留到了最后。</p>
+
+<h2 id="toc_3">留意平台局限性</h2>
+
+<p><a href="javascript:window.open('http://solidity.readthedocs.io/en/latest/introduction-to-smart-contracts.html#index-6');">EVM</a>有非常多的关于合约能做的硬限制。这些是平台级的安全考虑，如果你不知道的话，却可以会威胁你的合约安全。下面来看一个看起来正常的，雇员津贴管理的代码：</p>
+
+<pre><code class="language-text">
+// 不安全的代码，不要直接使用！
+contract BadArrayUse {
+  
+  address[] employees;
+  
+  function payBonus() {
+    for (var i = 0; i &lt; employees.length; i++) {
+      address employee = employees[i];
+      uint bonus = calculateBonus(employee);
+      employee.send(bonus);
+    }     
+  }
+  
+  function calculateBonus(address employee) returns (uint) {
+    // some expensive computation ...
+  }
+}
+</code></pre>
+
+<p>读完代码，业务实现非常直接，看起来也没有什么问题，但却潜藏三个问题，基于平台的一些独特性。</p>
+
+<p>第一个问题是<code>i</code>的类型将会是<code>uint8</code>，因为如果要存<code>0</code>，如果不指定类型，将自动选择一个占用空间最小的，恰当的类型，在这里将是<code>uint8</code>。所以如果这个数组的大小超过255个元素，这个循环将永远不会结束，最终将导致<code>gas</code>耗尽。应当在定义变量时，尽可能的不要使用<code>var</code>，明确变量的类型，下面我们来修正一下上面的例子：</p>
+
+<pre><code class="language-text">// 仍然是不安全的代码，请不要使用！
+contract BadArrayUse {
+  
+  address[] employees;
+  
+  function payBonus() {
+    for (uint i = 0; i &lt; employees.length; i++) {
+      address employee = employees[i];
+      uint bonus = calculateBonus(employee);
+      employee.send(bonus);
+    }     
+  }
+  
+  function calculateBonus(address employee) returns (uint) {
+    // some expensive computation ...
+  }
+}
+</code></pre>
+
+<p>第二个你需要考虑的事情是<code>gas</code>的限制。<a href="javascript:window.open('https://ethereum.gitbooks.io/frontier-guide/content/costs.html');">gas</a>是以太坊的一种机制，来对资源的使用收费。每一个修改状态的功能调用都会花费<code>gas</code>。假如<code>calculateBonus</code>计算津贴时有些复杂的运算，比如需要跨多个项目计算利润。这将消耗非常多的<code>gas</code>，将会很容易的达到交易和区块的<code>gas</code>限制。如果一个交易达到了<code>gas</code>的限制，所有的状态的改变都将会撤销，但消耗的<code>gas</code>不会退回。当使用循环的时候，尤其要注意变量对<code>gas</code>消耗的影响。让我们来优化一下上述的代码，将津贴计算与循环分开。但需要注意的是，拆开后仍然有数组变大后，带来的<code>gas</code>消耗增长的问题：</p>
+
+<pre><code class="language-text">// UNSAFE CODE, DO NOT USE!
+contract BadArrayUse {
+  
+  address[] employees;
+  mapping(address =&gt; uint) bonuses;  
+  
+  function payBonus() {
+    for (uint i = 0; i &lt; employees.length; i++) {
+      address employee = employees[i];
+      uint bonus = bonuses[employee];
+      employee.send(bonus);
+    }     
+  }
+  
+  function calculateBonus(address employee) returns (uint) {
+    uint bonus = 0;
+    // some expensive computation modifying the bonus...
+    bonuses[employee] = bonus;
+  }
+}
+</code></pre>
+
+<p>最后，还有一个关于调用栈调用深度的限制。EVM栈调用的硬限制是1024。这意味着如果嵌套调用的深度达到1024，合约调用将会失败。一个攻击者可以调用递归的调用我们的合约1023次，从而因为栈深度的限制，让<code>send</code>失败。前述的（pull）模式，可以比较好的避免这个问题（译者注：原链接找不到了，但找下github上的讨论：<a href="javascript:window.open('https://github.com/OpenZeppelin/zeppelin-solidity/issues/15）。');">https://github.com/OpenZeppelin/zeppelin-solidity/issues/15）。</a></p>
+
+<p>下面是一个最终的修改版，解决了上述的所有问题：</p>
+
+<pre><code class="language-text">import &#39;./PullPaymentCapable.sol&#39;;
+contract GoodArrayUse is PullPaymentCapable {
+  address[] employees;
+  mapping(address =&gt; uint) bonuses;
+  
+  function payBonus() {
+    for (uint i = 0; i &lt; employees.length; i++) {
+      address employee = employees[i];
+      uint bonus = bonuses[employee];
+      asyncSend(employee, bonus);
+    }
+  }
+  function calculateBonus(address employee) returns (uint) {
+    uint bonus = 0;
+    // some expensive computation...
+    bonuses[employee] = bonus;
+  }
+}
+</code></pre>
+
+<p>总结一下，需要记住的 1）使用的变量类型的限制，2）合约的<code>gas</code>消耗，3）栈调用1024的限制。</p>
+
+<h2 id="toc_4">测试用例</h2>
+
+<p>编写测试用例会占用大量的时间，但也能抵消你在添加新功能后<a href="javascript:window.open('https://en.wikipedia.org/wiki/Software_regression');">回归问题</a>需要花费的时间。回归问题具体是指在添加功能的修改过程中，导致之前的组件出现bug。</p>
+
+<p>我将尽快写一个更加广泛的关于测试的指南，如果你比较好奇，可以先看看关于Truffle的测试指南（译者注：原文链接失效了，也许是<a href="javascript:window.open('http://truffleframework.com/docs/getting_started/testing');">这个</a>）。</p>
+
+<h2 id="toc_5">容错及自动bug奖励</h2>
+
+<p><a href="javascript:window.open('https://medium.com/@peterborah/we-need-fault-tolerant-smart-contracts-ec1b56596dbc#.uugpuufoa');">首先感谢Peter Borah带来的这两个想法的灵感</a>。代码审查和安全审核对保证安全来说还不足够。我们的代码需要做好最坏情况的准备。当我们的智能合约中有漏洞时，应该有一种方法可以安全的恢复。不止如此，我们也应该尽可能早的发现漏洞。下面是一个内置的自动bug奖励机制带来的作用。</p>
+
+<p>下面我们就来看一个自动bug奖励的假设的代币管理的例子：</p>
+
+<pre><code class="language-text">import &#39;./PullPaymentCapable.sol&#39;;
+import &#39;./Token.sol&#39;;
+contract Bounty is PullPaymentCapable {
+  bool public claimed;
+  mapping(address =&gt; address) public researchers;
+  
+  function() {
+    if (claimed) throw;
+  }
+  
+  function createTarget() returns(Token) {
+    Token target = new Token(0);
+    researchers[target] = msg.sender;
+    return target;
+  }
+  
+  function claim(Token target) {
+    address researcher = researchers[target];
+    if (researcher == 0) throw;
+    
+    // check Token contract invariants
+    if (target.totalSupply() == target.balance) {
+      throw;
+    }
+    asyncSend(researcher, this.balance);
+    claimed = true;
+  }
+}
+</code></pre>
+
+<p>首先，正如前面所述，我们使用<code>PullPaymentCapable</code>来让我们的支付更加安全。这个赏金合约，允许研究者创建当前我们审核的<code>Token</code>合约的副本。任何人都可以参与到这个赏金项目，通过发送交易到这个赏金项目地址。如果任何研究者可以攻破他自己的<code>Token</code>合约的拷贝，让一些本不该变的情况变化（比如这里，让总代币发行量与当前代币余额不一致），他将获得对应的赏金。一旦赏金被领取了，合约将不再继续接受新的资金（无名的函数被称为合约的回退函数，在每次合约接收<code>ether</code>时自动执行）。</p>
+
+<p>正如你看到的，它有一个非常好的特性是分离了合约，不需要对原始的<code>Token</code>合约进行修改。<a href="javascript:window.open('https://github.com/OpenZep/zep-solidity/blob/master/contracts/Bounty.sol');">这里有一个完整，任何人都可以使用的版本</a>。</p>
+
+<p>而对于容错性，我们需要修改我们原来的合约来增加额外的安全机制。一种简单的方案是允许合约的监督者可以冻结合约，作为一种紧急的机制。我们来看一个通过继承实现这种行为的例子：</p>
+
+<pre><code class="language-text">contract Stoppable {
+  address public curator;
+  bool public stopped;
+  modifier stopInEmergency { if (!stopped) _ }
+  modifier onlyInEmergency { if (stopped) _ }
+  
+  function Stoppable(address _curator) {
+    if (_curator == 0) throw;
+    curator = _curator;
+  }
+  
+  function emergencyStop() external {
+    if (msg.sender != curator) throw;
+    stopped = true;
+  }
+}
+</code></pre>
+
+<p><code>Stoppable</code>允许指定一个监督者，可以来停止整个合约。实现方式是，通过继承这个合约，在对应的功能上使用修改器<code>stopInEmergency</code>和<code>onlyInEmergency</code>，下面我们来看一个例子：</p>
+
+<pre><code class="language-text">import &#39;./PullPaymentCapable.sol&#39;;
+import &#39;./Stoppable.sol&#39;;
+contract StoppableBid is Stoppable, PullPaymentCapable {
+  address public highestBidder;
+  uint public highestBid;
+  
+  function StoppableBid(address _curator)
+    Stoppable(_curator)
+    PullPaymentCapable() {}
+  
+  function bid() external stopInEmergency {
+    if (msg.value &lt;= highestBid) throw;
+    
+    if (highestBidder != 0) {
+      asyncSend(highestBidder, highestBid);
+    }
+    highestBidder = msg.sender;
+    highestBid = msg.value;
+  }
+  
+  function withdraw() onlyInEmergency {
+    suicide(curator);
+  }
+}
+</code></pre>
+
+<p>在上面这个非常简单的例子中，<code>bid</code>可以被一个监督者停止，监督者在合约创建时指定。<code>StoppableBid</code>在正常情况下，只有<code>bid</code>函数可以被调用，而当出现紧急情况时，监督者可以介入，并激活紧急状态。并让<code>bid</code>函数不再可用，同时激活<code>withdraw</code>功能。</p>
+
+<p>在上面的例子中，紧急模式将允许监督者销毁合约，恢复资金。但在实际场景中，恢复的逻辑更为复杂（举例来说，需要返还资金给每个投资者）。<a href="javascript:window.open('https://github.com/OpenZep/zep-solidity/blob/master/contracts/Stoppable.sol');">这里有一个可停止合约的实现</a>（译者注：给的这个链接无法访问了）。</p>
+
+<h2 id="toc_6">限制可存入的资金</h2>
+
+<p>另一个保护我们智能合约远离攻击的方式是限制。攻击者最有可能针对管理数百万美元的高调合同。并不是所有的合约，有这样的高的资金量。尤其是当我们正在初期。在这种情形下，限制合约可以接收的资金量就将非常有用。最简单的方式，可以实现为一个余额的硬上限。</p>
+
+<p>下面是一个简单的例子：</p>
+
+<pre><code class="language-text">contract LimitFunds {
+  
+  uint LIMIT = 5000;
+  
+  function() { throw; }
+  
+  function deposit() {
+    if (this.balance &gt; LIMIT) throw;
+    ...
+  }
+}
+</code></pre>
+
+<p>回退函数里，会拒绝接收所有的直接支付。<code>deposit</code>函数会首先检查合约的余额是否已经超限，超限将直接抛出异常。其它一些更有意思的，比如动态上限，管理限制也很容易实现。</p>
+
+<h2 id="toc_7">简单和模块化的代码</h2>
+
+<p>安全来自，我们想写的与代码实际可以做的距离。这非常的难以验证，特别是当代码量又大，又混乱时。这就是为什么写简单和模块化的代码变得非常重要。</p>
+
+<p>这意味着，函数应该尽可能的简单，代码之间的依赖应该极尽可能的少，文件应该尽可能的小，将独立的逻辑放进模块，每块的职责更加单一。</p>
+
+<p>命名是我们在编码过程中表达我们意图的方式。想一个好的名字，尽可能的让名字清晰。</p>
+
+<p>让我们来看一个关于<a href="javascript:window.open('https://solidity.readthedocs.io/en/latest/contracts.html#events');">Event</a>的差命名的例子。<a href="javascript:window.open('https://github.com/slockit/DAO/blob/develop/DAO.sol#L618-L691');">看看DAO里的函数</a>。其中的函数代码都太长了。</p>
+
+<p>最大的问题是太长，而且功能复杂。尽可能的让你的函数短小，比如，最多不超过30到40行代码。理想情况下，你应该在1分钟内弄明白函数的意图。另一个问题是关于事件<code>Transfer</code>在第685行的命名。这个名字与<a href="javascript:window.open('https://github.com/slockit/DAO/blob/develop/DAO.sol#L755');">一个叫transfer</a>的函数名只有一字之差。这将带来误解。一般来说，关于事件的推荐命名是使用<code>Log</code>打头，这样的话，这个事件应该命名为<code>LogTransfer</code>。</p>
+
+<p>记住，尽可能的将你的合约写得简单，模块化，良好的命名。这将极大的帮助其它人和你自己审查你自己的代码。</p>
+
+<h2 id="toc_8">不要从0开始写所有的代码</h2>
+
+<p>最后，正如一句格言所说，“不要从头发明你自己的加密币”。我想它也适用于智能合约代码。你的操作与钱有关，你的数据是公开的，你正在一个全新的成长中的平台上。代价非常高，糟蹋机会的人无处不在。</p>
+
+<p>上述这些实践帮助我们写出更安全的合约。但最终，我们应该开发出更好的创建智能合约的工具。这里有一些先行者，包括<a href="javascript:window.open('https://www.youtube.com/watch?v=H2uwUdzVD9I&amp;feature=youtu.be');">better type systems</a>，<a href="javascript:window.open('https://blog.ethereum.org/2015/12/24/understanding-serenity-part-i-abstraction/');">Serenity Abstractions</a> 和<a href="javascript:window.open('http://rsk.co/');">the Rootstock platform</a>。</p>
+
+<p>现在已经有非常多的安全的代码，以及框架出现了。我们整合了一部分最佳实践到<a href="javascript:window.open('https://github.com/OpenZeppelin/zeppelin-solidity');">Github的资源库Open Zeppelin</a>。欢迎看看以及贡献新代码，以及提供代码审查建议。</p>
+
+<h2 id="toc_9">总结一下</h2>
+
+<p>回顾一下，这篇文章中描述的安全模式有：</p>
+
+<ol>
+<li>尽早且明确的暴露问题。</li>
+<li>使用（pull）模式而不是（push）模式</li>
+<li>代码结构遵从：条件，行为，交互</li>
+<li>注意平台限制</li>
+<li>测试用例</li>
+<li>容错及自动bug奖励</li>
+<li>限制存入的资金</li>
+<li>简单与模块化的代码</li>
+<li>不要从零开始写代码</li>
+</ol>
+
+<p>如果你想讨论与智能合约相关的问题，欢迎加入<a href="javascript:window.open('https://zeppelin-slackin.herokuapp.com/');">Slack</a>，让我们一起来提升智能合约编程标准。</p>
+
+<p>想要获得持续的更新，欢迎关注我们的<a href="javascript:window.open('https://medium.com/zeppelin-blog');">Medium</a>和<a href="javascript:window.open('https://twitter.com/maraoz');">Twitter</a>；</p>
+
+<p>（完）</p>
+
+
+        <!-- newly added20190331 
+        <h2>如需交流，可加微信: 「TryBlockchain」</h2>
+        <p><img src="https://me.tryblockchain.org/media/14873893253965/wechat-TryBlockchain.jpg" alt="wechat-qr-code"/></p>   -->
+        <!-- newly added2018 
+        <h2>感谢您对本站的支持</h2>
+        <p><img src="https://me.tryblockchain.org/media/14873893253965/wechat-zan.jpg" alt="zan-code"/></p>
+        -->
+        <blockquote>
+        <p>处于某些特定的环境下，可以看到评论框，欢迎留言交流^_^。</p>
+        </blockquote>
+        <!-- 去掉赞码，增加广告 20190914 中秋节-->
+      </div>
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="eos-howtobuild.html" title="Previous Post: 编译并搭建EOS的环境（MAC踩坑填坑版）">&laquo; 编译并搭建EOS的环境（MAC踩坑填坑版）</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a href="blockchain-infrastructure-landsc.html" title="Next Post: 区块链基础设施概览：第一性原理框架">区块链基础设施概览：第一性原理框架 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          <script async="" src="static/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-6188337887319489",
+    enable_page_level_ads: true
+  });
+</script><script id="dsq-count-scr" src="https://tryblockchain-org.disqus.com/count.js" async=""></script>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://tryblockchain-org.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="javascript:window.open('https://disqus.com/?ref_noscript');">comments powered by Disqus.</a></noscript>
+                            
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>区块链技术博客</h1>
+                <div class="site-des">区块链相关技术博客，专注基于以太坊的区块链技术，Solidity编程语言，Truffle框架，web3.js。</div>
+
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>个人微信: 「TryBlockchain」</h2>
+                </div>
+              </div>
+
+
+                <div class="social">
+                  <img src="static/picture/wechat-TryBlockchain.jpg" width="230px">
+                </div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="files/atom.xml" title="RSS">RSS</a>
+
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="Solidity深入浅出系列.html"><strong>Solidity深入浅出系列</strong></a>
+        
+            <a href="文档翻译.html"><strong>文档翻译</strong></a>
+        
+            <a href="其它.html"><strong>其它</strong></a>
+        
+            <a href="Solidity入门系列.html"><strong>Solidity入门系列</strong></a>
+        
+            <a href="热点.html"><strong>热点</strong></a>
+        
+            <a href="项目.html"><strong>项目</strong></a>
+        
+            <a href="whitepaper.html"><strong>whitepaper</strong></a>
+        
+            <a href="热点深度.html"><strong>热点深度</strong></a>
+        
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="dex-uniswap-ox-hydro.html">去中心化的交易所正在打一场恶战，新选手不断加入</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="coinbase-custody-staking.html">coinbase的托管生意又有大动作了</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15462405993032.html">基于第三代互联网的数据经济</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15462215241005.html">Curation Markets</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="4-eras-of-blockchain-computing-d.html">区块链计算的四个阶段</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+ <div class="page-bottom clearfix">
+  <div class="row">
+     <p class="copyright">Copyright &copy; 2016-2019 tryblockchain.org. All rights reserved. 
+  &nbsp; 交流微信：TryBlockchain
+</p>
+<p style="font-size: 14px;margin: 0 0.93rem;">友情链接： <a href="javascript:window.open('https://bitshuo.com/');">区块链技术中文社区</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:window.open('https://learnblockchain.cn/');">深入浅出区块链</a></p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="static/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="static/js/MathJax-TeX-AMS-MML_HTMLorMML.js"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?a7f98ca019147491b75cb037fb3aec14";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89122146-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  </body>
+</html>

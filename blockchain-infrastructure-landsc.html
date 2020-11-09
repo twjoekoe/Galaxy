@@ -1,0 +1,623 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+    
+  区块链基础设施概览：第一性原理框架 - 区块链技术博客
+  
+  </title>
+  
+  
+  
+    <link rel="stylesheet" href="static/css/foundation.min.css">
+    <link rel="stylesheet" href="static/css/docs1.css">
+    <script src="static/js/modernizr.js"></script>
+    <script src="static/js/jquery.js"></script>
+  <script src="static/js/highlight.pack.js"></script>
+  <link href="static/css/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <!-- 增加google ad -->
+  <script async="" src="static/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-6188337887319489",
+      enable_page_level_ads: true
+    });
+  </script>
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:me.tryblockchain.org ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas="">
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar="">
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index1.html" style="font-size: 18px">主页</a></li>
+        
+        <li id=""><a target="_self" href="index2.html" style="font-size: 18px">Solidity文档</a></li>
+        
+        <li id=""><a target="_self" href="index.html" style="font-size: 18px">Web3.js文档</a></li>
+        
+        <li id=""><a target="_self" href="index3.html" style="font-size: 18px">Truffle文档</a></li>
+        
+        <li id=""><a target="_self" href="index4.html" style="font-size: 18px">Open Zeppelin</a></li>
+        
+        <li id=""><a target="_self" href="aboutme.html" style="font-size: 18px">关于本站</a></li>
+        
+        <li id=""><a target="_self" href="archives.html" style="font-size: 18px">归档</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="">
+    <input tabindex="1" type="search" id="search_input" placeholder="Search">
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; 区块链技术博客</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+         <li><a href="index1.html">主页</a></li>
+        
+         <li><a href="index2.html">Solidity文档</a></li>
+        
+         <li><a href="index.html">Web3.js文档</a></li>
+        
+         <li><a href="index3.html">Truffle文档</a></li>
+        
+         <li><a href="index4.html">Open Zeppelin</a></li>
+        
+         <li><a href="aboutme.html">关于本站</a></li>
+        
+         <li><a href="archives.html">归档</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="Solidity深入浅出系列.html">Solidity深入浅出系列</a></li>
+        
+            <li><a href="文档翻译.html">文档翻译</a></li>
+        
+            <li><a href="其它.html">其它</a></li>
+        
+            <li><a href="Solidity入门系列.html">Solidity入门系列</a></li>
+        
+            <li><a href="热点.html">热点</a></li>
+        
+            <li><a href="项目.html">项目</a></li>
+        
+            <li><a href="whitepaper.html">whitepaper</a></li>
+        
+            <li><a href="热点深度.html">热点深度</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>区块链基础设施概览：第一性原理框架</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2017/7/22</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='项目.html'>项目</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <blockquote>
+<p>存储，计算和通信</p>
+</blockquote>
+
+<p>原文翻译自：<a href="javascript:window.open('https://blog.bigchaindb.com/blockchain-infrastructure-landscape-a-first-principles-framing-92cc5549bafe');">https://blog.bigchaindb.com/blockchain-infrastructure-landscape-a-first-principles-framing-92cc5549bafe</a></p>
+
+<p>Ethereum，IPFS/Filecoin，和BigChainDB是如何实现互相补充的呢？那Golem，Polkadot或Interledge又是如何的呢。我经常问我自己这样的问题。所以我打算写篇文章来阐述自己的，第一性原理框架，并来回答这些问题。</p>
+
+<span id="more"></span><!-- more -->
+
+<p>简短的答案是：没有一个叫“区块链”的银弹，它能神奇的做所有的事情。相反，这里有的是非常好的实现图灵完备的各种各样的组件，你可以使用它们来搭建有效率的去中心化应用。以太坊可以参与其中，BigchainDB可以，所有其它组件也都可以，我们来一起看看...</p>
+
+<h2 id="toc_0">背景</h2>
+
+<p>组成一个程序的要素有存储，计算和通信。大型机，个人电脑，手机和云计算，每一个都以自己独特的方式来表达了这些组成元素。专用于某一方面的组件出现来与其它组件合作来达到我们想要的结果。</p>
+
+<p>举例来说，在存储元素中，我们可以选择文件系统和数据库系统组件。文件系统使用层级式的目录，存储像mp3这样的二进制的大对象，而数据库则用来存储结构化的元数据，通过SQL这样的语言来进行操作。在中心化的云上，我们则会使用Amazon S3来进行二进制大对象的存储，使用MongoDB做为数据库存储，而使用Amazon EC2来做为计算服务器。</p>
+
+<p>本文将聚集于区块链的技术概貌：程序用到的每个要素的相关组件，对应组件的实际项目的例子。对于每个组件，我会尽量的全面阐述。</p>
+
+<h2 id="toc_1">区块链的一些基本组件</h2>
+
+<p>下面是程序的基本要素中，每个要素对应到块（译者注：核心职责，价值）：</p>
+
+<ul>
+<li><em>存储：</em>代币存储，数据库，文件系统/二进制大对象存储</li>
+<li><em>计算：</em>有状态的业务逻辑，无状态的业务逻辑，高性能计算（HPC）</li>
+<li><em>通信：</em>数据，价值，状态</li>
+</ul>
+
+<h2 id="toc_2">区块链基础设施概貌</h2>
+
+<p>每一个组件中的对应的区块链技术如下：</p>
+
+<p>程序的三要素，及对应的组件，示例项目，去中心化版（后附原图，对比看，更清晰）</p>
+
+<table>
+<thead>
+<tr>
+<th>存储</th>
+<th>计算</th>
+<th>通信</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>代币存储<br>Bitcoin，Zcach，.*</td>
+<td>有状态的业务逻辑<br>Ethereum，Lisk，Rchain，Eos，Tezos，...客户端计算（JS，Swift）</td>
+<td>数据<br>TCP/IP，HTTP</td>
+</tr>
+<tr>
+<td>文件系统或二进制数据<br>IPFS/FileCoin，Eth Swarm，Storj，Sia，Tieron，LAFS</td>
+<td>无状态的业务逻辑<br>加密币条件（如BigchainDB），Bitshares，及所有的有状态的业务逻辑</td>
+<td>价值<br>Interledger，Cosmos</td>
+</tr>
+<tr>
+<td>数据库<br>BigchainDB + IPDB，IOTA</td>
+<td>高性的运算<br>TrueBit，Golem，Iex.ec，Nyriad，VMs，客户端计算</td>
+<td>状态<br>PolkaDot，Aeternity</td>
+</tr>
+</tbody>
+</table>
+
+<p><img src="https://me.tryblockchain.org/media/15007230252303/15007646139448.png" alt="区块链基础设施概貌原图"></p>
+
+<h2 id="toc_3">存储</h2>
+
+<p>程序中最基本的元素，存储，有下述一些可用的组件：</p>
+
+<p><strong><em>代币存储：</em></strong>代币存储的是价值（资产或安全）。无论这个价值是比特币，飞行里程，艺术品的电子版权。一个代币存储系统的主要操作就是发行和转移代币（满足各种各样的条件下），系统需要保证不会双花等。</p>
+
+<p>比特币和Zcash是两个专注于代币存储的纯粹系统。以太坊恰好使用它的代币达到了世界计算机的目标（译者注：由于以太坊是图灵完备的，愿景是成为永不停机的世界计算机，但现在大多数人用它来进行代币的发行，作者在这里是一种调侃吧）。上述这些是代币被用来作为内部激励，驱动整个网络基础设施。</p>
+
+<p>其它一些代币没有集成于整个网络内来驱动整个网络，而是用来激励更高层级的网络，但底层基础架构实际存储着对应的代币。一个例子是运行于以太坊主网上的ERC20标准的Golem（GNT）。另一个例子是运行在<a href="javascript:window.open('https://ipdb.io/');">IPDB</a>上的<a href="javascript:window.open('http://envoke.cre8tives.org/');">Envoke</a>IP授权代币。</p>
+
+<p>最后，我使用“.*”来说明大多数的区块链系统都有代币的存储机制。</p>
+
+<p><strong><em>数据库：</em></strong>数据库专指存储结构化的数据，比如表（关系型数据库），文档存储（比如，JSON），键值对存储，时间序列或图；然后可以通过快速查询语言（比如：SQL）进行数据搜索。</p>
+
+<p>传统的分布式（但中心化）数据库比如Mongo和Cassandra经常存储TB，甚至PB级的数据，而写性能能超过1000000每秒，正如<a href="javascript:window.open('https://medium.com/netflix-techblog/benchmarking-cassandra-scalability-on-aws-over-a-million-writes-per-second-39f45f066c9e');">这里</a>所述。</p>
+
+<p>查询语言SQL是非常巧妙的，因为他将规范与实现分开，这样它就不再与某种应用绑定。SQL在最近数十年一直是一个标准规范。这也让同样的数据库系统可以横跨不同的工业领域进行使用。</p>
+
+<p>换种思路：如果你想将比特币更广泛的推广到其它的应用，没有任何特定应用程序的代码，你没有必要一定实现图灵完备。你只是需要一个数据库。这将在简单与规模间具有相应的优势。当然实现图灵完备在有些地方仍然是非常有用的；我们后面的关于去中心化的计算章节来更多的讨论一下。</p>
+
+<p><a href="javascript:window.open('http://www.bigchaindb.com/');">BigchainDB</a>是一个去中心化的软件；专注于文档存储。基于MongoDB（或RethinkDB）之上，它继承了Mongo的查询与扩容功能。但它仍有区块链的特性，比如去中心化的控制，防篡改和代币功能的支持。<a href="javascript:window.open('https://ipdb.io/');">IPDB</a>是BigchainDB的一个拥有治理功能的公网版本。</p>
+
+<p>同样在区块链领域里，我们可以认为<a href="javascript:window.open('https://iota.org/');">IOTA</a>是一个按时间序列的数据库，如果换一个角度来看的话。</p>
+
+<p><strong><em>文件系统、二进制数据存储：</em></strong> 这些是用来存储大文件（比如电影，mp3，超大数据集），以目录、文件这样的层级结构存储的系统。</p>
+
+<p><a href="javascript:window.open('https://ipfs.io/');">IPFS</a>和<a href="javascript:window.open('https://tahoe-lafs.org/trac/tahoe-lafs');">Tahoe-LAFS</a>是去中心化的文件系统，整合了去中心化和中心化的二进制大对象的存储。<a href="javascript:window.open('http://filecoin.io/');">FileCoin</a>，<a href="javascript:window.open('https://storj.io/');">Storj</a>，<a href="javascript:window.open('http://sia.tech/');">Sia</a>，<a href="javascript:window.open('https://tierion.com/');">Tieron</a>实际进行二进制的存储。当然也包括老的<a href="javascript:window.open('http://www.bittorrent.com/');">BitTorrent</a>，尽管他使用的是针对性的解决方案，而不是代币。<a href="javascript:window.open('https://github.com/ethersphere/swarm');">以太坊的Swarm</a>，<a href="javascript:window.open('https://datproject.org/');">Dat</a>和<a href="javascript:window.open('https://github.com/gritzko/swarm');">Swarm-JS</a>也差不多是在做这些。</p>
+
+<h2 id="toc_4">计算</h2>
+
+<p>接下来我们聊聊，程序的第二要素计算。</p>
+
+<p>“智能合约”系统是指使用去中心化方式进行计算的系统。系统可以区分为两大类，无状态（组合）的业务逻辑和有状态（顺序）的业务逻辑。无状态与有状态在复杂上，可验证性等上有着根本的区别。我们还有第三类的去中心化的计算组件：高性能计算（HPC）。</p>
+
+<p><strong><em>无状态（组合）的业务逻辑：</em></strong>在内部的任何逻辑里都不需要保留状态。 如果用电子工程术语来说的话，它是由数字逻辑回路组成。 逻辑表示为真值表，示意图或代码的条件语句（组合if/then，逻辑与，逻辑或）。 由于它们没有状态，因此很容易验证大型无状态智能合同，并由此构建大型校验/安全系统。 N个输入和一个输出需要O（2 ^ N）次计算来进行验证。</p>
+
+<p><a href="javascript:window.open('https://interledger.org/');">Interledger协议</a>包含一个加密币条件（crypto-conditions aka. CC）协议来清晰的指定组合的回路。因为CC<a href="javascript:window.open('https://tools.ietf.org/html/draft-thomas-crypto-conditions-01');">通过IETF</a>成为了互联网的标准协议，同时ILP也正被中心化和去中心化的支付网络（<a href="javascript:window.open('https://finance.yahoo.com/news/75-banks-now-ripples-blockchain-network-162939601.html');">75家银行采用了Ripple的协议</a>）广泛的采纳，所以你最好对之有些了解。CC在<a href="javascript:window.open('https://github.com/interledgerjs/five-bells-condition');">JavaScript</a>，<a href="javascript:window.open('https://github.com/bigchaindb/cryptoconditions');">Python</a>，<a href="javascript:window.open('https://github.com/interledger/java-crypto-conditions');">Java</a>等都有单独的实现。 BigchainDB，Ripple等系统使用CC; 因此支持组合业务逻辑/智能合同。</p>
+
+<p>由于有状态业务逻辑是无状态逻辑的超集，因此支持状态业务逻辑的系统也支持无状态业务逻辑（牺牲额外的复杂性和可验证性挑战）。</p>
+
+<p><strong><em>有状态（顺序）的业务逻辑：</em></strong>任何内部的业务逻辑都有状态。这就是说，他有记忆（译者注：根据经历的形成的不同记忆有不同的选择）。或者是说，它是具有至少一个反馈回路（和时钟）的组合逻辑电路。 例如，微处理器具有根据发送给它的机器码指令进行更新的内部寄存器。 更一般地说，有状态的业务逻辑是图灵机，其接收输入序列，并且返回一系列的输出。 实现了这样逻辑（实际近似）的系统是图灵完备的。</p>
+
+<p>以太坊是最知名的实现了有状态的逻辑和智能合约的链上（on-chain）系统。<a href="javascript:window.open('https://lisk.io/');">Lisk</a>，<a href="javascript:window.open('https://www.rchain.coop/');">RChain</a>，<a href="javascript:window.open('https://dfinity.network/');">DFINITY</a>，<a href="javascript:window.open('http://www.eos.io/');">EOS</a>，<a href="javascript:window.open('https://tezos.com/');">Tezos</a>，<a href="javascript:window.open('https://hyperledger-fabric.readthedocs.io/en/latest/');">Fabric</a>，<a href="javascript:window.open('https://intelledger.github.io/introduction.html');">Sawtooth</a>，及很多其它的也实现了。可以运行一个“就在那里，但也可能是任何地方”的代码是非常强大的一个想法，有非常多的使用场景。这也侧面解释为什么以太坊会成功，为什么它的生态系统发展成为一个平台，以及为什么在这个领域里有如此多的竞争。</p>
+
+<p>同时因为序列逻辑是组合逻辑的超集，这样的系统也支持组合逻辑。</p>
+
+<p>有状态的业务逻辑的问题是，代码中的非常小的错误，将引发严重的后果，正如DAO的被黑事件所展示的那样。形式验证可以帮助解决这个问题，正如它在芯片行业所做的那样。以太坊基金正在积极引入形式验证。然后有状态业务逻辑的另一个问题是有规模的限制。对于组合回路，所有的可能的组合是2的所有可能输入的次方。对于有状态逻辑来说，内部状态的数量，假设所有的状态是布尔的，就是2的所有内存状态变量。举例来说，如果你有3种可能的输入，对于组合回路来说就是2的3次方，8种所有的可能。而对于有状态的逻辑来说，如果可改变状态的操作有32种，那么将检查2的32次方，即42亿个状态（译者注：实际的实现不会看起来的这么低效能，这里主要是为了说明复杂性）。这是有状态逻辑的复杂性限制（因为你需要相信这门技术，相信它最终实现的是你真正想要的，否则就会成为一个bug，带来经济损失）。“尽可能正确的创建”是另一种让智能合约可信的一种方法，正如<a href="javascript:window.open('http://rchain-architecture.readthedocs.io/en/latest/introduction/introduction.html');">Rchain</a>使用的rho演算（译者注：对于这里，读者应保持自己的观点，图灵完备确实会让写的代码不可控，容易出bug，但它的想像力是比较大的。请保持自己独立思考）。</p>
+
+<p>如果你想使用去中心化的计算，对于许多的情形来说，这里有一个简单的方法：在浏览器或者移动设备，可运行JavaScript和Swift这样的客户端上简单的执行就可以了。这里，你必须要相信在你的客户端上所进行的操作，但由于设备在你的手上，一般你会容易接受这点（译者注：可能会疑惑，平时就是这样做的，为什么要刻意强调。因为这里想说明的是去中心的运算是无信任任何节点，但浏览器的后端确定了，必须要相信现在配置的这个节点）。我们把这叫做<a href="javascript:window.open('https://blog.bigchaindb.com/bigchaindb-version-1-0-released-932bee682266');">胖客户端</a>以区别于<a href="javascript:window.open('http://joel.mn/post/148641439498/fat-protocols');">胖协议</a>框架。这个架构对于主流的web开发者来说非常好理解。举例来说，所有许多的web应用程序都需要状态。要创建这样一个程序，你需要JS + IPDB（使用<a href="javascript:window.open('https://www.npmjs.com/package/js-bigchaindb-driver');">js-bigchaindb-driver</a>）。又或者你的应用需要使用到二进制的大对象存储或支付，可以包含IPFS的js版本（<a href="javascript:window.open('https://github.com/ipfs/js-ipfs');">ipfs.js</a>）和以太坊的js版本（<a href="javascript:window.open('https://github.com/ethereum/web3.js');">web3.js</a>）。下面是一个例子：</p>
+
+<p><img src="https://me.tryblockchain.org/media/15007230252303/15007725656169.png" alt=""></p>
+
+<p><strong><em>高性能计算（HPC）：</em></strong>为渲染，机器学习，电路仿真，天气预报，蛋白质折叠等方面的“重”计算的处理。 计算任务将使用一个机器集群（CPU，GPU，甚至<a href="javascript:window.open('https://en.wikipedia.org/wiki/Tensor_processing_unit');">TPU</a>），花上几个小时或甚至几个星期。</p>
+
+<p>有如下的一些去中心化的实现HPC的方式：</p>
+
+<ul>
+<li><a href="javascript:window.open('https://golem.network/');">Golem</a>和<a href="javascript:window.open('http://iex.ec/');">iEx.ec</a>框架整合去中心化的超级电脑的算力与相关的应用程序。</li>
+<li><a href="javascript:window.open('http://www.nyriad.com/');">Nyriad</a>作为存储执行。这种计算基于去中心化的存储（对于存储Nyrid也有自己的解决方案）。</li>
+<li><a href="javascript:window.open('http://truebit.io/');">TrueBit</a>允许第三方进行计算，然后进行事后的计算检查（如果可能则进行隐式检查;如果有问题，则进行显示的检查）。</li>
+<li>而另一些人只是在VM或<a href="javascript:window.open('https://www.docker.com/');">Docker</a>容器上运行大量计算，并将结果（最终的VM状态快照或刚刚计算的结果）存到一个需要权限才能访问的blob中。 然后，使用代币的方式来售卖访问权限。 这种方法要求更多的客户来验证结果，但好的是，今天所有这些技术都是可能的。 当TrueBit成熟时，这种方式将自然与TrueBit结合。</li>
+</ul>
+
+<h2 id="toc_5">通信</h2>
+
+<p>最后我们将来说明一下程序的第三个要素，通信。通信方式有很多种; 我将专注于连接网络的这个层面。 它有三个层次：数据，价值和状态。</p>
+
+<p><strong><em>数据：</em></strong>在60年代时，我们有了<a href="javascript:window.open('https://en.wikipedia.org/wiki/ARPANET');">ARPAnet</a>。它成功的延伸出了类似的网络，如<a href="javascript:window.open('https://en.wikipedia.org/wiki/NPL_network');">NPL</a>，<a href="javascript:window.open('https://en.wikipedia.org/wiki/CYCLADES');">CYCLADES</a>，随之诞生的问题时，大家不能互相交流。Cerf和Kahn在70年代发明了<a href="javascript:window.open('https://de.wikipedia.org/wiki/Transmission_Control_Protocol/Internet_Protocol');">TCP/IP</a>协议来把大家连在一起。TCP/IP现在是连接网络的事实上的标准。OSI是另一套与之竞争的协议，则显得逊色不少（尽管讽刺的是，它的模型已被证明是有用的）。所以，除了它的发明时间有点长，TCP/IP仍无可争议的是去中心组件的重要一环，用于连接网络中的数据（译者注：IPFS正打算创建一套全新的协议。）。</p>
+
+<p><strong><em>价值：</em></strong>TCP/IP仅仅提供了在数据层面连接网络。你可以重复发送数据，从而造成一些错误，但底层的TCP/IP协议并不关心这些。但如果你想要通过连接的网络发送资产呢。举例来说，从比特币发到以太坊，或发送到使用国际货币支付框架SWIFT协议的支付网络。你将期望你的代币一次只能转给一个目标（译者注：如果同一份钱，可以转给两个目标，那么这个网络将因为不可靠而失去大家的信任，因为可以双花）。一种连接整个网络，同时防止双花的方式是使用交易所，一种传统的非常重的方式。然而，你可以通过加密托管的方式来抽离交易所的本质，通过自动化的代码来移除对中间人的需要来实现。例如Alice可以通过Mallory向Bob转帐，Mallory中转资金但不能花费它们（资金会有一个超时，从而Mallory也不能永久的持有资金）。这也正是<a href="javascript:window.open('http://www.interledger.org/');">Interledger Protocol</a>（ILP）的内在理念。这与双向锚定的概念类似以及状态通道（如<a href="javascript:window.open('https://lightning.network/');">Lighting网络</a>和<a href="javascript:window.open('http://raiden.network/');">Raiden网络</a>）；但这些网络连接都是100%专注于面向价值的连接（译者注：因为要传输价值，所以建立的网络连接）。除ILP以外，还有<a href="javascript:window.open('https://cosmos.network/');">Cosmos</a>为了更加方便使用，增加了更多的复杂性。</p>
+
+<p><strong><em>状态：</em></strong>在通过网络连接价值以外，还有什么呢。想象一下一台计算机病毒，其自己的比特币钱包可以从一个网络跳到另一个网络。或某个以太坊的智能合约，可以移动他的状态到另一个以太坊网络，甚至到另一个匹配的不同网络？或者说，为什么限制<a href="javascript:window.open('https://blog.bigchaindb.com/ai-daos-series2-3876510d6eb4');">AI DAO</a>于某个具体的网络呢？</p>
+
+<p>这正是<a href="javascript:window.open('http://polkadot.io/');">Polkadot</a>正在做的，连接网络的状态。<a href="javascript:window.open('https://www.aeternity.com/');">Aeternity</a>同样适用于价值网络与状态网络间的某个地方。</p>
+
+<h2 id="toc_6">例子</h2>
+
+<p>我们刚回顾了程序的三个主要要素（存储，计算和通信），去中心的组件分类，每个组件内的一些对应的项目。</p>
+
+<p>人们正在基于这些项目的组合来建造项目。有非常多同时组合两个以上的组件，如IPFS + 以太坊或者IPFS + IPDB。但也有同时组合三个及以上的组件。下面有几个前沿的例子：</p>
+
+<ul>
+<li><p><a href="javascript:window.open('https://blog.ujomusic.com/ujo-x-rac-under-the-hood-the-future-of-licensing-d4f38e2efabd');">Ujo</a>使用了IPFS或Swarm 加上IPDB加上以太坊来实现去中心化的音乐，愿景在<a href="javascript:window.open('https://medium.com/ipdb-blog/a-decentralized-content-registry-for-the-decentralized-web-99cf1335291f');">这里</a>。IPFS或Swarm用于文件和二进制存储。IPDB（使用BigchainDB）用于元数据存储和查询。以太坊用来做代币存储和需要状态的业务逻辑。</p></li>
+<li><p><a href="javascript:window.open('https://medium.com/@cstoecker/implementing-first-industry-4-0-use-cases-with-iota-dag-tangle-machine-tagging-for-digital-twins-baf1943c499d');">Innogy</a>使用IPFS加IPDB加IOTA来实现供应链和物联网。IPFS用于文件和二进制大对象的存储。IPDB（使用BigchainDB）用于元数据存储和查询。IOTA用于需要时序的数据。</p></li>
+</ul>
+
+<h2 id="toc_7">相关的工作</h2>
+
+<p>后面是在区块链社区的其它一些相关的技术框架；所有这些我都与之进行过愉快的交流。</p>
+
+<p>Joel Monegro的<a href="javascript:window.open('http://joel.mn/post/148641439498/fat-protocols');">胖协议</a>框架强调每一个组件都是一个协议。我认为这是一个非常酷的框架，尽管它强制所有组件通过网络协议进行交互。这里还有其它的方式：区块间可以简单的通过一个<code>import</code>导入或库的调用进行通信。</p>
+
+<p>使用import的方式的原因是（a）低延迟。如果通过网络调用，会影响甚至完全让应用不可用；（b）简单。使用库（甚至内嵌代码）总是比连接网络实现上简单，而且也不用花费代币等。（c）更成熟。协议栈的解决方案现在才出现，而现存在大量可使用的库，比如UNIX库，即使Python和JS的模块库也已经有15年的历史了。</p>
+
+<p>Fred Ehrsam的“<a href="javascript:window.open('https://medium.com/@FEhrsam/the-dapp-developer-stack-the-blockchain-industry-barometer-8d55ec1c7d4');">DAPP开发栈</a>”适用于web的业务模型。它也非常有用，但它并不旨在对于给定的程序元素（例如文件系统与数据库），并在组件之间进行细粒度区分。</p>
+
+<p><a href="javascript:window.open('https://www.bigchaindb.com/whitepaper/bigchaindb-whitepaper.pdf');">BigchainDB白皮书</a>（第一次发布于2016年2月），为了方便说明，下图给出了一个早期版本的开发栈：</p>
+
+<p><img src="static/picture/15007878961494.png" alt=""></p>
+
+<p>当时的这个版本关注于处理，文件系统，数据库。当时还并没有从程序的要素的角度来清晰划分，同时也没有详细的区分去中心化的计算这块（译者注：上图中，当时版本里面，只有一个模糊的VM）。现在的这个文章，是在当时的白皮书的基础上，经过了1年半的思维革新后；在某些演讲中持续更新后所得，正如5月22号在<a href="javascript:window.open('http://trent.st/content/20170522 blockchains for ai - consensus 2017.pdf');">2017共识大会上的演讲</a>一样，就已经非常趋同于当前的这篇文章了（写这篇文章的另一个原因是我收到了大量的请求，希望我能用文字的方式将这些记录下来）。</p>
+
+<p>上面这张旧图也强调了一个完全中心化的到一个完全去中心化的转变的解决方案。这可以用来帮助将现存的软件系统更新为更去中心化的系统，关注于更新那些最值得更新的组件就好了。</p>
+
+<p>Stephan Tual的“<a href="javascript:window.open('https://blog.stephantual.com/web-3-0-revisited-part-one-across-chains-and-across-protocols-4282b01054c5');">Web3.0的重访问</a>”提到的技术栈与本文类似，只是它更关注于以太坊相关的技术栈。它尝试将相似的项目归类到某些组件中，并形成一个地图，来服务社区。我非常惊喜想法与我的非常类似。然而文中服务应用的区块层（用于消息通信，存储，共识，治理的区块）混入了三种东西：apps，“什么”，“如何解决”。对我来说，区块是“什么”。所以消息通信是应用（应该属于应用层）;而存储层应该更加细粒度的；共识是“如何实现”的那层（隐藏于某些区块里）；治理是“如何实现”的另外一部分（因而也是隐藏于区块里的）。它也有[网络]协议作为分离的底层的块，同样我也赞同这是一种区块间，与库函数调用一起，相互通信的方式。尽管如些，我仍认为那是一篇非常好的文章和技术栈说明。</p>
+
+<p>Alexander Ruppert的“<a href="javascript:window.open('https://medium.com/birds-view/mapping-the-decentralized-world-of-tomorrow-5bf36b973203');">去中心化世界的地图</a>”有差不多20个组组成，x轴给出了从基础层到应用层的四个层次，但使用中间件和流动性作为关联性的层级。这也是一件巨作，我很高兴能帮助Alex把它整理出来。它更集中于边界，而没有那么强调基本的架构；然而这篇正是源自第一性原理框架关于核心基础设施的说明文章。</p>
+
+<h2 id="toc_8">未来</h2>
+
+<p>像Ujo这样的系统，组合许多的组件到一起，比如IPFS等。最终他也能从所有的这些组件系统中受益。</p>
+
+<p>我非常期待当大家更好的了解了组件间的关联关系后，这个趋势将进一步的加速。这样的分组比把所有组件揉为一个叫区块链的更能提高大家的生产率。</p>
+
+<p>随着去中心化的生态演变，我期望这个技术栈不断迭代。AWS刚推出时只有一个服务：S3用于存储二进制的大对象。然后它发展了计算：EC2。既而一路向前，这里是它发展的<a href="javascript:window.open('https://en.wikipedia.org/wiki/Timeline_of_Amazon_Web_Services');">完整时间线</a>。AWS现在有超过50个组件；尽管其中只有一小部分是最重要的。下面是一张AWS提供的服务的图片。</p>
+
+<p><img src="https://me.tryblockchain.org/media/15007230252303/15007916087458.png" alt=""></p>
+
+<p>我预见在去中心的领域也将发生类似的事情。作为第一步，大家可以想像一下每一个AWS组件对应的去中化版本。然而，这其中，肯定会存在一些不同，每个生态（云计算 vs 去中心化）都会有一些自己独有的，比如去中化中特有的代币存储。让我们一起来开启这个有趣的旅程吧。</p>
+
+<p>（完）</p>
+
+
+        <!-- newly added20190331 
+        <h2>如需交流，可加微信: 「TryBlockchain」</h2>
+        <p><img src="https://me.tryblockchain.org/media/14873893253965/wechat-TryBlockchain.jpg" alt="wechat-qr-code"/></p>   -->
+        <!-- newly added2018 
+        <h2>感谢您对本站的支持</h2>
+        <p><img src="https://me.tryblockchain.org/media/14873893253965/wechat-zan.jpg" alt="zan-code"/></p>
+        -->
+        <blockquote>
+        <p>处于某些特定的环境下，可以看到评论框，欢迎留言交流^_^。</p>
+        </blockquote>
+        <!-- 去掉赞码，增加广告 20190914 中秋节-->
+      </div>
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="onward-with-ethereum-smart-contr.html" title="Previous Post: 安全编写以太坊的智能合约指南">&laquo; 安全编写以太坊的智能合约指南</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a href="reflections_on_the_best_blockcha.html" title="Next Post: Naval的区块链推文的反思">Naval的区块链推文的反思 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          <script async="" src="static/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-6188337887319489",
+    enable_page_level_ads: true
+  });
+</script><script id="dsq-count-scr" src="https://tryblockchain-org.disqus.com/count.js" async=""></script>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://tryblockchain-org.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="javascript:window.open('https://disqus.com/?ref_noscript');">comments powered by Disqus.</a></noscript>
+                            
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>区块链技术博客</h1>
+                <div class="site-des">区块链相关技术博客，专注基于以太坊的区块链技术，Solidity编程语言，Truffle框架，web3.js。</div>
+
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>个人微信: 「TryBlockchain」</h2>
+                </div>
+              </div>
+
+
+                <div class="social">
+                  <img src="static/picture/wechat-TryBlockchain.jpg" width="230px">
+                </div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="files/atom.xml" title="RSS">RSS</a>
+
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="Solidity深入浅出系列.html"><strong>Solidity深入浅出系列</strong></a>
+        
+            <a href="文档翻译.html"><strong>文档翻译</strong></a>
+        
+            <a href="其它.html"><strong>其它</strong></a>
+        
+            <a href="Solidity入门系列.html"><strong>Solidity入门系列</strong></a>
+        
+            <a href="热点.html"><strong>热点</strong></a>
+        
+            <a href="项目.html"><strong>项目</strong></a>
+        
+            <a href="whitepaper.html"><strong>whitepaper</strong></a>
+        
+            <a href="热点深度.html"><strong>热点深度</strong></a>
+        
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="dex-uniswap-ox-hydro.html">去中心化的交易所正在打一场恶战，新选手不断加入</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="coinbase-custody-staking.html">coinbase的托管生意又有大动作了</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15462405993032.html">基于第三代互联网的数据经济</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15462215241005.html">Curation Markets</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="4-eras-of-blockchain-computing-d.html">区块链计算的四个阶段</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+ <div class="page-bottom clearfix">
+  <div class="row">
+     <p class="copyright">Copyright &copy; 2016-2019 tryblockchain.org. All rights reserved. 
+  &nbsp; 交流微信：TryBlockchain
+</p>
+<p style="font-size: 14px;margin: 0 0.93rem;">友情链接： <a href="javascript:window.open('https://bitshuo.com/');">区块链技术中文社区</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:window.open('https://learnblockchain.cn/');">深入浅出区块链</a></p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="static/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="static/js/MathJax-TeX-AMS-MML_HTMLorMML.js"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?a7f98ca019147491b75cb037fb3aec14";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89122146-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  </body>
+</html>

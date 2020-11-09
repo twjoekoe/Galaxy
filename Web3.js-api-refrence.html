@@ -1,0 +1,2486 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+  
+  Web3.js API 中文文档 - Web3.js API 中文文档
+  
+  </title>
+ <meta name="description" content="以太坊的Web3.js的API参考文档中文版">
+ 
+    <link rel="stylesheet" href="static/css/foundation.min.css">
+    <link rel="stylesheet" href="static/css/docs.css">
+
+    <script src="static/js/modernizr.js"></script>
+    <script src="static/js/jquery.js"></script>
+    <script src="static/js/highlight.pack.js"></script>
+    <link href="static/css/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <!-- 增加google ad -->
+    <script async="" src="static/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-6188337887319489",
+        enable_page_level_ads: true
+      });
+    </script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body class="antialiased hide-extras">
+
+    <div class="marketing off-canvas-wrap" data-offcanvas="">
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar="">
+
+<div id="header">
+    <h1><a href="index.html">Web3.js API 中文文档</a>   <a href="index1.html" style="float: right;color: lightgray;">返回博客</a></h1>
+</div>
+
+</nav>
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; Web3.js API 中文文档</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+      <li><a href="index1.html">回到博客</a></li>
+      <li><a href="index.html">主页</a></li>
+      
+        <li class="divider"></li>
+        <li><label>API</label></li>
+
+          
+            <li><a title="web3.js编译Solidity，发布，调用全部流程（手把手教程）" href="web3-js-in-action.html">web3.js编译Solidity，发布，调用全部流程（手把手教程）</a></li>
+          
+            <li><a title="Web3.js API 中文文档" href="">Web3.js API 中文文档</a></li>
+          
+            <li><a title="Web3.js API 基本" href="ethereum-web3.js-入门说明.html">Web3.js API 基本</a></li>
+          
+
+      
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+        <section id="main-content" role="main" class="scroll-container">
+
+          <div class="row">
+            <div class="large-3 medium-3 columns">
+              <div class="hide-for-small">
+                <div class="sidebar">
+                <nav>
+                  <ul id="side-nav" class="side-nav">
+
+                    
+                      <li class="side-title"><span>API</span></li>
+                        
+                          <li><a title="web3.js编译Solidity，发布，调用全部流程（手把手教程）" href="web3-js-in-action.html">web3.js编译Solidity，发布，调用全部流程（手把手教程）</a></li>
+                        
+                          <li><a title="Web3.js API 中文文档" href="">Web3.js API 中文文档</a></li>
+                        
+                          <li><a title="Web3.js API 基本" href="ethereum-web3.js-入门说明.html">Web3.js API 基本</a></li>
+                        
+
+                    
+                  </ul>
+                </nav>
+                </div>
+              </div>
+            </div>
+            <div class="large-9 medium-9 columns">
+ <div class="markdown-body">
+<h1>Web3.js API 中文文档</h1>
+
+<ul>
+<li>
+<a href="#toc_0">web3</a>
+<ul>
+<li>
+<a href="#toc_1">web3.version.api</a>
+</li>
+<li>
+<a href="#toc_2">web3.version.node</a>
+</li>
+<li>
+<a href="#toc_3">web3.version.network</a>
+</li>
+<li>
+<a href="#toc_4">web3.version.ethereum</a>
+</li>
+<li>
+<a href="#toc_5">web3.version.whisper</a>
+</li>
+<li>
+<a href="#toc_6">web3.isConnected</a>
+</li>
+<li>
+<a href="#toc_7">web3.setProvider</a>
+</li>
+<li>
+<a href="#toc_8">web3.currentProvider</a>
+</li>
+<li>
+<a href="#toc_9">web3.reset</a>
+</li>
+<li>
+<a href="#toc_10">web3.sha3</a>
+</li>
+<li>
+<a href="#toc_11">web3.toHex</a>
+</li>
+<li>
+<a href="#toc_12">web3.toAscii</a>
+</li>
+<li>
+<a href="#toc_13">web3.fromAscii</a>
+</li>
+<li>
+<a href="#toc_14">web3.toDecimal</a>
+</li>
+<li>
+<a href="#toc_15">web3.fromDecimal</a>
+</li>
+<li>
+<a href="#toc_16">web3.fromWei</a>
+</li>
+<li>
+<a href="#toc_17">web3.toWei</a>
+</li>
+<li>
+<a href="#toc_18">web3.toBigNumber</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_19">web3.net</a>
+<ul>
+<li>
+<a href="#toc_20">web3.net.listening</a>
+</li>
+<li>
+<a href="#toc_21">web3.net.peerCount</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_22">web3.eth</a>
+<ul>
+<li>
+<a href="#toc_23">web3.eth.defaultAccount</a>
+</li>
+<li>
+<a href="#toc_24">web3.eth.defaultBlock</a>
+</li>
+<li>
+<a href="#toc_25">web3.eth.syncing</a>
+</li>
+<li>
+<a href="#toc_26">web3.eth.isSyncing</a>
+</li>
+<li>
+<a href="#toc_27">web3.eth.coinbase</a>
+</li>
+<li>
+<a href="#toc_28">web3.eth.mining</a>
+</li>
+<li>
+<a href="#toc_29">web3.eth.hashrate</a>
+</li>
+<li>
+<a href="#toc_30">web3.eth.gasPrice</a>
+</li>
+<li>
+<a href="#toc_31">web3.eth.accounts</a>
+</li>
+<li>
+<a href="#toc_32">web3.eth.blockNumber</a>
+</li>
+<li>
+<a href="#toc_33">web3.eth.register</a>
+</li>
+<li>
+<a href="#toc_34">web3.eth.unRegister</a>
+</li>
+<li>
+<a href="#toc_35">web3.eth.getBalance</a>
+</li>
+<li>
+<a href="#toc_36">web3.eth.getStorageAt</a>
+</li>
+<li>
+<a href="#toc_37">web3.eth.getCode</a>
+</li>
+<li>
+<a href="#toc_38">web3.eth.getBlock</a>
+</li>
+<li>
+<a href="#toc_39">web3.eth.getBlockTransactionCount</a>
+</li>
+<li>
+<a href="#toc_40">web3.eth.getUncle</a>
+</li>
+<li>
+<a href="#toc_41">web3.eth.getTransaction</a>
+</li>
+<li>
+<a href="#toc_42">web3.eth.getTransactionFromBlock</a>
+</li>
+<li>
+<a href="#toc_43">web3.eth.getTransactionReceipt</a>
+</li>
+<li>
+<a href="#toc_44">web3.eth.getTransactionCount</a>
+</li>
+<li>
+<a href="#toc_45">web3.eth.sendTransaction</a>
+</li>
+<li>
+<a href="#toc_46">web3.eth.sendRawTransaction</a>
+</li>
+<li>
+<a href="#toc_47">web3.eth.sign</a>
+</li>
+<li>
+<a href="#toc_48">web3.eth.call</a>
+</li>
+<li>
+<a href="#toc_49">web3.eth.estimateGas</a>
+</li>
+<li>
+<a href="#toc_50">web3.eth.filter</a>
+</li>
+<li>
+<a href="#toc_51">web3.eth.contract</a>
+<ul>
+<li>
+<a href="#toc_52">合约对象的方法</a>
+</li>
+<li>
+<a href="#toc_53">合约对象的事件</a>
+</li>
+<li>
+<a href="#toc_54">合约 allEvents</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_55">web3.eth.getCompilers</a>
+</li>
+<li>
+<a href="#toc_56">web3.eth.compile.solidity</a>
+</li>
+<li>
+<a href="#toc_57">web3.eth.compile.lll</a>
+</li>
+<li>
+<a href="#toc_58">web3.eth.compile.serpent</a>
+</li>
+<li>
+<a href="#toc_59">web3.eth.namereg</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_60">web3.db</a>
+<ul>
+<li>
+<a href="#toc_61">web3.db.putString</a>
+</li>
+<li>
+<a href="#toc_62">web3.db.getString</a>
+</li>
+<li>
+<a href="#toc_63">web3.db.putHex</a>
+</li>
+<li>
+<a href="#toc_64">web3.db.getHex</a>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<h1 id="toc_0">web3</h1>
+
+<p><code>web3</code>对象提供了所有方法。</p>
+
+<p>示例:</p>
+
+<pre><code class="language-text">//初始化过程
+var Web3 = require(&#39;web3&#39;);
+
+if (typeof web3 !== &#39;undefined&#39;) {
+  web3 = new Web3(web3.currentProvider);
+} else {
+  // set the provider you want from Web3.providers
+  web3 = new Web3(new Web3.providers.HttpProvider(&quot;http://localhost:8545&quot;));
+}
+</code></pre>
+
+<h2 id="toc_1">web3.version.api</h2>
+
+<p>web3.version.api</p>
+
+<p>返回值：</p>
+
+<p><code>String</code> - 以太坊js的api版本</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">//省略初始化过程
+var version = web3.version.api;
+console.log(version);
+
+$ node test.js
+0.18.2
+</code></pre>
+
+<h2 id="toc_2">web3.version.node</h2>
+
+<p>同步方式：</p>
+
+<p>web3.verison.node</p>
+
+<p>异步方式：</p>
+
+<p>web3.version.getNode(callback(error, result){ ... })</p>
+
+<p>返回值：</p>
+
+<p><code>String</code> - 客户端或节点的版本信息</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">//省略初始化过程
+var version = web3.version.node;
+console.log(version);
+
+$ node test.js
+EthereumJS TestRPC/v3.0.3/ethereum-js
+</code></pre>
+
+<h2 id="toc_3">web3.version.network</h2>
+
+<p>同步方式：</p>
+
+<p>web3.version.network</p>
+
+<p>异步方式：</p>
+
+<p>web3.version.getNetwork(callback(error, result){ ... })</p>
+
+<p>返回值:</p>
+
+<p><code>String</code> - 网络协议版本</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">//省略初始化过程
+var version = web3.version.network;
+console.log(version);
+
+$ node test.js
+1488546587563
+</code></pre>
+
+<h2 id="toc_4">web3.version.ethereum</h2>
+
+<p>同步方式：</p>
+
+<p>web3.version.ethereum</p>
+
+<p>异步方式：</p>
+
+<p>web3.version.getEthereum(callback(error, result){ ... })</p>
+
+<p>返回值：</p>
+
+<p><code>String</code> - 以太坊的协议版本</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">//省略初始化过程
+var version = web3.version.ethereum;
+console.log(version);
+
+$ node test.js
+60
+</code></pre>
+
+<p>注意：<code>EthereumJS testRPC</code>客户端不支持这个命令，报错<code>Error: Error: RPC method eth_protocolVersion not supported.<br>
+</code></p>
+
+<h2 id="toc_5">web3.version.whisper</h2>
+
+<p>同步方式：</p>
+
+<p>web3.version.whisper</p>
+
+<p>异步方式：</p>
+
+<p>web3.version.getWhisper(callback(error, result){ ... })</p>
+
+<p>返回值：</p>
+
+<p><code>String</code> - <code>whisper</code>协议的版本</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">//省略初始化过程
+var version = web3.version.whisper;
+console.log(version);
+
+$ node test.js
+20
+</code></pre>
+
+<p>注意：<code>EthereumJS testRPC</code>客户端不支持这个命令，报错<code>Error: Error: RPC method shh_version not supported.</code></p>
+
+<h2 id="toc_6">web3.isConnected</h2>
+
+<p>web3.isConnected</p>
+
+<p>可以用来检查到节点的连接是否存在（connection to node exist）。</p>
+
+<p>参数：</p>
+
+<p>无</p>
+
+<p>返回值：</p>
+
+<p>Boolean</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">//省略初始化过程
+var connected = web3.isConnected();
+if(!connected){
+  console.log(&quot;node not connected!&quot;);
+}else{
+  console.log(&quot;node connected&quot;);
+}
+</code></pre>
+
+<h2 id="toc_7">web3.setProvider</h2>
+
+<p>web3.setProvider</p>
+
+<p>设置<code>Provider</code></p>
+
+<p>参数：</p>
+
+<p>无</p>
+
+<p>返回值：</p>
+
+<p>undefined</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">web3.setProvider(new web3.providers.HttpProvider(&#39;http://localhost:8545&#39;));
+</code></pre>
+
+<h2 id="toc_8">web3.currentProvider</h2>
+
+<p>web3.currentProvider</p>
+
+<p>如果已经设置了<code>Provider</code>，则返回当前的<code>Provider</code>。这个方法可以用来检查在使用<code>mist</code>浏览器等情况下已经设置过<code>Provider</code>，避免重复设置的情况。</p>
+
+<p>返回值：</p>
+
+<p>Object - null 或 已经设置的<code>Provider</code>。</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">if(!web3.currentProvider)
+    web3.setProvider(new web3.providers.HttpProvider(&quot;http://localhost:8545&quot;));
+</code></pre>
+
+<h2 id="toc_9">web3.reset</h2>
+
+<p>web3.reset</p>
+
+<p>用来重置<code>web3</code>的状态。重置除了<code>manager</code>以外的其它所有东西。卸载<code>filter</code>，停止状态轮询。</p>
+
+<p>参数：</p>
+
+<ol>
+<li>Boolean - 如果设置为<code>true</code>，将会卸载所有的<code>filter</code>，但会保留<code>web3.eth.isSyncing()</code>的状态轮询。</li>
+</ol>
+
+<p>返回值：</p>
+
+<p>undefined</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">//省略初始化过程
+console.log(&quot;reseting ... &quot;);
+web3.reset();
+console.log(&quot;is connected:&quot; + web3.isConnected());
+
+$ node test.js
+reseting ...
+is connected:true
+</code></pre>
+
+<h2 id="toc_10">web3.sha3</h2>
+
+<p>web3.sha3(string, options)</p>
+
+<p>参数：</p>
+
+<ol>
+<li><code>String</code> - 传入的需要使用<code>Keccak-256 SHA3</code>算法进行哈希运算的字符串。</li>
+<li><code>Object</code> - 可选项设置。如果要解析的是<code>hex</code>格式的十六进制字符串。需要设置<code>encoding</code>为<code>hex</code>。因为JS中会默认忽略<code>0x</code>。</li>
+</ol>
+
+<p>返回值：</p>
+
+<p><code>String</code> - 使用<code>Keccak-256 SHA3</code>算法哈希过的结果。</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">//省略初始化过程
+var hash = web3.sha3(&quot;Some string to be hashed&quot;);
+console.log(hash); 
+var hashOfHash = web3.sha3(hash, {encoding: &#39;hex&#39;});
+console.log(hashOfHash); 
+</code></pre>
+
+<h2 id="toc_11">web3.toHex</h2>
+
+<p>web3.toHex</p>
+
+<p>将任何值转为<code>HEX</code>。</p>
+
+<p>参数：</p>
+
+<ol>
+<li><code>String|Number|Object|Array|BigNumber</code> - 需要转化为<code>HEX</code>的值。如果是一个对象或数组类型，将会先用<code>JSON.stringify</code><sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup>进行转换成字符串。如果传入的是<code>BigNumber</code><sup id="fnref2"><a href="#fn2" rel="footnote">2</a></sup>，则将得到对应的<code>Number</code>的<code>HEX</code>。</li>
+</ol>
+
+<p>示例：</p>
+
+<pre><code class="language-text">//初始化基本对象
+var Web3 = require(&#39;web3&#39;);
+var web3 = new Web3(new Web3.providers.HttpProvider(&quot;http://localhost:8545&quot;));
+var BigNumber = require(&#39;bignumber.js&#39;);
+
+var str = &quot;abcABC&quot;;
+var obj = {abc: &#39;ABC&#39;};
+var bignumber = new BigNumber(&#39;12345678901234567890&#39;);
+
+var hstr = web3.toHex(str);
+var hobj = web3.toHex(obj);
+var hbg = web3.toHex(bignumber);
+
+console.log(&quot;Hex of Sring:&quot; + hstr);
+console.log(&quot;Hex of Object:&quot; + hobj);
+console.log(&quot;Hex of BigNumber:&quot; + hbg);
+
+$ node test.js
+Hex of Sring:0x616263414243
+Hex of Object:0x7b22616263223a22414243227d
+Hex of BigNumber:0xab54a98ceb1f0ad2
+</code></pre>
+
+<h2 id="toc_12">web3.toAscii</h2>
+
+<p>web3.toAscii(hexString)</p>
+
+<p>将<code>HEX</code>字符串转为<code>ASCII</code><sup id="fnref3"><a href="#fn3" rel="footnote">3</a></sup>字符串</p>
+
+<p>参数：</p>
+
+<ol>
+<li><code>String</code> - 十六进制字符串。</li>
+</ol>
+
+<p>返回值：</p>
+
+<p><code>String</code> - 给定十六进制字符串对应的<code>ASCII</code>码值。</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">var str = web3.toAscii(&quot;0x657468657265756d000000000000000000000000000000000000000000000000&quot;);
+console.log(str); // &quot;ethereum&quot;
+</code></pre>
+
+<h2 id="toc_13">web3.fromAscii</h2>
+
+<p>web3.fromAscii</p>
+
+<p>将任何的<code>ASCII</code>码字符串转为<code>HEX</code>字符串。</p>
+
+<p>参数：</p>
+
+<ol>
+<li><code>String</code> - <code>ASCII</code>码字符串</li>
+<li><code>Number</code> - 返回的字符串字节大小，不够长会自动填充。</li>
+</ol>
+
+<p>返回值：</p>
+
+<p><code>String</code> - 转换后的<code>HEX</code>字符串。</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">var str = web3.fromAscii(&#39;ethereum&#39;);
+console.log(str); // &quot;0x657468657265756d&quot;
+
+var str2 = web3.fromAscii(&#39;ethereum&#39;, 32);
+console.log(str2); // &quot;0x657468657265756d000000000000000000000000000000000000000000000000&quot;
+
+$ node test.js
+0x657468657265756d
+0x657468657265756d
+</code></pre>
+
+<p>备注： 填充<code>padding</code>功能好像不可用<sup id="fnref4"><a href="#fn4" rel="footnote">4</a></sup>。</p>
+
+<h2 id="toc_14">web3.toDecimal</h2>
+
+<p>web3.toDecimal</p>
+
+<p>将一个十六进制转为一个十进制的数字</p>
+
+<p>参数：</p>
+
+<ol>
+<li><code>String</code> - 十六进制字符串</li>
+</ol>
+
+<p>返回：</p>
+
+<p><code>Number</code> - 传入字符串所代表的十六进制值。</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">var number = web3.toDecimal(&#39;0x15&#39;);
+console.log(number); // 21
+</code></pre>
+
+<h2 id="toc_15">web3.fromDecimal</h2>
+
+<p>web3.fromDecimal</p>
+
+<p>将一个数字，或者字符串形式的数字转为一个十六进制串。</p>
+
+<p>参数：</p>
+
+<ol>
+<li><code>Number|String</code> - 数字</li>
+</ol>
+
+<p>返回值：</p>
+
+<p><code>String</code> - 给定数字对应的十六进制表示。</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">var value = web3.fromDecimal(&#39;21&#39;);
+console.log(value); // &quot;0x15&quot;
+</code></pre>
+
+<h2 id="toc_16">web3.fromWei</h2>
+
+<p>web3.fromWei(number, 单位)</p>
+
+<p>以太坊货币单位之间的转换。将以<code>wei</code>为单位的数量，转为下述的单位，可取值如下：</p>
+
+<ul>
+<li>kwei/ada</li>
+<li>mwei/babbage</li>
+<li>gwei/shannon</li>
+<li>szabo</li>
+<li>finney</li>
+<li>ether</li>
+<li>kether/grand/einstein</li>
+<li>mether</li>
+<li>gether</li>
+<li>tether</li>
+</ul>
+
+<p>参数：</p>
+
+<ol>
+<li><code>Number|String|BigNumber</code> - 数字或<code>BigNumber</code>。</li>
+<li><code>String</code> - 单位字符串</li>
+</ol>
+
+<p>返回值：</p>
+
+<p><code>String|BigNumber</code> - 根据传入参数的不同，分别是字符串形式的字符串，或者是<code>BigNumber</code>。</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">var value = web3.fromWei(&#39;21000000000000&#39;, &#39;finney&#39;);
+console.log(value); // &quot;0.021&quot;
+</code></pre>
+
+<h2 id="toc_17">web3.toWei</h2>
+
+<p>web3.toWei(number, 单位)</p>
+
+<p>按对应货币转为以<code>wei</code>为单位。可选择的单位如下：</p>
+
+<ul>
+<li>kwei/ada</li>
+<li>mwei/babbage</li>
+<li>gwei/shannon</li>
+<li>szabo</li>
+<li>finney</li>
+<li>ether</li>
+<li>kether/grand/einstein</li>
+<li>mether</li>
+<li>gether</li>
+<li>tether</li>
+</ul>
+
+<p>参数：</p>
+
+<ol>
+<li><code>Number|String|BigNumber</code> - 数字或<code>BigNumber</code></li>
+<li><code>String</code> - 字符串单位</li>
+</ol>
+
+<p>返回值：</p>
+
+<p><code>String|BigNumber</code> - 根据传入参数的不同，分别是字符串形式的字符串，或者是<code>BigNumber</code>。</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">var value = web3.toWei(&#39;1&#39;, &#39;ether&#39;);
+console.log(value); // &quot;1000000000000000000&quot;
+</code></pre>
+
+<h2 id="toc_18">web3.toBigNumber</h2>
+
+<p>web3.toBigNumber(数字或十六进制字符串)</p>
+
+<p>将给定的数字或十六进制字符串转为<code>BigNumber</code><sup id="fnref5"><a href="#fn5" rel="footnote">5</a></sup>。</p>
+
+<p>参数：</p>
+
+<ol>
+<li><code>Number|String</code> - 数字或十六进制格式的数字</li>
+</ol>
+
+<p>返回值：</p>
+
+<p><code>BigNumber</code> - <code>BigNumber</code>的实例</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">var value = web3.toBigNumber(&#39;200000000000000000000001&#39;);
+console.log(value); // instanceOf BigNumber
+console.log(value.toNumber()); // 2.0000000000000002e+23
+console.log(value.toString(10)); // &#39;200000000000000000000001&#39;
+</code></pre>
+
+<h1 id="toc_19">web3.net</h1>
+
+<h2 id="toc_20">web3.net.listening</h2>
+
+<p>同步方式：</p>
+
+<p>web3.net.listening</p>
+
+<p>异步方式：</p>
+
+<p>web3.net.getListener(callback(error, result){ ... })</p>
+
+<p>此属性是只读的，表示当前连接的节点，是否正在<code>listen</code>网络连接与否。<code>listen</code>可以理解为接收。</p>
+
+<p>返回值：</p>
+
+<p><code>Boolean</code> - <code>true</code>表示连接上的节点正在<code>listen</code>网络请求，否则返回<code>false</code>。</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">var listening = web3.net.listening;
+console.log(&quot;client listening: &quot; + listening);
+
+$ node test.js
+client listening: true
+</code></pre>
+
+<p>备注： 如果关闭我们要连接的测试节点，会报错<code>Error: Invalid JSON RPC response: undefined</code>。所以这个方法返回的是我们连上节点的<code>listen</code>状态。</p>
+
+<h2 id="toc_21">web3.net.peerCount</h2>
+
+<p>同步方式：</p>
+
+<p>web3.net.peerCount</p>
+
+<p>异步方式：</p>
+
+<p>web3.net.getPeerCount(callback(error, result){ ... })</p>
+
+<p>属性是只读的，返回连接节点已连上的其它以太坊节点的数量。</p>
+
+<p>返回值：</p>
+
+<p><code>Number</code> - 连接节点连上的其它以太坊节点的数量</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">var peerCount = web3.net.peerCount;
+console.log(&quot;Peer count: &quot; + peerCount); 
+
+$ node test.js
+Peer count: 0
+</code></pre>
+
+<h1 id="toc_22">web3.eth</h1>
+
+<p>包含以太坊区块链相关的方法</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">var eth = web3.eth;
+</code></pre>
+
+<h2 id="toc_23">web3.eth.defaultAccount</h2>
+
+<p>web3.eth.defaultAccount</p>
+
+<p>默认的地址在使用下述方法时使用，你也可以选择通过指定<code>from</code>属性，来覆盖这个默认设置。</p>
+
+<ul>
+<li>web3.eth.sendTransaction()</li>
+<li>web3.eth.call()</li>
+</ul>
+
+<p>默认值为<code>undefined</code>，20字节大小，任何你有私匙的你自己的地址。</p>
+
+<p>返回值：</p>
+
+<p><code>String</code> - 20字节的当前设置的默认地址。</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">console.log(&quot;Current default: &quot; + web3.eth.defaultAccount);
+web3.eth.defaultAccount = &#39;0x8888f1f195afa192cfee860698584c030f4c9db1&#39;;
+console.log(&quot;Current default: &quot; + web3.eth.defaultAccount);
+
+$ node test.js
+Current default: undefined
+Current default: 0x8888f1f195afa192cfee860698584c030f4c9db1
+</code></pre>
+
+<h2 id="toc_24">web3.eth.defaultBlock</h2>
+
+<p>web3.eth.defaultBlock</p>
+
+<p>使用下述方法时，会使用默认块设置，你也可以通过传入<code>defaultBlock</code>来覆盖默认配置。</p>
+
+<ul>
+<li>web3.eth.getBalance()</li>
+<li>web3.eth.getCode()</li>
+<li>web3.eth.getTransactionCount()</li>
+<li>web3.eth.getStorageAt()</li>
+<li>web3.eth.call()</li>
+<li>contract.myMethod.call()</li>
+<li>contract.myMethod.estimateGas()</li>
+</ul>
+
+<p>可选的块参数，可能下述值中的一个：</p>
+
+<ul>
+<li><code>Number</code> - 区块号</li>
+<li><code>String</code> - <code>earliest</code>，创世块。</li>
+<li><code>String</code> - <code>latest</code>，最近刚出的最新块，当前的区块头。</li>
+<li><code>String</code> - <code>pending</code>，当前正在<code>mine</code>的区块，包含正在打包的交易。</li>
+</ul>
+
+<p>默认值是<code>latest</code></p>
+
+<p>返回值：</p>
+
+<p><code>Number|String</code> - 默认要查状态的区块号。</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">console.log(&quot;defaultBlock: &quot; + web3.eth.defaultBlock);
+web3.eth.defaultBlock = 231;
+console.log(&quot;defaultBlock: &quot; + web3.eth.defaultBlock);
+
+$ node test.js
+defaultBlock: latest
+defaultBlock: 231
+</code></pre>
+
+<h2 id="toc_25">web3.eth.syncing</h2>
+
+<p>同步方式：</p>
+
+<p>web3.eth.syncing</p>
+
+<p>异步方式：</p>
+
+<p>web3.eth.getSyncing(callback(error, result){ ... })</p>
+
+<p>这个属性是只读的。如果正在同步，返回同步对象。否则返回<code>false</code>。</p>
+
+<p>返回值：</p>
+
+<p><code>Object|Boolean</code> - 如果正在同步，返回含下面属性的同步对象。否则返回<code>false</code>。</p>
+
+<p>返回值：</p>
+
+<ul>
+<li><code>startingBlock</code>：<code>Number</code> - 同步开始区块号</li>
+<li><code>currentBlock</code>: <code>Number</code> - 节点当前正在同步的区块号</li>
+<li><code>highestBlock</code>: <code>Number</code> - 预估要同步到的区块</li>
+</ul>
+
+<pre><code class="language-text">var sync = web3.eth.syncing;
+console.log(sync);
+
+$ node test.js
+false
+//正在sync的情况
+$ node test.js
+{
+   startingBlock: 300,
+   currentBlock: 312,
+   highestBlock: 512
+}
+</code></pre>
+
+<h2 id="toc_26">web3.eth.isSyncing</h2>
+
+<p>web3.eth.isSyncing(callback)</p>
+
+<p>提供同步开始，更新，停止的回调函数方法。</p>
+
+<p>返回值：</p>
+
+<p><code>Object</code> - 一个<code>syncing</code>对象，有下述方法：</p>
+
+<ul>
+<li><code>syncing.addCallback()</code>: 增加另一个回调函数，在节点开始或停止调用时进行调用。</li>
+<li><code>syncing.stopWatching()</code>: 停止同步回调。</li>
+</ul>
+
+<p>回调返回值：</p>
+
+<ul>
+<li><code>Boolean</code> - 同步开始时，此值为<code>true</code>，同步停止时此回调值为<code>false</code>。</li>
+<li><code>Object</code> - 当正在同步时，会返回同步对象。
+<ul>
+<li><code>startingBlock</code>：<code>Number</code> - 同步开始区块号</li>
+<li><code>currentBlock</code>: <code>Number</code> - 节点当前正在同步的区块号</li>
+<li><code>highestBlock</code>: <code>Number</code> - 预估要同步到的区块</li>
+</ul></li>
+</ul>
+
+<p>示例：</p>
+
+<pre><code class="language-text">//初始化基本对象
+var Web3 = require(&#39;web3&#39;);
+var web3 = new Web3(new Web3.providers.HttpProvider(&quot;http://localhost:8545&quot;));
+var BigNumber = require(&#39;bignumber.js&#39;);
+
+
+web3.eth.isSyncing(function(error, sync){
+    if(!error) {
+        // stop all app activity
+        if(sync === true) {
+           // we use `true`, so it stops all filters, but not the web3.eth.syncing polling
+           web3.reset(true);
+
+        // show sync info
+        } else if(sync) {
+           console.log(sync.currentBlock);
+
+        // re-gain app operation
+        } else {
+            // run your app init function...
+        }
+    }
+});
+</code></pre>
+
+<h2 id="toc_27">web3.eth.coinbase</h2>
+
+<p>同步方式：</p>
+
+<p>web3.eth.coinbase</p>
+
+<p>异步方式：</p>
+
+<p>web3.eth.getCoinbase(callback(error, result){ ... })</p>
+
+<p>只读属性，节点配置的，如果挖矿成功奖励的地址。</p>
+
+<p>返回值：</p>
+
+<p><code>String</code> - 节点的挖矿奖励地址。</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">var coinbase = web3.eth.coinbase;
+console.log(coinbase); // &quot;0x407d73d8a49eeb85d32cf465507dd71d507100c1&quot;
+</code></pre>
+
+<h2 id="toc_28">web3.eth.mining</h2>
+
+<p>同步方式：</p>
+
+<p>web3.eth.mining</p>
+
+<p>异步方式：</p>
+
+<p>web3.eth.getMining(callback(error, result){ ... })</p>
+
+<p>属性只读，表示该节点是否配置挖矿。</p>
+
+<p>返回值：</p>
+
+<p><code>Boolean</code> - <code>true</code> 表示配置挖矿，否则表示没有。</p>
+
+<pre><code class="language-text">var mining = web3.eth.mining;
+console.log(mining); // true or false
+</code></pre>
+
+<h2 id="toc_29">web3.eth.hashrate</h2>
+
+<p>同步方式：</p>
+
+<p>web3.eth.hashrate</p>
+
+<p>异步方式：</p>
+
+<p>web3.eth.getHashrate(callback(error, result){ ... })</p>
+
+<p>属性只读，表示的是当前的每秒的哈希难度。</p>
+
+<p>返回值：</p>
+
+<p><code>Number</code> - 每秒的哈希数</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">var hashrate = web3.eth.hashrate;
+console.log(hashrate);
+</code></pre>
+
+<h2 id="toc_30">web3.eth.gasPrice</h2>
+
+<p>同步方式：</p>
+
+<p>web3.eth.gasPrice</p>
+
+<p>异步方式：</p>
+
+<p>web3.eth.getGasPrice(callback(error, result){ ... })</p>
+
+<p>属性是只读的，返回当前的gas价格。这个值由最近几个块的gas价格的中值<sup id="fnref6"><a href="#fn6" rel="footnote">6</a></sup>决定。</p>
+
+<p>返回值：</p>
+
+<p><code>BigNumber</code> - 当前的gas价格的<code>BigNumber</code>实例，以<code>wei</code>为单位。</p>
+
+<pre><code class="language-text">var gasPrice = web3.eth.gasPrice;
+console.log(gasPrice.toString(10)); // &quot;10000000000000&quot;
+</code></pre>
+
+<h2 id="toc_31">web3.eth.accounts</h2>
+
+<p>同步方式：</p>
+
+<p>web3.eth.accounts</p>
+
+<p>异步方式：</p>
+
+<p>web3.eth.getAccounts(callback(error, result){ ... })</p>
+
+<p>只读属性，返回当前节点持有的帐户列表。</p>
+
+<p>返回值：</p>
+
+<p><code>Array</code> - 节点持有的帐户列表。</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">var accounts = web3.eth.accounts;
+console.log(accounts); 
+</code></pre>
+
+<h2 id="toc_32">web3.eth.blockNumber</h2>
+
+<p>同步方式：</p>
+
+<p>web3.eth.blockNumber</p>
+
+<p>异步方式：</p>
+
+<p>web3.eth.getBlockNumber(callback(error, result){ ... })</p>
+
+<p>属性只读，返回当前区块号。</p>
+
+<pre><code class="language-text">var number = web3.eth.blockNumber;
+console.log(number); // 2744
+</code></pre>
+
+<h2 id="toc_33">web3.eth.register</h2>
+
+<p>web3.eth.register(addressHexString [, callback])</p>
+
+<p>（暂未实现）将给定地址注册到<code>web3.eth.accounts</code>。这将允许无私匙的帐户，如合约被关联到有私匙的帐户，如合约钱包。</p>
+
+<p>参数：</p>
+
+<ul>
+<li><code>String</code> - 要注册的地址。</li>
+<li><code>Function</code> -（可选）回调函数，用于支持异步的方式执行<sup id="fnref7"><a href="#fn7" rel="footnote">7</a></sup>。</li>
+</ul>
+
+<p>返回值：</p>
+
+<p>待确定</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">web3.eth.register(&quot;0x407d73d8a49eeb85d32cf465507dd71d507100ca&quot;)
+</code></pre>
+
+<h2 id="toc_34">web3.eth.unRegister</h2>
+
+<p>异步方式</p>
+
+<p>web3.eth.unRegister(addressHexString [, callback])</p>
+
+<p>（暂未实现）取消注册给定地址</p>
+
+<p>参数：</p>
+
+<ul>
+<li><code>String</code> - 要取消注册的地址</li>
+<li><code>Function</code> - （可选） 回调函数，用于支持异步的方式执行[<sup>async]。</sup></li>
+</ul>
+
+<p>返回值：</p>
+
+<p>待确定</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">web3.eth.unRegister(&quot;0x407d73d8a49eeb85d32cf465507dd71d507100ca&quot;)
+</code></pre>
+
+<h2 id="toc_35">web3.eth.getBalance</h2>
+
+<p>web3.eth.getBalance(addressHexString [, defaultBlock] [, callback])</p>
+
+<p>获得在指定区块时给定地址的余额。</p>
+
+<p>参数：</p>
+
+<ul>
+<li><code>String</code> - 要查询余额的地址。</li>
+<li><code>Number|String</code> -（可选）如果不设置此值使用<code>web3.eth.defaultBlock</code>设定的块，否则使用指定的块。</li>
+<li><code>Funciton</code> - （可选）回调函数，用于支持异步的方式执行[<sup>async]。</sup></li>
+</ul>
+
+<p>返回值：</p>
+
+<p><code>String</code> - 一个包含给定地址的当前余额的<code>BigNumber</code>实例，单位为<code>wei</code>。</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">var balance = web3.eth.getBalance(&quot;0x407d73d8a49eeb85d32cf465507dd71d507100c1&quot;);
+console.log(balance); // instanceof BigNumber
+console.log(balance.toString(10)); // &#39;1000000000000&#39;
+console.log(balance.toNumber()); // 1000000000000
+</code></pre>
+
+<h2 id="toc_36">web3.eth.getStorageAt</h2>
+
+<p>web3.eth.getStorageAt(addressHexString, position [, defaultBlock] [, callback])</p>
+
+<p>获得某个地址指定位置的存储的状态值。</p>
+
+<blockquote>
+<p>合约由控制执行的EVM字节码和用来保存状态的<code>Storage</code>两部分组成。<code>Storage</code>在区块链上是以均为32字节的键，值对的形式进行存储<sup id="fnref8"><a href="#fn8" rel="footnote">8</a></sup>。</p>
+</blockquote>
+
+<p>参数：</p>
+
+<ul>
+<li><code>String</code> - 要获得存储的地址。</li>
+<li><code>Number</code> - 要获得的存储的序号</li>
+<li><code>Number|String</code> -（可选）如果未传递参数，默认使用<code>web3.eth.defaultBlock</code>定义的块，否则使用指定区块。</li>
+<li><code>Function</code> - 回调函数，用于支持异步的方式执行[<sup>async]。</sup></li>
+</ul>
+
+<p>返回值：</p>
+
+<p><code>String</code> - 给定位置的存储值</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">var state = web3.eth.getStorageAt(&quot;0x407d73d8a49eeb85d32cf465507dd71d507100c1&quot;, 0);
+console.log(state); // &quot;0x03&quot;
+</code></pre>
+
+<h2 id="toc_37">web3.eth.getCode</h2>
+
+<p>web3.eth.getCode(addressHexString [, defaultBlock] [, callback])</p>
+
+<p>获取指定地址的代码</p>
+
+<p>参数：</p>
+
+<ul>
+<li><code>String</code> - 要获得代码的地址。</li>
+<li><code>Number|String</code> -（可选）如果未传递参数，默认使用<code>web3.eth.defaultBlock</code>定义的块，否则使用指定区块。</li>
+<li><code>Function</code> - 回调函数，用于支持异步的方式执行[<sup>async]。</sup></li>
+</ul>
+
+<p>返回值：</p>
+
+<p><code>String</code> - 给定地址合约编译后的字节代码。</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">var code = web3.eth.getCode(&quot;0xd5677cf67b5aa051bb40496e68ad359eb97cfbf8&quot;);
+console.log(code); // &quot;0x600160008035811a818181146012578301005b601b6001356025565b8060005260206000f25b600060078202905091905056&quot;
+</code></pre>
+
+<h2 id="toc_38">web3.eth.getBlock</h2>
+
+<p>web3.eth.getBlock(blockHashOrBlockNumber [, returnTransactionObjects] [, callback])</p>
+
+<p>返回块号或区块哈希值所对应的区块</p>
+
+<p>参数：</p>
+
+<ul>
+<li><code>Number|String</code> -（可选）如果未传递参数，默认使用<code>web3.eth.defaultBlock</code>定义的块，否则使用指定区块。</li>
+<li><code>Boolean</code> -（可选）默认值为<code>false</code>。<code>true</code>会将区块包含的所有交易作为对象返回。否则只返回交易的哈希。</li>
+<li><code>Function</code> - 回调函数，用于支持异步的方式执行[<sup>async]。</sup></li>
+</ul>
+
+<p>返回值 - 区块对象：</p>
+
+<ul>
+<li><code>Number</code> - 区块号。当这个区块处于<code>pending</code>将会返回<code>null</code>。</li>
+<li><code>hash</code> - 字符串，区块的哈希串。当这个区块处于<code>pending</code>将会返回<code>null</code>。</li>
+<li><code>parentHash</code> - 字符串，32字节的父区块的哈希值。</li>
+<li><code>nonce</code> - 字符串，8字节。POW生成的哈希。当这个区块处于<code>pending</code>将会返回<code>null</code>。</li>
+<li><code>sha3Uncles</code> - 字符串，32字节。叔区块的哈希值。</li>
+<li><code>logsBloom</code> - 字符串，区块日志的布隆过滤器<sup id="fnref9"><a href="#fn9" rel="footnote">9</a></sup>。当这个区块处于<code>pending</code>将会返回<code>null</code>。</li>
+<li><code>transactionsRoot</code> - 字符串，32字节，区块的交易前缀树的根。</li>
+<li><code>stateRoot</code> - 字符串，32字节。区块的最终状态前缀树的根。</li>
+<li><code>miner</code> - 字符串，20字节。这个区块获得奖励的矿工。</li>
+<li><code>difficulty</code> - <code>BigNumber</code>类型。当前块的难度，整数。</li>
+<li><code>totalDifficulty</code> - <code>BigNumber</code>类型。区块链到当前块的总难度，整数。</li>
+<li><code>extraData</code> - 字符串。当前块的<code>extra data</code>字段。</li>
+<li><code>size</code> - <code>Number</code>。当前这个块的字节大小。</li>
+<li>gasLimit - <code>Number</code>，当前区块允许使用的最大<code>gas</code>。</li>
+<li><code>gasUsed</code> - 当前区块累计使用的总的<code>gas</code>。</li>
+<li><code>timestamp</code> - <code>Number</code>。区块打包时的<code>unix</code>时间戳。</li>
+<li><code>transactions</code> - 数组。交易对象。或者是32字节的交易哈希。</li>
+<li><code>uncles</code> - 数组。叔哈希的数组。</li>
+</ul>
+
+<p>示例：</p>
+
+<pre><code class="language-text">var info = web3.eth.getBlock(3150);
+console.log(info);
+/*
+{
+  &quot;number&quot;: 3,
+  &quot;hash&quot;: &quot;0xef95f2f1ed3ca60b048b4bf67cde2195961e0bba6f70bcbea9a2c4e133e34b46&quot;,
+  &quot;parentHash&quot;: &quot;0x2302e1c0b972d00932deb5dab9eb2982f570597d9d42504c05d9c2147eaf9c88&quot;,
+  &quot;nonce&quot;: &quot;0xfb6e1a62d119228b&quot;,
+  &quot;sha3Uncles&quot;: &quot;0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347&quot;,
+  &quot;logsBloom&quot;: &quot;0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000&quot;,
+  &quot;transactionsRoot&quot;: &quot;0x3a1b03875115b79539e5bd33fb00d8f7b7cd61929d5a3c574f507b8acf415bee&quot;,
+  &quot;stateRoot&quot;: &quot;0xf1133199d44695dfa8fd1bcfe424d82854b5cebef75bddd7e40ea94cda515bcb&quot;,
+  &quot;miner&quot;: &quot;0x8888f1f195afa192cfee860698584c030f4c9db1&quot;,
+  &quot;difficulty&quot;: BigNumber,
+  &quot;totalDifficulty&quot;: BigNumber,
+  &quot;size&quot;: 616,
+  &quot;extraData&quot;: &quot;0x&quot;,
+  &quot;gasLimit&quot;: 3141592,
+  &quot;gasUsed&quot;: 21662,
+  &quot;timestamp&quot;: 1429287689,
+  &quot;transactions&quot;: [
+    &quot;0x9fc76417374aa880d4449a1f7f31ec597f00b1f6f3dd2d66f4c9c6c445836d8b&quot;
+  ],
+  &quot;uncles&quot;: []
+}
+*/
+</code></pre>
+
+<h2 id="toc_39">web3.eth.getBlockTransactionCount</h2>
+
+<p>web3.eth.getBlockTransactionCount(hashStringOrBlockNumber [, callback])</p>
+
+<p>返回指定区块的交易数量。</p>
+
+<p>参数：</p>
+
+<ul>
+<li><code>Number|String</code> -（可选）如果未传递参数，默认使用<code>web3.eth.defaultBlock</code>定义的块，否则使用指定区块。</li>
+<li><code>Function</code> - 回调函数，用于支持异步的方式执行[<sup>async]。</sup></li>
+</ul>
+
+<p>返回值：</p>
+
+<p><code>Nubmer</code> - 给定区块的交易数量。</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">var number = web3.eth.getBlockTransactionCount(&quot;0x407d73d8a49eeb85d32cf465507dd71d507100c1&quot;);
+console.log(number); // 1
+</code></pre>
+
+<h2 id="toc_40">web3.eth.getUncle</h2>
+
+<p>web3.eth.getUncle(blockHashStringOrNumber, uncleNumber [, returnTransactionObjects] [, callback])</p>
+
+<p>通过指定叔位置，返回指定叔块。</p>
+
+<p>参数：</p>
+
+<ul>
+<li><code>Number|String</code> -（可选）如果未传递参数，默认使用<code>web3.eth.defaultBlock</code>定义的块，否则使用指定区块。</li>
+<li><code>Number</code> - 叔的序号。</li>
+<li><code>Boolean</code> -（可选）默认值为<code>false</code>。<code>true</code>会将区块包含的所有交易作为对象返回。否则只返回交易的哈希。</li>
+<li><code>Function</code> - 回调函数，用于支持异步的方式执行[<sup>async]。</sup></li>
+</ul>
+
+<p>返回值：</p>
+
+<p><code>Object</code> - 返回的叔块。返回值参考<code>web3.eth.getBlock()</code>。</p>
+
+<p>备注： 叔块没有自己的交易数据。</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">var uncle = web3.eth.getUncle(500, 0);
+console.log(uncle); // see web3.eth.getBlock
+</code></pre>
+
+<h2 id="toc_41">web3.eth.getTransaction</h2>
+
+<p>web3.eth.getTransaction(transactionHash [, callback])</p>
+
+<p>返回匹配指定交易哈希值的交易。</p>
+
+<p>参数：</p>
+
+<ul>
+<li><code>String</code> - 交易的哈希值。</li>
+<li><code>Function</code> - 回调函数，用于支持异步的方式执行[<sup>async]。</sup></li>
+</ul>
+
+<p>返回值：</p>
+
+<p><code>Object</code> - 一个交易对象</p>
+
+<ul>
+<li><code>hash</code>: <code>String</code> - 32字节，交易的哈希值。</li>
+<li><code>nonce</code>: <code>Number</code> - 交易的发起者在之前进行过的交易数量。</li>
+<li><code>blockHash</code>: <code>String</code> - 32字节。交易所在区块的哈希值。当这个区块处于<code>pending</code>将会返回<code>null</code>。</li>
+<li><code>blockNumber</code>: <code>Number</code> - 交易所在区块的块号。当这个区块处于<code>pending</code>将会返回<code>null</code>。</li>
+<li><code>transactionIndex</code>: <code>Number</code> - 整数。交易在区块中的序号。当这个区块处于<code>pending</code>将会返回<code>null</code>。</li>
+<li><code>from</code>: <code>String</code> - 20字节，交易发起者的地址。</li>
+<li><code>to</code>: <code>String</code> - 20字节，交易接收者的地址。当这个区块处于<code>pending</code>将会返回<code>null</code>。</li>
+<li><code>value</code>: <code>BigNumber</code> - 交易附带的货币量，单位为<code>Wei</code>。</li>
+<li><code>gasPrice</code>: <code>BigNumber</code> - 交易发起者配置的<code>gas</code>价格，单位是<code>wei</code>。</li>
+<li><code>gas</code>: <code>Number</code> - 交易发起者提供的<code>gas</code>。.</li>
+<li><code>input</code>: <code>String</code> - 交易附带的数据。</li>
+</ul>
+
+<p>示例：</p>
+
+<pre><code class="language-text">var blockNumber = 668;
+var indexOfTransaction = 0
+
+var transaction = web3.eth.getTransaction(blockNumber, indexOfTransaction);
+console.log(transaction);
+/*
+{
+  &quot;hash&quot;: &quot;0x9fc76417374aa880d4449a1f7f31ec597f00b1f6f3dd2d66f4c9c6c445836d8b&quot;,
+  &quot;nonce&quot;: 2,
+  &quot;blockHash&quot;: &quot;0xef95f2f1ed3ca60b048b4bf67cde2195961e0bba6f70bcbea9a2c4e133e34b46&quot;,
+  &quot;blockNumber&quot;: 3,
+  &quot;transactionIndex&quot;: 0,
+  &quot;from&quot;: &quot;0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b&quot;,
+  &quot;to&quot;: &quot;0x6295ee1b4f6dd65047762f924ecd367c17eabf8f&quot;,
+  &quot;value&quot;: BigNumber,
+  &quot;gas&quot;: 314159,
+  &quot;gasPrice&quot;: BigNumber,
+  &quot;input&quot;: &quot;0x57cb2fc4&quot;
+}
+*/
+</code></pre>
+
+<h2 id="toc_42">web3.eth.getTransactionFromBlock</h2>
+
+<pre><code class="language-text">getTransactionFromBlock(hashStringOrNumber, indexNumber [, callback])
+</code></pre>
+
+<p>返回指定区块的指定序号的交易。</p>
+
+<p>参数：</p>
+
+<ul>
+<li><code>String</code> - 区块号或哈希。或者是<code>earliest</code>，<code>latest</code>或<code>pending</code>。查看<code>web3.eth.defaultBlock</code>了解可选值。</li>
+<li><code>Number</code> - 交易的序号。</li>
+<li><code>Function</code> - 回调函数，用于支持异步的方式执行[<sup>async]。</sup></li>
+</ul>
+
+<p>返回值：</p>
+
+<p><code>Object</code> - 交易对象，详见<code>web3.eth.getTransaction</code></p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">var transaction = web3.eth.getTransactionFromBlock(&#39;0x4534534534&#39;, 2);
+console.log(transaction); // see web3.eth.getTransaction
+</code></pre>
+
+<h2 id="toc_43">web3.eth.getTransactionReceipt</h2>
+
+<p>web3.eth.getTransactionReceipt(hashString [, callback])</p>
+
+<p>通过一个交易哈希，返回一个交易的收据。</p>
+
+<p>备注：处于<code>pending</code>状态的交易，收据是不可用的。</p>
+
+<p>参数：</p>
+
+<ul>
+<li><code>String</code> - 交易的哈希</li>
+<li><code>Function</code> - 回调函数，用于支持异步的方式执行[<sup>async]。</sup></li>
+</ul>
+
+<p>返回值：</p>
+
+<p><code>Object</code> - 交易的收据对象，如果找不到返回<code>null</code></p>
+
+<ul>
+<li><code>blockHash</code>: <code>String</code> - 32字节，这个交易所在区块的哈希。</li>
+<li><code>blockNumber</code>: <code>Number</code> - 交易所在区块的块号。</li>
+<li><code>transactionHash</code>: <code>String</code> - 32字节，交易的哈希值。</li>
+<li><code>transactionIndex</code>: <code>Number</code> - 交易在区块里面的序号，整数。</li>
+<li><code>from</code>: <code>String</code> - 20字节，交易发送者的地址。</li>
+<li><code>to</code>: <code>String</code> - 20字节，交易接收者的地址。如果是一个合约创建的交易，返回<code>null</code>。</li>
+<li><code>cumulativeGasUsed</code>: <code>Number</code> - 当前交易执行后累计花费的<code>gas</code>总值<sup id="fnref10"><a href="#fn10" rel="footnote">10</a></sup>。</li>
+<li><code>gasUsed</code>: <code>Number</code> - 执行当前这个交易单独花费的<code>gas</code>。</li>
+<li><code>contractAddress</code>: <code>String</code> - 20字节，创建的合约地址。如果是一个合约创建交易，返回合约地址，其它情况返回<code>null</code>。</li>
+<li><code>logs</code>: <code>Array</code> - 这个交易产生的日志对象数组。</li>
+</ul>
+
+<p>示例：</p>
+
+<pre><code class="language-text">var receipt = web3.eth.getTransactionReceipt(&#39;0x9fc76417374aa880d4449a1f7f31ec597f00b1f6f3dd2d66f4c9c6c445836d8b&#39;);
+console.log(receipt);
+{
+  &quot;transactionHash&quot;: &quot;0x9fc76417374aa880d4449a1f7f31ec597f00b1f6f3dd2d66f4c9c6c445836d8b&quot;,
+  &quot;transactionIndex&quot;: 0,
+  &quot;blockHash&quot;: &quot;0xef95f2f1ed3ca60b048b4bf67cde2195961e0bba6f70bcbea9a2c4e133e34b46&quot;,
+  &quot;blockNumber&quot;: 3,
+  &quot;contractAddress&quot;: &quot;0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b&quot;,
+  &quot;cumulativeGasUsed&quot;: 314159,
+  &quot;gasUsed&quot;: 30234,
+  &quot;logs&quot;: [{
+         // logs as returned by getFilterLogs, etc.
+     }, ...]
+}
+</code></pre>
+
+<h2 id="toc_44">web3.eth.getTransactionCount</h2>
+
+<p>web3.eth.getTransactionCount(addressHexString [, defaultBlock] [, callback])</p>
+
+<p>返回指定地址发起的交易数。</p>
+
+<p>参数：</p>
+
+<ul>
+<li><code>String</code> - 要获得交易数的地址。</li>
+<li><code>Number|String</code> -（可选）如果未传递参数，默认使用<code>web3.eth.defaultBlock</code>定义的块，否则使用指定区块。</li>
+<li><code>Function</code> - 回调函数，用于支持异步的方式执行[<sup>async]。</sup></li>
+</ul>
+
+<p>返回值：</p>
+
+<p><code>Number</code> - 指定地址发送的交易数量。</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">var number = web3.eth.getTransactionCount(&quot;0x407d73d8a49eeb85d32cf465507dd71d507100c1&quot;);
+console.log(number); // 1
+</code></pre>
+
+<h2 id="toc_45">web3.eth.sendTransaction</h2>
+
+<p>web3.eth.sendTransaction(transactionObject [, callback])</p>
+
+<p>发送一个交易到网络。</p>
+
+<p>参数：</p>
+
+<ul>
+<li><code>Object</code> - 要发送的交易对象。
+<ul>
+<li><code>from</code>: <code>String</code> - 指定的发送者的地址。如果不指定，使用<code>web3.eth.defaultAccount</code>。</li>
+<li><code>to</code>: <code>String</code> - （可选）交易消息的目标地址，如果是合约创建，则不填.</li>
+<li><code>value</code>: <code>Number|String|BigNumber</code> - （可选）交易携带的货币量，以<code>wei</code>为单位。如果合约创建交易，则为初始的基金。</li>
+<li><code>gas</code>: <code>Number|String|BigNumber</code> - （可选）默认是自动，交易可使用的<code>gas</code>，未使用的<code>gas</code>会退回。</li>
+<li><code>gasPrice</code>: <code>Number|String|BigNumber</code> - （可选）默认是自动确定，交易的<code>gas</code>价格，默认是网络<code>gas</code>价格的平均值 。</li>
+<li><code>data</code>: <code>String</code> - （可选）或者包含相关数据的字节字符串，如果是合约创建，则是初始化要用到的代码。</li>
+<li><code>nonce</code>: <code>Number</code> - （可选）整数，使用此值，可以允许你覆盖你自己的相同<code>nonce</code>的，正在<code>pending</code>中的交易<sup id="fnref11"><a href="#fn11" rel="footnote">11</a></sup>。</li>
+</ul></li>
+<li><code>Function</code> - 回调函数，用于支持异步的方式执行[<sup>async]。</sup></li>
+</ul>
+
+<p>返回值：</p>
+
+<p><code>String</code> - 32字节的交易哈希串。用16进制表示。</p>
+
+<p>如果交易是一个合约创建，请使用<code>web3.eth.getTransactionReceipt()</code>在交易完成后获取合约的地址。</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">// compiled solidity source code using https://chriseth.github.io/cpp-ethereum/
+var code = &quot;603d80600c6000396000f3007c01000000000000000000000000000000000000000000000000000000006000350463c6888fa18114602d57005b6007600435028060005260206000f3&quot;;
+
+web3.eth.sendTransaction({data: code}, function(err, address) {
+  if (!err)
+    console.log(address); // &quot;0x7f9fade1c0d57a7af66ab4ead7c2eb7b11a91385&quot;
+});
+</code></pre>
+
+<h2 id="toc_46">web3.eth.sendRawTransaction</h2>
+
+<p>web3.eth.sendRawTransaction(signedTransactionData [, callback])</p>
+
+<p>发送一个已经签名的交易。比如可以用下述签名的例子：<a href="javascript:window.open('https://github.com/SilentCicero/ethereumjs-accounts');">https://github.com/SilentCicero/ethereumjs-accounts</a></p>
+
+<p>参数：</p>
+
+<ul>
+<li><code>String</code> - 16进制格式的签名交易数据。</li>
+<li><code>Function</code> - 回调函数，用于支持异步的方式执行[<sup>async]。</sup></li>
+</ul>
+
+<p>返回值：</p>
+
+<p><code>String</code> - 32字节的16进制格式的交易哈希串。</p>
+
+<p>如果交易是一个合约创建，请使用<code>web3.eth.getTransactionReceipt()</code>在交易完成后获取合约的地址。</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">var Tx = require(&#39;ethereumjs-tx&#39;);
+var privateKey = new Buffer(&#39;e331b6d69882b4cb4ea581d88e0b604039a3de5967688d3dcffdd2270c0fd109&#39;, &#39;hex&#39;)
+
+var rawTx = {
+  nonce: &#39;0x00&#39;,
+  gasPrice: &#39;0x09184e72a000&#39;, 
+  gasLimit: &#39;0x2710&#39;,
+  to: &#39;0x0000000000000000000000000000000000000000&#39;, 
+  value: &#39;0x00&#39;, 
+  data: &#39;0x7f7465737432000000000000000000000000000000000000000000000000000000600057&#39;
+}
+
+var tx = new Tx(rawTx);
+tx.sign(privateKey);
+
+var serializedTx = tx.serialize();
+
+//console.log(serializedTx.toString(&#39;hex&#39;));
+//0xf889808609184e72a00082271094000000000000000000000000000000000000000080a47f74657374320000000000000000000000000000000000000000000000000000006000571ca08a8bbf888cfa37bbf0bb965423625641fc956967b81d12e23709cead01446075a01ce999b56a8a88504be365442ea61239198e23d1fce7d00fcfc5cd3b44b7215f
+
+web3.eth.sendRawTransaction(serializedTx.toString(&#39;hex&#39;), function(err, hash) {
+  if (!err)
+    console.log(hash); // &quot;0x7f9fade1c0d57a7af66ab4ead79fade1c0d57a7af66ab4ead7c2c2eb7b11a91385&quot;
+});
+</code></pre>
+
+<h2 id="toc_47">web3.eth.sign</h2>
+
+<p>web3.eth.sign(address, dataToSign, [, callback])</p>
+
+<p>使用指定帐户签名要发送的数据，帐户需要处于<code>unlocked</code>状态。</p>
+
+<p>参数：</p>
+
+<ul>
+<li><code>String</code> - 签名使用的地址</li>
+<li><code>String</code> - 要签名的数据</li>
+<li><code>Function</code> -（可选）回调函数，用于支持异步的方式执行[<sup>async]。</sup></li>
+</ul>
+
+<p>返回值：</p>
+
+<p><code>String</code> - 签名后的数据。</p>
+
+<p>返回的值对应的是<code>ECDSA（Elliptic Curve Digital Signature Algorithm）</code><sup id="fnref12"><a href="#fn12" rel="footnote">12</a></sup>签名后的字符串。</p>
+
+<pre><code class="language-text">r = signature[0:64]
+s = signature[64:128]
+v = signature[128:130]
+</code></pre>
+
+<p>需要注意的是，如果你使用<code>ecrecover</code>，这里的<code>v</code>值是<code>00</code>或<code>01</code>，所以如果你想使用他们，你需要把这里的<code>v</code>值转成整数，再加上<code>27</code>。最终你要用的值将是<code>27</code>或<code>28</code><sup id="fnref13"><a href="#fn13" rel="footnote">13</a></sup>。</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">var result = web3.eth.sign(&quot;0x135a7de83802408321b74c322f8558db1679ac20&quot;,
+    &quot;0x9dd2c369a187b4e6b9c402f030e50743e619301ea62aa4c0737d4ef7e10a3d49&quot;); // second argument is web3.sha3(&quot;xyz&quot;)
+console.log(result); // &quot;0x30755ed65396facf86c53e6217c52b4daebe72aa4941d89635409de4c9c7f9466d4e9aaec7977f05e923889b33c0d0dd27d7226b6e6f56ce737465c5cfd04be400&quot;
+</code></pre>
+
+<p>备注：如果你使用以太坊的客户端进行签名时，它们会在你要签名的数据前增加前缀<code>\x19Ethereum Signed Message:\n</code><sup id="fnref14"><a href="#fn14" rel="footnote">14</a></sup>，感谢读者<strong>@刘兵</strong>同学的反馈。</p>
+
+<blockquote>
+<p>eth_sign</p>
+
+<p>The sign method calculates an Ethereum specific signature with: sign(keccak256(&quot;\x19Ethereum Signed Message:\n&quot; + len(message) + message))).</p>
+
+<p>By adding a prefix to the message makes the calculated signature recognisable as an Ethereum specific signature. This prevents misuse where a malicious DApp can sign arbitrary data (e.g. transaction) and use the signature to impersonate the victim.</p>
+</blockquote>
+
+<h2 id="toc_48">web3.eth.call</h2>
+
+<p>web3.eth.call(callObject [, defaultBlock] [, callback])</p>
+
+<p>在节点的VM中，直接执行消息调用交易。但不会将数据合并区块链中（这样的调用不会修改状态）。</p>
+
+<p>参数：</p>
+
+<ul>
+<li><code>Object</code> - 返回一个交易对象，同<code>web3.eth.sendTransaction</code>。与<code>sendTransaction</code>的区别在于，<code>from</code>属性是可选的。</li>
+<li><code>Number|String</code> -（可选）如果不设置此值使用<code>web3.eth.defaultBlock</code>设定的块，否则使用指定的块。</li>
+<li><code>Function</code> -（可选）回调函数，用于支持异步的方式执行[<sup>async]。</sup></li>
+</ul>
+
+<p>返回值：</p>
+
+<p><code>String</code> - 函数调用返回的值。</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">var Web3 = require(&#39;web3&#39;);
+
+if (typeof web3 !== &#39;undefined&#39;) {
+  web3 = new Web3(web3.currentProvider);
+} else {
+  // set the provider you want from Web3.providers
+  web3 = new Web3(new Web3.providers.HttpProvider(&quot;http://localhost:8545&quot;));
+}
+
+var from = web3.eth.accounts[0];
+//部署合约的发布地址
+/*合约内容如下
+pragma solidity ^0.4.0;
+
+contract Calc{
+  function add(uint a, uint b) returns (uint){
+    return a + b;
+  }
+}
+*/
+var to = &quot;0xa4b813d788218df688d167102e5daff9b524a8bc&quot;;
+
+//要发送的数据
+//格式说明见： http://me.tryblockchain.org/Solidity-call-callcode-delegatecall.html
+var data = &quot;0x771602f700000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000002&quot;;
+
+var result = web3.eth.call({
+  from : from,
+  to : to,
+  data : data
+});
+
+//返回结果32字长的结果3
+console.log(result);
+</code></pre>
+
+<h2 id="toc_49">web3.eth.estimateGas</h2>
+
+<p>web3.eth.estimateGas(callObject [, callback])</p>
+
+<p>在节点的VM节点中执行一个消息调用，或交易。但是不会合入区块链中。返回使用的<code>gas</code>量。</p>
+
+<p>参数：</p>
+
+<p>同<code>web3.eth.sendTransaction</code>，所有的属性都是可选的。</p>
+
+<p>返回值：</p>
+
+<p><code>Number</code> - 模拟的<code>call/transcation</code>花费的<code>gas</code>。</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">var result = web3.eth.estimateGas({
+    to: &quot;0xc4abd0339eb8d57087278718986382264244252f&quot;, 
+    data: &quot;0xc6888fa10000000000000000000000000000000000000000000000000000000000000003&quot;
+});
+console.log(result); // &quot;0x0000000000000000000000000000000000000000000000000000000000000015&quot;
+</code></pre>
+
+<h2 id="toc_50">web3.eth.filter</h2>
+
+<p>参数：</p>
+
+<ul>
+<li><code>String|Object</code> - 字符串的可取值[latest，pending]。<code>latest</code>表示监听最新的区块变化，<code>pending</code>表示监听正在<code>pending</code>的区块。如果需要按条件对象过滤，如下：
+<ul>
+<li><code>fromBlock</code>: <code>Number|string</code> - 起始区块号（如果使用字符串<code>latest</code>，意思是最新的，正在打包的区块），默认值是<code>latest</code>。</li>
+<li><code>toBlock</code>: <code>Number|string</code> - 终止区块号（如果使用字符串<code>latest</code>，意思是最新的，正在打包的区块），默认值是<code>latest</code>。</li>
+<li><code>address</code>: <code>String</code> - 单个或多个地址。获取指定帐户的日志。</li>
+<li><code>topics</code>: <code>String[]</code> - 在日志对象中必须出现的字符串数组。顺序非常重要，如果你想忽略主题，使用<code>null</code>。如，[null,&#39;0x00...&#39;]，你还可以为每个主题传递一个单独的可选项数组，如[null,[&#39;option1&#39;,&#39;option1&#39;]]。</li>
+</ul></li>
+</ul>
+
+<p>返回值：</p>
+
+<p><code>Object</code> - 有下述方法的过滤对象。</p>
+
+<ul>
+<li><code>filter.get(callback)</code>: 返回满足过滤条件的日志。</li>
+<li><code>filter.watch(callback)</code>: 监听满足条件的状态变化，满足条件时调用回调[<sup>async]。</sup></li>
+<li><code>filter.stopWatching()</code>: 停止监听，清除节点中的过滤。你应该总是在监听完成后，执行这个操作。</li>
+</ul>
+
+<p>监听回调返回值：</p>
+
+<ul>
+<li><code>String</code> - 当使用<code>latest</code>参数时。返回最新的一个区块哈希值。</li>
+<li><code>String</code> - 当使用<code>pending</code>参数时。返回最新的<code>pending</code>中的交易哈希值。</li>
+<li><code>Object</code> - 当使用手工过滤选项时，将返回下述的日志对象。
+<ul>
+<li><code>logIndex</code>: <code>Number</code> - 日志在区块中的序号。如果是<code>pending</code>的日志，则为<code>null</code>。</li>
+<li><code>transactionIndex</code>: <code>Number</code> - 产生日志的交易在区块中的序号。如果是<code>pending</code>的日志，则为<code>null</code>。</li>
+<li><code>transactionHash</code>: <code>String</code>，32字节 - 产生日志的交易哈希值。</li>
+<li><code>blockHash</code>: <code>String</code>，32字节 - 日志所在块的哈希。如果是<code>pending</code>的日志，则为<code>null</code>。</li>
+<li><code>blockNumber</code>: <code>Number</code> - 日志所在块的块号。如果是<code>pending</code>的日志，则为<code>null</code>。</li>
+<li><code>address</code>: <code>String</code>，32字节 - 日志产生的合约地址。</li>
+<li><code>data</code>: <code>string</code> - 包含日志一个或多个32字节的非索引的参数。</li>
+<li><code>topics</code>: <code>String[]</code> - 一到四个32字节的索引的日志参数数组。（在Solidity中，第一个主题是整个事件的签名（如，<code>Deposit(address,bytes32,uint256)</code>），但如果使用匿名的方式定义事件的情况除外）</li>
+</ul></li>
+</ul>
+
+<p>事件监听器的返回结果，见后<code>合约对象的事件</code>。</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">var filter = web3.eth.filter(&#39;pending&#39;);
+
+filter.watch(function (error, log) {
+  console.log(log); //  {&quot;address&quot;:&quot;0x0000000000000000000000000000000000000000&quot;, &quot;data&quot;:&quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;, ...}
+});
+
+// get all past logs again.
+var myResults = filter.get(function(error, logs){ ... });
+
+...
+
+// stops and uninstalls the filter
+filter.stopWatching();
+</code></pre>
+
+<h2 id="toc_51">web3.eth.contract</h2>
+
+<p>web3.eth.contract(abiArray)</p>
+
+<p>创建一个Solidity的合约对象，用来在某个地址上初始化合约。</p>
+
+<p>参数：</p>
+
+<ul>
+<li><code>Array</code> - 一到多个描述合约的函数，事件的ABI对象。</li>
+</ul>
+
+<p>返回值：</p>
+
+<p><code>Object</code> - 一个合约对象。</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">var MyContract = web3.eth.contract(abiArray);
+
+// instantiate by address
+var contractInstance = MyContract.at([address]);
+
+// deploy new contract
+var contractInstance = MyContract.new([contructorParam1] [, contructorParam2], {data: &#39;0x12345...&#39;, from: myAccount, gas: 1000000});
+
+// Get the data to deploy the contract manually
+var contractData = MyContract.new.getData([contructorParam1] [, contructorParam2], {data: &#39;0x12345...&#39;});
+// contractData = &#39;0x12345643213456000000000023434234&#39;
+</code></pre>
+
+<p>你可以或者使用一个在某个地址上已经存在的合约，或者使用编译后的字节码部署一个全新的的合约。</p>
+
+<pre><code class="language-text">// Instantiate from an existing address:
+var myContractInstance = MyContract.at(myContractAddress);
+
+
+// Or deploy a new contract:
+
+// Deploy the contract asyncronous from Solidity file:
+...
+const fs = require(&quot;fs&quot;);
+const solc = require(&#39;solc&#39;)
+
+let source = fs.readFileSync(&#39;nameContract.sol&#39;, &#39;utf8&#39;);
+let compiledContract = solc.compile(source, 1);
+let abi = compiledContract.contracts[&#39;nameContract&#39;].interface;
+let bytecode = compiledContract.contracts[&#39;nameContract&#39;].bytecode;
+let gasEstimate = web3.eth.estimateGas({data: bytecode});
+let MyContract = web3.eth.contract(JSON.parse(abi));
+
+var myContractReturned = MyContract.new(param1, param2, {
+   from:mySenderAddress,
+   data:bytecode,
+   gas:gasEstimate}, function(err, myContract){
+    if(!err) {
+       // NOTE: The callback will fire twice!
+       // Once the contract has the transactionHash property set and once its deployed on an address.
+
+       // e.g. check tx hash on the first call (transaction send)
+       if(!myContract.address) {
+           console.log(myContract.transactionHash) // The hash of the transaction, which deploys the contract
+       
+       // check address on the second call (contract deployed)
+       } else {
+           console.log(myContract.address) // the contract address
+       }
+
+       // Note that the returned &quot;myContractReturned&quot; === &quot;myContract&quot;,
+       // so the returned &quot;myContractReturned&quot; object will also get the address set.
+    }
+  });
+
+// Deploy contract syncronous: The address will be added as soon as the contract is mined.
+// Additionally you can watch the transaction by using the &quot;transactionHash&quot; property
+var myContractInstance = MyContract.new(param1, param2, {data: myContractCode, gas: 300000, from: mySenderAddress});
+myContractInstance.transactionHash // The hash of the transaction, which created the contract
+myContractInstance.address // undefined at start, but will be auto-filled later
+</code></pre>
+
+<p>示例：</p>
+
+<pre><code class="language-text">// contract abi
+var abi = [{
+     name: &#39;myConstantMethod&#39;,
+     type: &#39;function&#39;,
+     constant: true,
+     inputs: [{ name: &#39;a&#39;, type: &#39;string&#39; }],
+     outputs: [{name: &#39;d&#39;, type: &#39;string&#39; }]
+}, {
+     name: &#39;myStateChangingMethod&#39;,
+     type: &#39;function&#39;,
+     constant: false,
+     inputs: [{ name: &#39;a&#39;, type: &#39;string&#39; }, { name: &#39;b&#39;, type: &#39;int&#39; }],
+     outputs: []
+}, {
+     name: &#39;myEvent&#39;,
+     type: &#39;event&#39;,
+     inputs: [{name: &#39;a&#39;, type: &#39;int&#39;, indexed: true},{name: &#39;b&#39;, type: &#39;bool&#39;, indexed: false}]
+}];
+
+// creation of contract object
+var MyContract = web3.eth.contract(abi);
+
+// initiate contract for an address
+var myContractInstance = MyContract.at(&#39;0xc4abd0339eb8d57087278718986382264244252f&#39;);
+
+// call constant function
+var result = myContractInstance.myConstantMethod(&#39;myParam&#39;);
+console.log(result) // &#39;0x25434534534&#39;
+
+// send a transaction to a function
+myContractInstance.myStateChangingMethod(&#39;someParam1&#39;, 23, {value: 200, gas: 2000});
+
+// short hand style
+web3.eth.contract(abi).at(address).myAwesomeMethod(...);
+
+// create filter
+var filter = myContractInstance.myEvent({a: 5}, function (error, result) {
+  if (!error)
+    console.log(result);
+    /*
+    {
+        address: &#39;0x8718986382264244252fc4abd0339eb8d5708727&#39;,
+        topics: &quot;0x12345678901234567890123456789012&quot;, &quot;0x0000000000000000000000000000000000000000000000000000000000000005&quot;,
+        data: &quot;0x0000000000000000000000000000000000000000000000000000000000000001&quot;,
+        ...
+    }
+    */
+});
+</code></pre>
+
+<h3 id="toc_52">合约对象的方法</h3>
+
+<pre><code class="language-text">// Automatically determines the use of call or sendTransaction based on the method type
+myContractInstance.myMethod(param1 [, param2, ...] [, transactionObject] [, defaultBlock] [, callback]);
+
+// Explicitly calling this method
+myContractInstance.myMethod.call(param1 [, param2, ...] [, transactionObject] [, defaultBlock] [, callback]);
+
+// Explicitly sending a transaction to this method
+myContractInstance.myMethod.sendTransaction(param1 [, param2, ...] [, transactionObject] [, callback]);
+
+// Get the call data, so you can call the contract through some other means
+var myCallData = myContractInstance.myMethod.getData(param1 [, param2, ...]);
+// myCallData = &#39;0x45ff3ff6000000000004545345345345..&#39;
+</code></pre>
+
+<p>合约对象内封装了使用合约的相关方法。可以通过传入参数，和交易对象来使用方法。</p>
+
+<p>参数：</p>
+
+<ul>
+<li><code>String|Number</code> - （可选）零或多个函数参数。如果传入一个字符串，需要使用十六进制编码，如，<code>0xdedbeef</code>。</li>
+<li><code>Object</code> - （可选）最后一个参数（如果传了<code>callback</code>，则是倒数第二个参数），可以是一个交易对象。查看<code>web3.eth.sendTransaction</code>的第一个参数说明来了解更多。注意，这里不需要填<code>data</code>和<code>to</code>属性。</li>
+<li><code>Number|String</code> -（可选）如果不设置此值使用<code>web3.eth.defaultBlock</code>设定的块，否则使用指定的块。</li>
+<li><code>Function</code> -（可选）回调函数，用于支持异步的方式执行[<sup>async]。</sup></li>
+</ul>
+
+<p>返回值：</p>
+
+<p><code>String</code> - 如果发起的是一个<code>call</code>，对应的是返回结果。如果是<code>transaction</code>，则要么是一个创建的合约地址，或者是一个<code>transaction</code>的哈希值。查看<code>web3.eth.sendTransaction</code>了解更多。</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">// creation of contract object
+var MyContract = web3.eth.contract(abi);
+
+// initiate contract for an address
+var myContractInstance = MyContract.at(&#39;0x78e97bcc5b5dd9ed228fed7a4887c0d7287344a9&#39;);
+
+var result = myContractInstance.myConstantMethod(&#39;myParam&#39;);
+console.log(result) // &#39;0x25434534534&#39;
+
+myContractInstance.myStateChangingMethod(&#39;someParam1&#39;, 23, {value: 200, gas: 2000}, function(err, result){ ... });
+</code></pre>
+
+<h3 id="toc_53">合约对象的事件</h3>
+
+<p>你可以像<code>web3.eth.filter</code>这样使用事件，他们有相同的方法，但需要传递不同的对象来创建事件过滤器。</p>
+
+<p>参数：</p>
+
+<ul>
+<li><code>Object</code> - 你想返回的索引值（过滤哪些日志）。如，<code>{&#39;valueA&#39;: 1, &#39;valueB&#39;: [myFirstAddress, mySecondAddress]}</code>。默认情况下，所以有过滤项被设置为<code>null</code>。意味着默认匹配的是合约所有的日志。</li>
+<li><code>Object</code> - 附加的过滤选项。参见<code>web3.eth.filter</code>的第一个参数。默认情况下，这个对象会设置<code>address</code>为当前合约地址，同时第一个主题为事件的签名。</li>
+<li><code>Function</code> -（可选）传入一个回调函数，将立即开始监听，这样就不用主动调用<code>myEvent.watch(function(){})</code>[<sup>async]。</sup></li>
+</ul>
+
+<p>回调返回值：</p>
+
+<p><code>Object</code> - 事件对象，如下：</p>
+
+<ul>
+<li><code>address</code>: <code>String，32字节</code> - 日志产生的合约地址。</li>
+<li><code>args</code>: <code>Object</code> - 事件的参数。</li>
+<li><code>blockHash</code>: <code>String，32字节</code> - 日志所在块的哈希。如果是<code>pending</code>的日志，则为<code>null</code>。</li>
+<li><code>blockNumber</code>: <code>Number</code> - 日志所在块的块号。如果是<code>pending</code>的日志，则为<code>null</code>。</li>
+<li><code>logIndex</code>: <code>Number</code> - 日志在区块中的序号。如果是<code>pending</code>的日志，则为<code>null</code>。</li>
+<li><code>event</code>: <code>String</code> - 事件名称。</li>
+<li><code>removed</code>: <code>bool</code> - 标识产生事件的这个交易是否被移除（因为孤块），或从未生效（被拒绝的交易）。</li>
+<li><code>transactionIndex</code>: <code>Number</code> - 产生日志的交易在区块中的序号。如果是<code>pending</code>的日志，则为<code>null</code>。</li>
+<li><code>transactionHash</code>: <code>String，32字节</code> - 产生日志的交易哈希值。</li>
+</ul>
+
+<p>示例：</p>
+
+<pre><code class="language-text">var MyContract = web3.eth.contract(abi);
+var myContractInstance = MyContract.at(&#39;0x78e97bcc5b5dd9ed228fed7a4887c0d7287344a9&#39;);
+
+// watch for an event with {some: &#39;args&#39;}
+var myEvent = myContractInstance.MyEvent({some: &#39;args&#39;}, {fromBlock: 0, toBlock: &#39;latest&#39;});
+myEvent.watch(function(error, result){
+   ...
+});
+
+// would get all past logs again.
+var myResults = myEvent.get(function(error, logs){ ... });
+
+...
+
+// would stop and uninstall the filter
+myEvent.stopWatching();
+</code></pre>
+
+<h3 id="toc_54">合约 allEvents</h3>
+
+<pre><code class="language-text">var events = myContractInstance.allEvents([additionalFilterObject]);
+
+// watch for changes
+events.watch(function(error, event){
+  if (!error)
+    console.log(event);
+});
+
+// Or pass a callback to start watching immediately
+var events = myContractInstance.allEvents([additionalFilterObject,] function(error, log){
+  if (!error)
+    console.log(log);
+});
+</code></pre>
+
+<p>调用合约创建的所有事件的回调。</p>
+
+<p>参数：</p>
+
+<ul>
+<li><code>Object</code> - 附加的过滤选项。参见<code>web3.eth.filter</code>的第一个参数。默认情况下，这个对象会设置<code>address</code>为当前合约地址，同时第一个主题为事件的签名。</li>
+<li><code>Function</code> -（可选）传入一个回调函数，将立即开始监听，这样就不用主动调用<code>myEvent.watch(function(){})</code>[<sup>async]。</sup></li>
+</ul>
+
+<p>回调返回值：</p>
+
+<p><code>Object</code> - 详见<code>合约对象的事件</code>了解更多。</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">var MyContract = web3.eth.contract(abi);
+var myContractInstance = MyContract.at(&#39;0x78e97bcc5b5dd9ed228fed7a4887c0d7287344a9&#39;);
+
+// watch for an event with {some: &#39;args&#39;}
+var events = myContractInstance.allEvents({fromBlock: 0, toBlock: &#39;latest&#39;});
+events.watch(function(error, result){
+   ...
+});
+
+// would get all past logs again.
+events.get(function(error, logs){ ... });
+
+...
+
+// would stop and uninstall the filter
+myEvent.stopWatching();
+</code></pre>
+
+<h2 id="toc_55">web3.eth.getCompilers</h2>
+
+<p>web3.eth.getCompilers([callback])</p>
+
+<p>返回可用的编译器。</p>
+
+<p>参数值：</p>
+
+<ul>
+<li><code>Function</code> -（可选）回调函数，用于支持异步的方式执行[<sup>async]。</sup></li>
+</ul>
+
+<p>返回值：</p>
+
+<p><code>Array</code> - 返回一个字符串数组，可用的编译器。</p>
+
+<h2 id="toc_56">web3.eth.compile.solidity</h2>
+
+<p>web3.eth.compile.solidity(sourceString [, callback])</p>
+
+<p>编译Solidity源代码。</p>
+
+<p>参数：</p>
+
+<ul>
+<li><code>String</code> - Solidity源代码。</li>
+<li><code>Function</code> -（可选）回调函数，用于支持异步的方式执行[<sup>async]。</sup></li>
+</ul>
+
+<p>返回值：</p>
+
+<p><code>Object</code> - 合约和编译信息。</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">var source = &quot;&quot; + 
+    &quot;contract test {\n&quot; +
+    &quot;   function multiply(uint a) returns(uint d) {\n&quot; +
+    &quot;       return a * 7;\n&quot; +
+    &quot;   }\n&quot; +
+    &quot;}\n&quot;;
+var compiled = web3.eth.compile.solidity(source);
+console.log(compiled); 
+// {
+  &quot;test&quot;: {
+    &quot;code&quot;: &quot;0x605280600c6000396000f3006000357c010000000000000000000000000000000000000000000000000000000090048063c6888fa114602e57005b60376004356041565b8060005260206000f35b6000600782029050604d565b91905056&quot;,
+    &quot;info&quot;: {
+      &quot;source&quot;: &quot;contract test {\n\tfunction multiply(uint a) returns(uint d) {\n\t\treturn a * 7;\n\t}\n}\n&quot;,
+      &quot;language&quot;: &quot;Solidity&quot;,
+      &quot;languageVersion&quot;: &quot;0&quot;,
+      &quot;compilerVersion&quot;: &quot;0.8.2&quot;,
+      &quot;abiDefinition&quot;: [
+        {
+          &quot;constant&quot;: false,
+          &quot;inputs&quot;: [
+            {
+              &quot;name&quot;: &quot;a&quot;,
+              &quot;type&quot;: &quot;uint256&quot;
+            }
+          ],
+          &quot;name&quot;: &quot;multiply&quot;,
+          &quot;outputs&quot;: [
+            {
+              &quot;name&quot;: &quot;d&quot;,
+              &quot;type&quot;: &quot;uint256&quot;
+            }
+          ],
+          &quot;type&quot;: &quot;function&quot;
+        }
+      ],
+      &quot;userDoc&quot;: {
+        &quot;methods&quot;: {}
+      },
+      &quot;developerDoc&quot;: {
+        &quot;methods&quot;: {}
+      }
+    }
+  }
+}
+</code></pre>
+
+<h2 id="toc_57">web3.eth.compile.lll</h2>
+
+<p>web3. eth.compile.lll(sourceString [, callback])</p>
+
+<p>编译LLL源代码。</p>
+
+<p>参数：</p>
+
+<ul>
+<li><code>String</code> - LLL源代码。</li>
+<li><code>Function</code> -（可选）回调函数，用于支持异步的方式执行[<sup>async]。</sup></li>
+</ul>
+
+<p>返回值：</p>
+
+<p><code>String</code> - 十六进制格式编译后的LLL编码。</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">var source = &quot;...&quot;;
+
+var code = web3.eth.compile.lll(source);
+console.log(code); // &quot;0x603880600c6000396000f3006001600060e060020a600035048063c6888fa114601857005b6021600435602b565b8060005260206000f35b600081600702905091905056&quot;
+</code></pre>
+
+<h2 id="toc_58">web3.eth.compile.serpent</h2>
+
+<p>web3.eth.compile.serpent(sourceString [, callback])</p>
+
+<p>编译serpent源代码。</p>
+
+<p>参数：</p>
+
+<ul>
+<li><code>String</code> - serpent源代码。</li>
+<li><code>Function</code> -（可选）回调函数，用于支持异步的方式执行[<sup>async]。</sup></li>
+</ul>
+
+<p>返回值：</p>
+
+<p><code>String</code> - 十六进制格式的编译后的serpent编码。</p>
+
+<h2 id="toc_59">web3.eth.namereg</h2>
+
+<p>web3.eth.namereg</p>
+
+<p>返回一个全球注意的对象。</p>
+
+<p>使用方式：</p>
+
+<p>查看这里的例子：<a href="javascript:window.open('https://github.com/ethereum/web3.js/blob/master/example/namereg.html');">https://github.com/ethereum/web3.js/blob/master/example/namereg.html</a></p>
+
+<h1 id="toc_60">web3.db</h1>
+
+<h2 id="toc_61">web3.db.putString</h2>
+
+<p>web3.db.putString(db, key, value)</p>
+
+<p>这个方法应当在我们打算以一个本地数据库的级别存储一个字符串时使用。</p>
+
+<p>参数：</p>
+
+<ul>
+<li><code>String</code> - 存储使用的数据库。</li>
+<li><code>String</code> - 存储的键。</li>
+<li><code>String</code> - 存储的值。</li>
+</ul>
+
+<p>返回值：</p>
+
+<p><code>Boolean</code> - <code>true</code>表示成功，否则返回<code>false</code>。</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">web3.db.putString(&#39;testDB&#39;, &#39;key&#39;, &#39;myString&#39;) // true
+</code></pre>
+
+<h2 id="toc_62">web3.db.getString</h2>
+
+<p>web3.db.getString(db, key)</p>
+
+<p>从本地的leveldb数据库中返回一个字符串。</p>
+
+<p>参数：</p>
+
+<ul>
+<li><code>String</code> - 存储使用的数据库。</li>
+<li><code>String</code> - 存储的键。</li>
+</ul>
+
+<p>返回值：</p>
+
+<p><code>String</code> - 存储的值。</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">var value = web3.db.getString(&#39;testDB&#39;, &#39;key&#39;);
+console.log(value); // &quot;myString&quot;
+</code></pre>
+
+<h2 id="toc_63">web3.db.putHex</h2>
+
+<p>web3.db.putHex(db, key, value)</p>
+
+<p>在本地的leveldb中存储二进制数据。</p>
+
+<p>参数：</p>
+
+<ul>
+<li><code>String</code> - 存储使用的数据库。</li>
+<li><code>String</code> - 存储的键。</li>
+<li><code>String</code> - 十六进制格式的二进制。</li>
+</ul>
+
+<p>返回值：</p>
+
+<p><code>Boolean</code> - 成功返回<code>true</code>，失败返回<code>false</code>。</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">web3.db.putHex(&#39;testDB&#39;, &#39;key&#39;, &#39;0x4f554b443&#39;); // true
+</code></pre>
+
+<h2 id="toc_64">web3.db.getHex</h2>
+
+<p>web3.db.getHex(db, key)</p>
+
+<p>返回本地的leveldb中的二进制数据。</p>
+
+<p>参数：</p>
+
+<ul>
+<li><code>String</code> - 存储使用的数据库。</li>
+<li><code>String</code> - 存储的键。</li>
+</ul>
+
+<p>返回值：</p>
+
+<p><code>String</code> - 存储的十六进制值。</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">var value = web3.db.getHex(&#39;testDB&#39;, &#39;key&#39;);
+console.log(value); // &quot;0x4f554b443&quot;
+</code></pre>
+
+<div class="footnotes">
+<hr>
+<ol>
+
+<li id="fn1">
+<p><a href="javascript:window.open('https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify');">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify</a>&nbsp;<a href="#fnref1" rev="footnote">&#8617;</a></p>
+</li>
+
+<li id="fn2">
+<p>Big Number 文档链接： <a href="javascript:window.open('https://github.com/MikeMcl/bignumber.js');">https://github.com/MikeMcl/bignumber.js</a>&nbsp;<a href="#fnref2" rev="footnote">&#8617;</a></p>
+</li>
+
+<li id="fn3">
+<p>ASCII码表 <a href="javascript:window.open('http://baike.baidu.com/link?url=fz4Ytl_tjpUhsPbUb4fa3hyXHKJDMcRB5M3K1p0VStnminbvLX4-UmwPCovk1pZUOIemosGv2hRT-r0flGMtEGk3ON8sQctG4-KU67G3fBiOJX6r1CHoKTi-K6BlEEa6egHulQju1p1n1ce1axyeBK');">http://baike.baidu.com/link?url=fz4Ytl_tjpUhsPbUb4fa3hyXHKJDMcRB5M3K1p0VStnminbvLX4-UmwPCovk1pZUOIemosGv2hRT-r0flGMtEGk3ON8sQctG4-KU67G3fBiOJX6r1CHoKTi-K6BlEEa6egHulQju1p1n1ce1axyeBK</a>&nbsp;<a href="#fnref3" rev="footnote">&#8617;</a></p>
+</li>
+
+<li id="fn4">
+<p>工作正在进行中？ <a href="javascript:window.open('https://github.com/ethereum/web3.js/pull/375');">https://github.com/ethereum/web3.js/pull/375</a>&nbsp;<a href="#fnref4" rev="footnote">&#8617;</a></p>
+</li>
+
+<li id="fn5">
+<p><a href="ethereum-web3.js-入门说明.html">Web3 Javascript Ðapp API</a>&nbsp;<a href="#fnref5" rev="footnote">&#8617;</a></p>
+</li>
+
+<li id="fn6">
+<p><a href="javascript:window.open('http://baike.baidu.com/link?url=9QLxfeXVf7pRpSTSugt2I9ylZA9_vh3sbqs8S8J-dVaZJg9AeADF4P0HlwyOjHOsENJKQS8z7cb0YFSDVMmsYf-xgtODmMXdQNovqRqE2B7');">http://baike.baidu.com/link?url=9QLxfeXVf7pRpSTSugt2I9ylZA9_vh3sbqs8S8J-dVaZJg9AeADF4P0HlwyOjHOsENJKQS8z7cb0YFSDVMmsYf-xgtODmMXdQNovqRqE2B7</a>&nbsp;<a href="#fnref6" rev="footnote">&#8617;</a></p>
+</li>
+
+<li id="fn7">
+<p>参见<a href="ethereum-web3.js-入门说明.html">Web3.js API 基本</a>中的<code>使用callback</code>的章节。&nbsp;<a href="#fnref7" rev="footnote">&#8617;</a></p>
+</li>
+
+<li id="fn8">
+<p>关于<code>getStroageAt</code>的说明来源： <a href="javascript:window.open('http://ethereum.stackexchange.com/questions/5865/how-does-web3-eth-getstorageat-work');">http://ethereum.stackexchange.com/questions/5865/how-does-web3-eth-getstorageat-work</a>&nbsp;<a href="#fnref8" rev="footnote">&#8617;</a></p>
+</li>
+
+<li id="fn9">
+<p><a href="javascript:window.open('https://zh.wikipedia.org/wiki/布隆过滤器');">https://zh.wikipedia.org/wiki/布隆过滤器</a>&nbsp;<a href="#fnref9" rev="footnote">&#8617;</a></p>
+</li>
+
+<li id="fn10">
+<p><a href="javascript:window.open('http://ethereum.stackexchange.com/questions/3346/what-is-and-how-to-calculate-cumulative-gas-use[^cumulative]');">http://ethereum.stackexchange.com/questions/3346/what-is-and-how-to-calculate-cumulative-gas-use[^cumulative]</a>: <a href="javascript:window.open('http://ethereum.stackexchange.com/questions/3346/what-is-and-how-to-calculate-cumulative-gas-used');">http://ethereum.stackexchange.com/questions/3346/what-is-and-how-to-calculate-cumulative-gas-used</a>&nbsp;<a href="#fnref10" rev="footnote">&#8617;</a></p>
+</li>
+
+<li id="fn11">
+<p><a href="javascript:window.open('http://zeltsinger.com/2016/11/07/neat-ethereum-tricks-the-transaction-nonce/');">http://zeltsinger.com/2016/11/07/neat-ethereum-tricks-the-transaction-nonce/</a>&nbsp;<a href="#fnref11" rev="footnote">&#8617;</a></p>
+</li>
+
+<li id="fn12">
+<p><a href="javascript:window.open('https://zh.wikipedia.org/wiki/椭圆曲线密码学');">https://zh.wikipedia.org/wiki/椭圆曲线密码学</a>&nbsp;<a href="#fnref12" rev="footnote">&#8617;</a></p>
+</li>
+
+<li id="fn13">
+<p>这里整理了一个文章，使用web3.js加密，再使用Solidity的ecrecover校验签名的完整过程。 <a href="web3js-sign-ecrecover-decode.html">http://me.tryblockchain.org/web3js-sign-ecrecover-decode.html</a>&nbsp;<a href="#fnref13" rev="footnote">&#8617;</a></p>
+</li>
+
+<li id="fn14">
+<p><a href="javascript:window.open('https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_sign');">https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_sign</a>&nbsp;<a href="#fnref14" rev="footnote">&#8617;</a></p>
+</li>
+
+</ol>
+</div>
+
+	
+	
+    <!-- newly added2018 
+    <h2>感谢您的支持</h2>
+    <p><img src="http://me.tryblockchain.org/media/14873893253965/wechat-zan.jpg" alt="zan-code"/></p>   
+    -->
+    <blockquote>
+    <p>处于某些特定的环境下，可以看到评论框，欢迎留言交流^_^。</p>
+    </blockquote>
+    <!-- 去掉赞码，增加广告 20190914 中秋节-->
+</div>
+
+<br><br>
+<hr>
+
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="ethereum-web3.js-入门说明.html" title="Previous Post: Web3.js API 基本">&laquo; Web3.js API 基本</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	        <a href="web3-js-in-action.html" title="Next Post: web3.js编译Solidity，发布，调用全部流程（手把手教程）">web3.js编译Solidity，发布，调用全部流程（手把手教程） &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
+
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
+<script id="dsq-count-scr" src="https://tryblockchain-org.disqus.com/count.js" async=""></script>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://tryblockchain-org.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="javascript:window.open('https://disqus.com/?ref_noscript');">comments powered by Disqus.</a></noscript>
+                            
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = 'Web3.js-api-refrence.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
+</div></div>
+
+
+<div class="page-bottom">
+  <div class="row">
+  <hr>
+  <div class="small-9 columns">
+  <p class="copyright">Copyright &copy; 2016-2019 tryblockchain.org. All rights reserved. 
+  &nbsp; 交流微信：TryBlockchain
+</p>
+  </div>
+  <div class="small-3 columns">
+  <p class="copyright text-right"><a href="#header">TOP</a></p>
+  </div>
+   
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+    
+    
+    <script src="static/js/foundation.min.js"></script>
+    <script src="static/js/foundation.offcanvas.js"></script>
+    <script>
+      $(document).foundation();
+
+     
+    </script>
+    
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?86cdacc9141147c9022f0801e48f2034";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89122146-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>

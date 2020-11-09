@@ -1,0 +1,622 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+    
+  区块链语言Solidity校验椭圆曲线加密数字签名（附实例） - 区块链技术博客
+  
+  </title>
+  
+  
+  
+    <link rel="stylesheet" href="static/css/foundation.min.css">
+    <link rel="stylesheet" href="static/css/docs1.css">
+    <script src="static/js/modernizr.js"></script>
+    <script src="static/js/jquery.js"></script>
+  <script src="static/js/highlight.pack.js"></script>
+  <link href="static/css/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <!-- 增加google ad -->
+  <script async="" src="static/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-6188337887319489",
+      enable_page_level_ads: true
+    });
+  </script>
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:me.tryblockchain.org ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas="">
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar="">
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index1.html" style="font-size: 18px">主页</a></li>
+        
+        <li id=""><a target="_self" href="index2.html" style="font-size: 18px">Solidity文档</a></li>
+        
+        <li id=""><a target="_self" href="index.html" style="font-size: 18px">Web3.js文档</a></li>
+        
+        <li id=""><a target="_self" href="index3.html" style="font-size: 18px">Truffle文档</a></li>
+        
+        <li id=""><a target="_self" href="index4.html" style="font-size: 18px">Open Zeppelin</a></li>
+        
+        <li id=""><a target="_self" href="aboutme.html" style="font-size: 18px">关于本站</a></li>
+        
+        <li id=""><a target="_self" href="archives.html" style="font-size: 18px">归档</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="">
+    <input tabindex="1" type="search" id="search_input" placeholder="Search">
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; 区块链技术博客</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+         <li><a href="index1.html">主页</a></li>
+        
+         <li><a href="index2.html">Solidity文档</a></li>
+        
+         <li><a href="index.html">Web3.js文档</a></li>
+        
+         <li><a href="index3.html">Truffle文档</a></li>
+        
+         <li><a href="index4.html">Open Zeppelin</a></li>
+        
+         <li><a href="aboutme.html">关于本站</a></li>
+        
+         <li><a href="archives.html">归档</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="Solidity深入浅出系列.html">Solidity深入浅出系列</a></li>
+        
+            <li><a href="文档翻译.html">文档翻译</a></li>
+        
+            <li><a href="其它.html">其它</a></li>
+        
+            <li><a href="Solidity入门系列.html">Solidity入门系列</a></li>
+        
+            <li><a href="热点.html">热点</a></li>
+        
+            <li><a href="项目.html">项目</a></li>
+        
+            <li><a href="whitepaper.html">whitepaper</a></li>
+        
+            <li><a href="热点深度.html">热点深度</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="javascript:window.open('http://me.tryblockchain.org/web3js-sign-ecrecover-decode.html#');"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>区块链语言Solidity校验椭圆曲线加密数字签名（附实例）</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2017/3/25</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='Solidity入门系列.html'>Solidity入门系列</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <p>我们知道整个比特币，以太坊的基石就是椭圆曲线加密算法。所有的数据均需要发起者通过私匙签发，其它人通过非对称的公匙验证确实消息的真实性。下面我们就一起来了解一下椭圆曲线加密算法，并使用以太坊提供的工具对要发送的数据进行数字签名，以及使用Solidity区块链编程语言的<code>ecrecover()</code>校验数字签名的合法性。</p>
+
+<h2 id="toc_0">椭圆曲线DSA(ECDSA)简介</h2>
+
+<p>假如Alice要对消息m加上数字签名，而Bob需要验证该签名。</p>
+
+<span id="more"></span><!-- more -->
+
+<h3 id="toc_1">生成数字签名</h3>
+
+<ol>
+<li>Alice根据随机数r和基点G求出点rG = (x, y)；</li>
+<li><p>Alicce根据随机数r、消息m的散列值h、和私匙a计算</p>
+<p>\( s = \dfrac{h + ax}{r}\)</p></li>
+<li><p>最后，Alice将消息m、点rG = (x, y)和s发送给Bob，其中点rG和s就是数字签名。</p></li>
+</ol>
+
+<h3 id="toc_2">验证数字签名</h3>
+
+<ol>
+<li>Bob接收到消息m、点rG = (x, y)和s。</li>
+<li>Bob根据消息求出散列值h。</li>
+<li>最后，Bob根据上述信息，用Alice的公匙进行以下计算。</li>
+</ol>
+
+<p>\[  \dfrac{h}{s}G + \dfrac{x}{s}(aG) \]</p>
+
+<p>最后让上述计算结果与rG进行比较看是否相等。</p>
+
+<p>如果签名结果正确，则计算结果应如下所示。</p>
+
+<p>\[ \dfrac{h}{s}G + \dfrac{x}{s}aG = \dfrac{(h + ax)}{s}G \]</p>
+
+<p>\[ = \dfrac{r(h + ax)}{h + ax}G \]<br>
+\[ = rG \]</p>
+
+<p>原书<sup id="fnref1"><a href="javascript:window.open('http://me.tryblockchain.org/web3js-sign-ecrecover-decode.html#fn1');" rel="footnote">1</a></sup>中关于这部分看了三四遍，也没看明白。但觉得做程序的明白他大概要干个什么就好。大体上来说，对于要签名的数据m，使用它的哈希后的结果h，会生成签名。签名结果分为r，s，v三段值。其中r，s为32字节。v为一个字节，如果要用<code>ecrecover()</code>算法来验签，需对v值加27来组成27，28这两个值中的一个<sup id="fnref2"><a href="javascript:window.open('http://me.tryblockchain.org/web3js-sign-ecrecover-decode.html#fn2');" rel="footnote">2</a></sup>。</p>
+
+<h1 id="toc_3">实践</h1>
+
+<h2 id="toc_4">使用web3.js进行数据签名</h2>
+
+<p>以太坊提供了<code>web3.eth.sign</code>方法来对数据生成数字签名。</p>
+
+<pre><code class="language-text">//初始化基本对象
+var Web3 = require(&#39;web3&#39;);
+var web3 = new Web3(new Web3.providers.HttpProvider(&quot;http://localhost:8545&quot;));
+
+var account = web3.eth.accounts[0];
+var sha3Msg = web3.sha3(&quot;abc&quot;);
+var signedData = web3.eth.sign(account, sha3Msg);
+
+console.log(&quot;account: &quot; + account);
+console.log(&quot;sha3(message): &quot; + sha3Msg);
+console.log(&quot;Signed data: &quot; + signedData);
+
+</code></pre>
+
+<p>在上面的代码中，我们先将要签名的数据<code>abc</code>生成哈希串，使用<code>web3.sha3(&quot;abc&quot;)</code>。接着我们使用当前连接节点的第一个默认帐户进行签名。</p>
+
+<p>由于我使用的是<code>EtherumJS TestRPC</code>，它默认打开了帐户。否则，你还需要<code>web3.personal.unlockAccount(&quot;0x..&quot;, &quot;&lt;passs&gt;&quot;, 1000)</code><sup id="fnref3"><a href="javascript:window.open('http://me.tryblockchain.org/web3js-sign-ecrecover-decode.html#fn3');" rel="footnote">3</a></sup>来打开数据签名所使用帐户。需要注意的是，当你打开你的帐户时，可能有安全风险。因为其它程序也可以通过访问节点进行类似的sign，这意味着，他们可以伪造你的数据<sup id="fnref4"><a href="javascript:window.open('http://me.tryblockchain.org/web3js-sign-ecrecover-decode.html#fn4');" rel="footnote">4</a></sup>，包括以你的名义发起交易，转走你的钱。</p>
+
+<p>运行的结果：</p>
+
+<pre><code class="language-text">$ node test.js
+account: 0x60320b8a71bc314404ef7d194ad8cac0bee1e331
+sha3(message): 0x4e03657aea45a94fc7d47ba826c8d667c0d1e6e33a64a036ec44f58fa12d6c45
+Signed data: 0xf4128988cbe7df8315440adde412a8955f7f5ff9a5468a791433727f82717a6753bd71882079522207060b681fbd3f5623ee7ed66e33fc8e581f442acbcf6ab800
+</code></pre>
+
+<h3 id="toc_5">以太坊客户端</h3>
+
+<p>如果你使用以太坊的客户端进行签名时，它们会在你要签名的数据前增加前缀<code>\x19Ethereum Signed Message:\n</code><sup id="fnref5"><a href="javascript:window.open('http://me.tryblockchain.org/web3js-sign-ecrecover-decode.html#fn5');" rel="footnote">5</a></sup>，感谢读者<strong>@刘兵</strong>同学的反馈。</p>
+
+<blockquote>
+<p>eth_sign</p>
+
+<p>The sign method calculates an Ethereum specific signature with: sign(keccak256(&quot;\x19Ethereum Signed Message:\n&quot; + len(message) + message))).</p>
+
+<p>By adding a prefix to the message makes the calculated signature recognisable as an Ethereum specific signature. This prevents misuse where a malicious DApp can sign arbitrary data (e.g. transaction) and use the signature to impersonate the victim.</p>
+</blockquote>
+
+<h2 id="toc_6">使用ecrecover()对签名数据进行验签</h2>
+
+<p><code>ecrecover</code><sup id="fnref6"><a href="javascript:window.open('http://me.tryblockchain.org/web3js-sign-ecrecover-decode.html#fn6');" rel="footnote">6</a></sup>函数是由以太坊提供的一个全局函数，用于签名数据的校验。与上面所陈述的方式略有不同的是，这个函数返回的是签名者的公匙地址。如果返回结果是签名者的公匙地址，那么说明数据是正确的。</p>
+
+<pre><code class="language-text">ecrecover(bytes32 hash, uint8 v, bytes32 r, bytes32 s) returns (address)
+</code></pre>
+
+<p><code>ecrecover</code>函数需要四个参数，需要被签名数据的哈希结果值，r，s，v三个值。通过前面的说明，我们知道r，s，v是分别来自签名结果串。</p>
+
+<pre><code class="language-text">r = signature[0:64]
+s = signature[64:128]
+v = signature[128:130]
+</code></pre>
+
+<p>其中v取出来的值或者是<code>00</code>或<code>01</code>。要使用时，我们先要将其转为整型，再加上27，所以我们将得到27或28。在调用函数时v将填入27或28。</p>
+
+<p>如果要在以太坊中验证比特币的签名，可能有几处不同的地方<sup id="fnref7"><a href="javascript:window.open('http://me.tryblockchain.org/web3js-sign-ecrecover-decode.html#fn7');" rel="footnote">7</a></sup>。</p>
+
+<h3 id="toc_7">下面来看看使用Solidity的ecrecoverDecode验证签名的完整例子。</h3>
+
+<pre><code class="language-text">pragma solidity ^0.4.4;
+
+contract Decode{
+  //公匙：0x60320b8a71bc314404ef7d194ad8cac0bee1e331
+  //sha3(msg): 0x4e03657aea45a94fc7d47ba826c8d667c0d1e6e33a64a036ec44f58fa12d6c45 (web3.sha3(&quot;abc&quot;);)
+  //签名后的数据：0xf4128988cbe7df8315440adde412a8955f7f5ff9a5468a791433727f82717a6753bd71882079522207060b681fbd3f5623ee7ed66e33fc8e581f442acbcf6ab800
+
+  //验签数据入口函数
+  function decode() returns (address){
+    bytes memory signedString =hex&quot;f4128988cbe7df8315440adde412a8955f7f5ff9a5468a791433727f82717a6753bd71882079522207060b681fbd3f5623ee7ed66e33fc8e581f442acbcf6ab800&quot;;
+
+    bytes32  r = bytesToBytes32(slice(signedString, 0, 32));
+    bytes32  s = bytesToBytes32(slice(signedString, 32, 32));
+    byte  v = slice(signedString, 64, 1)[0];
+    return ecrecoverDecode(r, s, v);
+  }
+
+  //将原始数据按段切割出来指定长度
+  function slice(bytes memory data, uint start, uint len) returns (bytes){
+    bytes memory b = new bytes(len);
+
+    for(uint i = 0; i &lt; len; i++){
+      b[i] = data[i + start];
+    }
+
+    return b;
+  }
+
+  //使用ecrecover恢复公匙
+  function ecrecoverDecode(bytes32 r, bytes32 s, byte v1) returns (address addr){
+     uint8 v = uint8(v1) + 27;
+     addr = ecrecover(hex&quot;4e03657aea45a94fc7d47ba826c8d667c0d1e6e33a64a036ec44f58fa12d6c45&quot;, v, r, s);
+  }
+
+  //bytes转换为bytes32
+  function bytesToBytes32(bytes memory source) returns (bytes32 result) {
+    assembly {
+        result := mload(add(source, 32))
+    }
+  }
+}
+
+</code></pre>
+
+<p>上述代码使用临时写的<code>slice()</code>函数把数据签名中的r，s，v切割出来；由于返回的仍是一个bytes类型，所以我们使用<code>bytesToBytes32()</code>进行一下类型转换<sup id="fnref8"><a href="javascript:window.open('http://me.tryblockchain.org/web3js-sign-ecrecover-decode.html#fn8');" rel="footnote">8</a></sup>；另外需要注意的是<code>ecrecoverDecode()</code>根据前面的说明，我们需要对v值，加上27后再进行调用。最后调用<code>decode()</code>函数，我们将会得到公匙<code>0x60320b8a71bc314404ef7d194ad8cac0bee1e331</code>。</p>
+
+<div class="footnotes">
+<hr>
+<ol>
+
+<li id="fn1">
+<p>简介内容参考《图解密码技术》第三版&nbsp;<a href="javascript:window.open('http://me.tryblockchain.org/web3js-sign-ecrecover-decode.html#fnref1');" rev="footnote">&#8617;</a></p>
+</li>
+
+<li id="fn2">
+<p>详见web3.js关于web3.eth.sign的说明 <a href="javascript:window.open('https://github.com/ethereum/wiki/wiki/JavaScript-API#web3ethsign');">https://github.com/ethereum/wiki/wiki/JavaScript-API#web3ethsign</a>&nbsp;<a href="javascript:window.open('http://me.tryblockchain.org/web3js-sign-ecrecover-decode.html#fnref2');" rev="footnote">&#8617;</a></p>
+</li>
+
+<li id="fn3">
+<p><a href="javascript:window.open('http://ethereum.stackexchange.com/questions/5844/do-i-have-to-unlock-my-account-in-geth-to-call-a-web3-eth-sign-in-javascript');">http://ethereum.stackexchange.com/questions/5844/do-i-have-to-unlock-my-account-in-geth-to-call-a-web3-eth-sign-in-javascript</a>&nbsp;<a href="javascript:window.open('http://me.tryblockchain.org/web3js-sign-ecrecover-decode.html#fnref3');" rev="footnote">&#8617;</a></p>
+</li>
+
+<li id="fn4">
+<p><a href="javascript:window.open('http://ethereum.stackexchange.com/q/3887/2124');">http://ethereum.stackexchange.com/q/3887/2124</a>&nbsp;<a href="javascript:window.open('http://me.tryblockchain.org/web3js-sign-ecrecover-decode.html#fnref4');" rev="footnote">&#8617;</a></p>
+</li>
+
+<li id="fn5">
+<p><a href="javascript:window.open('https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_sign');">https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_sign</a>&nbsp;<a href="javascript:window.open('http://me.tryblockchain.org/web3js-sign-ecrecover-decode.html#fnref5');" rev="footnote">&#8617;</a></p>
+</li>
+
+<li id="fn6">
+<p><a href="javascript:window.open('http://solidity.readthedocs.io/en/develop/miscellaneous.html?highlight=ecrecover');">http://solidity.readthedocs.io/en/develop/miscellaneous.html?highlight=ecrecover</a>&nbsp;<a href="javascript:window.open('http://me.tryblockchain.org/web3js-sign-ecrecover-decode.html#fnref6');" rev="footnote">&#8617;</a></p>
+</li>
+
+<li id="fn7">
+<p>以太坊中校验比特币签名，<a href="javascript:window.open('https://www.reddit.com/r/ethereum/comments/3gmbkx/how_do_i_verify_a_bitcoinsigned_message_in_an/');">https://www.reddit.com/r/ethereum/comments/3gmbkx/how_do_i_verify_a_bitcoinsigned_message_in_an/</a>&nbsp;<a href="javascript:window.open('http://me.tryblockchain.org/web3js-sign-ecrecover-decode.html#fnref7');" rev="footnote">&#8617;</a></p>
+</li>
+
+<li id="fn8">
+<p><a href="javascript:window.open('http://ethereum.stackexchange.com/questions/9142/how-to-convert-a-string-to-bytes32');">http://ethereum.stackexchange.com/questions/9142/how-to-convert-a-string-to-bytes32</a>&nbsp;<a href="javascript:window.open('http://me.tryblockchain.org/web3js-sign-ecrecover-decode.html#fnref8');" rev="footnote">&#8617;</a></p>
+</li>
+
+</ol>
+</div>
+
+
+        <!-- newly added20190331 
+        <h2>如需交流，可加微信: 「TryBlockchain」</h2>
+        <p><img src="https://me.tryblockchain.org/media/14873893253965/wechat-TryBlockchain.jpg" alt="wechat-qr-code"/></p>   -->
+        <!-- newly added2018 
+        <h2>感谢您对本站的支持</h2>
+        <p><img src="https://me.tryblockchain.org/media/14873893253965/wechat-zan.jpg" alt="zan-code"/></p>
+        -->
+        <blockquote>
+        <p>处于某些特定的环境下，可以看到评论框，欢迎留言交流^_^。</p>
+        </blockquote>
+        <!-- 去掉赞码，增加广告 20190914 中秋节-->
+      </div>
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="javascript:window.open('http://me.tryblockchain.org/solidity-data-location.html');" title="Previous Post: Solidity的数据位置特性深入详解（九）| 入门系列（老是遇到转换问题的来看看）">&laquo; Solidity的数据位置特性深入详解（九）| 入门系列（老是遇到转换问题的来看看）</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a href="javascript:window.open('http://me.tryblockchain.org/solidity-function-advanced1.html');" title="Next Post: 【Solidity入门系列】函数的可见性与访问权限控制">【Solidity入门系列】函数的可见性与访问权限控制 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          <script async="" src="static/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-6188337887319489",
+    enable_page_level_ads: true
+  });
+</script><script id="dsq-count-scr" src="https://tryblockchain-org.disqus.com/count.js" async=""></script>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://tryblockchain-org.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="javascript:window.open('https://disqus.com/?ref_noscript');">comments powered by Disqus.</a></noscript>
+                            
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>区块链技术博客</h1>
+                <div class="site-des">区块链相关技术博客，专注基于以太坊的区块链技术，Solidity编程语言，Truffle框架，web3.js。</div>
+
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>个人微信: 「TryBlockchain」</h2>
+                </div>
+              </div>
+
+
+                <div class="social">
+                  <img src="static/picture/wechat-TryBlockchain.jpg" width="230px">
+                </div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="files/atom.xml" title="RSS">RSS</a>
+
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="Solidity深入浅出系列.html"><strong>Solidity深入浅出系列</strong></a>
+        
+            <a href="文档翻译.html"><strong>文档翻译</strong></a>
+        
+            <a href="其它.html"><strong>其它</strong></a>
+        
+            <a href="Solidity入门系列.html"><strong>Solidity入门系列</strong></a>
+        
+            <a href="热点.html"><strong>热点</strong></a>
+        
+            <a href="项目.html"><strong>项目</strong></a>
+        
+            <a href="whitepaper.html"><strong>whitepaper</strong></a>
+        
+            <a href="热点深度.html"><strong>热点深度</strong></a>
+        
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="dex-uniswap-ox-hydro.html">去中心化的交易所正在打一场恶战，新选手不断加入</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="coinbase-custody-staking.html">coinbase的托管生意又有大动作了</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15462405993032.html">基于第三代互联网的数据经济</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15462215241005.html">Curation Markets</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="4-eras-of-blockchain-computing-d.html">区块链计算的四个阶段</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+ <div class="page-bottom clearfix">
+  <div class="row">
+     <p class="copyright">Copyright &copy; 2016-2019 tryblockchain.org. All rights reserved. 
+  &nbsp; 交流微信：TryBlockchain
+</p>
+<p style="font-size: 14px;margin: 0 0.93rem;">友情链接： <a href="javascript:window.open('https://bitshuo.com/');">区块链技术中文社区</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:window.open('https://learnblockchain.cn/');">深入浅出区块链</a></p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="static/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="static/js/MathJax-TeX-AMS-MML_HTMLorMML.js"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?a7f98ca019147491b75cb037fb3aec14";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89122146-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  </body>
+</html>

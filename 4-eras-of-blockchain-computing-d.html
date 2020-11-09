@@ -1,0 +1,524 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+    
+  区块链计算的四个阶段 - 区块链技术博客
+  
+  </title>
+  
+  
+  
+    <link rel="stylesheet" href="static/css/foundation.min.css">
+    <link rel="stylesheet" href="static/css/docs1.css">
+    <script src="static/js/modernizr.js"></script>
+    <script src="static/js/jquery.js"></script>
+  <script src="static/js/highlight.pack.js"></script>
+  <link href="static/css/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <!-- 增加google ad -->
+  <script async="" src="static/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-6188337887319489",
+      enable_page_level_ads: true
+    });
+  </script>
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:me.tryblockchain.org ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas="">
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar="">
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index1.html" style="font-size: 18px">主页</a></li>
+        
+        <li id=""><a target="_self" href="index2.html" style="font-size: 18px">Solidity文档</a></li>
+        
+        <li id=""><a target="_self" href="index.html" style="font-size: 18px">Web3.js文档</a></li>
+        
+        <li id=""><a target="_self" href="index3.html" style="font-size: 18px">Truffle文档</a></li>
+        
+        <li id=""><a target="_self" href="index4.html" style="font-size: 18px">Open Zeppelin</a></li>
+        
+        <li id=""><a target="_self" href="aboutme.html" style="font-size: 18px">关于本站</a></li>
+        
+        <li id=""><a target="_self" href="archives.html" style="font-size: 18px">归档</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="">
+    <input tabindex="1" type="search" id="search_input" placeholder="Search">
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; 区块链技术博客</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+         <li><a href="index1.html">主页</a></li>
+        
+         <li><a href="index2.html">Solidity文档</a></li>
+        
+         <li><a href="index.html">Web3.js文档</a></li>
+        
+         <li><a href="index3.html">Truffle文档</a></li>
+        
+         <li><a href="index4.html">Open Zeppelin</a></li>
+        
+         <li><a href="aboutme.html">关于本站</a></li>
+        
+         <li><a href="archives.html">归档</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="Solidity深入浅出系列.html">Solidity深入浅出系列</a></li>
+        
+            <li><a href="文档翻译.html">文档翻译</a></li>
+        
+            <li><a href="其它.html">其它</a></li>
+        
+            <li><a href="Solidity入门系列.html">Solidity入门系列</a></li>
+        
+            <li><a href="热点.html">热点</a></li>
+        
+            <li><a href="项目.html">项目</a></li>
+        
+            <li><a href="whitepaper.html">whitepaper</a></li>
+        
+            <li><a href="热点深度.html">热点深度</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>区块链计算的四个阶段</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2018/12/15</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='其它.html'>其它</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <blockquote>
+<p>文中内容不代表本网站观点，内容仅供参考。</p>
+
+<p>翻译自：<a href="javascript:window.open('https://jessewalden.com/4-eras-of-blockchain-computing-degrees-of-composability/');">https://jessewalden.com/4-eras-of-blockchain-computing-degrees-of-composability/</a></p>
+
+<p>如有侵权请联系我进行删除，谢谢。</p>
+</blockquote>
+
+<p>在<code>a16z crypto</code>，我们认为加密网络与城市结构类似，因为两者都受益于基于共享基础设施之上的，由下至上的不断的成长。</p>
+
+<p>传统的商业通常选址于居民区，公共设施健全，法律，安全，以及充满经济活力的地方。类似的，开发者基于共享资源，如良好的用户基础，数据，安全，以及稳定的运行的环境来获得好处。</p>
+
+<p><strong>这其中的核心是可组合性。</strong>如果现存的资源可以作为构建块，被整合到更高层的应用中，我们就认为平台是可组合的。可组合性非常重要的，因为它可以让开发者以更少的资源做更多的事情，最终，会带来更快，复合的创新。</p>
+
+<p>区块链天然无需信任的特质打开了可组合性的大门。因为它允许开发者不用担心底层依赖，而在共享的基础设施之上进行开发。区块链既是无权限的（开源），同时又是有状态的（类似API）。</p>
+
+<p>在研究区块链计算的演变时，我将勾勒出四个不同阶段的核心模型，每个阶段都有其各自的架构，并以可组合性来进行分层：</p>
+
+<ol>
+<li>计算器 era - 特定于某个应用的，组合性有限</li>
+<li>大型机 era - 图灵完备，高可组合性</li>
+<li>服务器 era - 特定于某个应用的，兼容可组合性</li>
+<li>云 era - 图灵完备，可扩展的组合性</li>
+</ol>
+
+<p>接下来会根据上面的分类，一一阐述其各自的优势与劣势。<em>事先需要说明的是，这个领域仍有许多待解决的，开放研究中的问题，我们并不清楚事情将会如何发展。每一个阶段都是值得尝试的实验。</em></p>
+
+<span id="more"></span><!-- more -->
+
+<h2 id="toc_0">计算器 era</h2>
+
+<p>比特币是区块链计算的先驱。它是一个特定问题的全栈式解决方案，即电子黄金。除了简单的支持查看余额及转账外，比特币提供了一个脚本语言，可用来构建更复杂的功能。</p>
+
+<p>有一定数量的项目使用了比特币的脚本语言来构建更高层级的应用。比如，<a href="javascript:window.open('https://en.wikipedia.org/wiki/Proof_of_Existence');">Proof of Existence</a>使用<a href="javascript:window.open('https://en.bitcoin.it/wiki/OP_RETURN');">OP_RETURN</a>的数据项创建了一个证明，证明某人在某个给定的时间有某个电子文件。而其它项目，如<a href="javascript:window.open('https://en.bitcoin.it/wiki/Colored_Coins');">Colored Coins</a>和<a href="javascript:window.open('https://counterparty.io/');">Counterparty</a>则基于比特币的安全网络中创建了自己的代币。但其它一些进一步扩展比特币功能，代币功能的尝试，受限于比特币潜在的脚本语言的限制。</p>
+
+<p>许多人辩解到，去中心化的货币系统最重要的特性是安全，而不是可编程性，由此有限的脚本语言能力是一种特性，而不是一个bug。从这个角度，我们可以更多的把比特币视作一个计算器，而不是一个电脑（这是一个肯定的评价）。它是根据一定目的构建的，在其自身的任务上完成得很好，只是对于渴望提供更多功能及创建新应用的开发者来说，需要向新架构演进。</p>
+
+<h2 id="toc_1">大型机 era</h2>
+
+<p>基于比特币开创的先进理念，以太坊通过包含一个图灵完备的虚拟机，泛化了区块链计算机。使开发者可以透过一个去中心化的机器网络，部署和运行任何程序。</p>
+
+<p>其中，为了确定性，网络中的每个节点都必须执行每个程序的函数。这使得整个网络缓慢且成本高，但以太坊在一个方面是无与伦比的：它的计算是无需信任的。可以期望每个程序能被确定的执行（可验证）和输出，甚至状态都是所有人可见的。以太坊平台为开发者提供了与应用与关的，中立的构建块，用以组合为更高层级的应用。我们看到了下面这一切的发生：</p>
+
+<p><a href="javascript:window.open('https://marble.org/');">Marble</a>支持闪贷，实现去中心化交易所间的对冲：“交易者可以从Marble的智能合约银行借款，从一个DEX上购买代币，再在另一个DEX以更高的价钱卖掉代币，还款给智能合约银行，获得其中的对冲收益。所有的上述一切，可以在一个原子交易中完成。”Marble通过以太坊的全局唯一的虚拟机执行不同项目中的一系列功能，并最终得到了一个大家都可以使用的简单功能。</p>
+
+<p><a href="javascript:window.open('https://devpost.com/software/primotif');">Primotif</a>是一个金融的衍生品，跟踪指数，就像标准普尔指数一样。它使用Augur来跟踪指数价格，使用<a href="javascript:window.open('https://dydx.exchange/');">dYdX</a>做空代币来对冲ETH的波动，而dYdX的底层使用<a href="javascript:window.open('https://a16zcrypto.com/2018/09/maker/');">Maker</a>的Dai这种稳定币。</p>
+
+<p>通过组合而产生的网络效应（Network effects）不是一个新出现的现象。下面是Biz Stone，Twitter的创始人，在2007年关于他们的API的可组合性的说明（<a href="javascript:window.open('https://avc.com/2007/09/biz-stone-on-re/');">AVC</a>）：</p>
+
+<blockquote>
+<p>“API是最重要的，或者无可争议的，是我们做Twitter时最最重要的一件事。它允许我们，首先，让服务非常简单，而简单的API能让开发者基于我们为基础设施进行开发，并随之带来更好的创意，构建了类似<code>Twitterrific</code>，这样一种美妙优雅的使用的Twitter的方式，一种我们在如此小的团队的情况下，所不要能达到的。API非常容易达到比网站大10倍的流量，这些对我们来说真的非常重要。”</p>
+</blockquote>
+
+<p>遗憾的是，组合性并没有持续的出现在Web2.0的场景中。其中一个问题是我们没有办法通过<a href="javascript:window.open('https://avc.com/2009/11/apis-in-the-late-afternoon/');">API传输价值</a>，而且没有有效且公平的方式来管理平台规则，比如，广告展示。这导致了平台与开发者之间的激励错位，最终回到数据的中心化上，从而也丧失了第三方所带来的创新。</p>
+
+<p>我的合作伙伴Chris已经写了一篇关于加密代币可以如何可持续的，构建开放的网络更好的引导激励的<a href="javascript:window.open('https://medium.com/@cdixon/crypto-tokens-a-breakthrough-in-open-network-design-e600975be2ef');">文章</a>。</p>
+
+<p>这就是区块链的<code>大型机 era</code>。存在着由于组合所带来的无可争议的早期的网络效应-安全性，用户基础，数据，运行环境-但随着更多的应用，开始达到大型机的资源限制，最终让边际效应递减。反过来，增加了每个用户和开发人员的成本。通过下图大家可以看一下：</p>
+
+<p><img src="https://me.tryblockchain.org/media/15448460680377/15448595558427.jpg" alt=""><br>
+由于资源限制，每个用户的成本逐渐提升，并最终超过组合（共享资源和开发者的网络效应）所带来的好处</p>
+
+<h2 id="toc_2">服务器 era</h2>
+
+<p>为了寻求可扩展性，一些开发者越过了可组合性和共享所带来的网络效应，而是回归到特定应用的架构。Polkadot和Cosmos的项目愿景是这些尝试中的一部分，异构链-每一个都需进行个性化的调整来接入网络从而代表其自身。<a href="javascript:window.open('https://www.parity.io/what-is-substrate/');">Polkadot的Substrate</a>和<a href="javascript:window.open('https://github.com/cosmos/cosmos-sdk');">Cosmos的SDK</a>都是模块化的区块链构建包来创建你自己的全栈“xx链”。</p>
+
+<p>基于一个底层包来全栈开发一个应用的工作量，比基于现有的网络资源开发大得多。对于开发者来说，这意味着从状态机到应用接口都需要开发，搭建一个在这个网络上的最小安全（<a href="javascript:window.open('https://twitter.com/jessewldn/status/1068705558415503362');">Minimun viable Security</a>）网络，从而实现与网络中的其它人互操作。</p>
+
+<p>从历史上来说，全栈的策略已经证明在推动未来并将早期技术推向市场方面取得了成功。<a href="javascript:window.open('https://en.wikipedia.org/wiki/Wang_Laboratories');">Wang Technologies</a>在PC应用来临前的早期，提供了集成软硬件的文字处理解决方案。此后，AOL捆绑了ISP，一个内容分发系统，邮件以及即时消息-在网络建设的早期提供了良好的用户体验。RIM则将移动设备，操作系统和早期应用程序（如BBM和推送电子邮件）捆绑在一起，以促进智能手机的采用。</p>
+
+<p><img src="https://me.tryblockchain.org/media/15448460680377/15448617039282.jpg" alt=""><br>
+全栈平台，推动未来</p>
+
+<p>在网络时代的早期，每个网站都有一个自建的服务器。为了保证端到端的体验，开发者也需要掌控基础设施。在区块链的下一阶段，也许会类似。这就是我所称为的<code>服务器 era</code>。</p>
+
+<p><code>服务器 era</code>的区块链牺牲组合性来换取控制。控制体现在两个方面：对终端的用户体验的控制，以及更多的对网络资源成本的精细化控制。<code>服务器 era</code>架构的一个前提假设是，网络资源，比如实现安全，存储，及计算是受限的。也就是说，随着应用被更多人采用，网络可以扩容。这与<code>大型机 era</code>形成对比，其资源成本随着网络中其它流量的变化而变化(译者注：比如加密猫让以太坊网络崩溃)。理论上来说，全栈的<code>服务器 era</code>架构可以减轻<code>大型机 era</code>的风险。</p>
+
+<p><code>服务器 era</code>区块链与其前辈不同的是，它仍然是区块链。前面所提到的Wang，AOL以及RIM都是封闭的平台，<code>服务器 era</code>的区块链可验证，公开的数据结构，可对激励编程。这些特质允许它们可以组合进hub（这正是Cosmos和Polkadot正在做的）。一个区块链可以是另一个区块链的轻客户端，开发者可以构建一个原子交换（Atomic swap）或者扩展其功能。</p>
+
+<p>这意味着，即使是<code>服务器 era</code>的区块链仍旧是可组合的，但与<code>大型机 era</code>不同，是从一个完全不同的层面。这些区块链计算机需要一种全新的交互标准协议，以允许跨应用的相互组合，没法采用<code>大型机 era</code>由于大家都在同一个虚拟机上，所实现的方式。这些交互接口正是当前研究中和标准化的内容，无疑在组合性方面，会增加开发的复杂性。但除了这个缺点外，捆绑的好处可能会成为新一波区块链架构的催化剂，我认为在最近，我们会看到更多的项目开始讨论这种全栈的方式。</p>
+
+<h2 id="toc_3">云 era</h2>
+
+<p><code>云 era</code>意味着采用一种可扩展的，通用的无需信任的计算（trustless computation）的基础层。这是理想的未来，可组合性仅受限于创造性，没有扩容与交互的复杂性，创意间可以组合而不会带来边际收益的下降。</p>
+
+<p>如何实现这一切正在研究中。<code>服务器 era</code>架构的支持者认为，通过将异构区块链的链内通信抽象并标准化，最终能达到<code>云 era</code>的体验。其它的，比如以太坊2.0（Serenity）和Dfinity正在对同质的，图灵完备的链融合为支持分片的版本。你可以把它想像为许多的<code>大型机</code>，它们共享安全，但在许多同质的虚拟机上分离状态和计算。还有一些其它的正在研究全新的架构，以将计算移到链下进行。</p>
+
+<p>基于这个领域的研究者的数量，以及解决方案所获得的潜在奖励，如果“云 era”区块链计算在所谓的“服务器 era”的尾巴上炙手可热，我也不会感到惊讶。我们已经部好线缆和数据中心-<code>云 era</code>区块链计算更多的是软件层面的创新。当我们实现时，很明显，无需信任的组合将会成为开发者的超级力量，一旦开发者可以通过简单的工作来达成更大的事时，我们将会受益于更容易的合作，创造性，以及互联网上的选择性。计算器 era</p>
+
+
+        <!-- newly added20190331 
+        <h2>如需交流，可加微信: 「TryBlockchain」</h2>
+        <p><img src="https://me.tryblockchain.org/media/14873893253965/wechat-TryBlockchain.jpg" alt="wechat-qr-code"/></p>   -->
+        <!-- newly added2018 
+        <h2>感谢您对本站的支持</h2>
+        <p><img src="https://me.tryblockchain.org/media/14873893253965/wechat-zan.jpg" alt="zan-code"/></p>
+        -->
+        <blockquote>
+        <p>处于某些特定的环境下，可以看到评论框，欢迎留言交流^_^。</p>
+        </blockquote>
+        <!-- 去掉赞码，增加广告 20190914 中秋节-->
+      </div>
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15462215241005.html" title="Previous Post: Curation Markets">&laquo; Curation Markets</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a href="blockchain-plasma-whitepaper-4.html" title="Next Post: Plasma白皮书（四）">Plasma白皮书（四） &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          <script async="" src="static/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-6188337887319489",
+    enable_page_level_ads: true
+  });
+</script><script id="dsq-count-scr" src="https://tryblockchain-org.disqus.com/count.js" async=""></script>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://tryblockchain-org.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="javascript:window.open('https://disqus.com/?ref_noscript');">comments powered by Disqus.</a></noscript>
+                            
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>区块链技术博客</h1>
+                <div class="site-des">区块链相关技术博客，专注基于以太坊的区块链技术，Solidity编程语言，Truffle框架，web3.js。</div>
+
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>个人微信: 「TryBlockchain」</h2>
+                </div>
+              </div>
+
+
+                <div class="social">
+                  <img src="static/picture/wechat-TryBlockchain.jpg" width="230px">
+                </div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="files/atom.xml" title="RSS">RSS</a>
+
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="Solidity深入浅出系列.html"><strong>Solidity深入浅出系列</strong></a>
+        
+            <a href="文档翻译.html"><strong>文档翻译</strong></a>
+        
+            <a href="其它.html"><strong>其它</strong></a>
+        
+            <a href="Solidity入门系列.html"><strong>Solidity入门系列</strong></a>
+        
+            <a href="热点.html"><strong>热点</strong></a>
+        
+            <a href="项目.html"><strong>项目</strong></a>
+        
+            <a href="whitepaper.html"><strong>whitepaper</strong></a>
+        
+            <a href="热点深度.html"><strong>热点深度</strong></a>
+        
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="dex-uniswap-ox-hydro.html">去中心化的交易所正在打一场恶战，新选手不断加入</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="coinbase-custody-staking.html">coinbase的托管生意又有大动作了</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15462405993032.html">基于第三代互联网的数据经济</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15462215241005.html">Curation Markets</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="">区块链计算的四个阶段</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+ <div class="page-bottom clearfix">
+  <div class="row">
+     <p class="copyright">Copyright &copy; 2016-2019 tryblockchain.org. All rights reserved. 
+  &nbsp; 交流微信：TryBlockchain
+</p>
+<p style="font-size: 14px;margin: 0 0.93rem;">友情链接： <a href="javascript:window.open('https://bitshuo.com/');">区块链技术中文社区</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:window.open('https://learnblockchain.cn/');">深入浅出区块链</a></p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="static/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="static/js/MathJax-TeX-AMS-MML_HTMLorMML.js"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?a7f98ca019147491b75cb037fb3aec14";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89122146-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  </body>
+</html>

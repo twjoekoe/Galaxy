@@ -1,0 +1,499 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+    
+   - 区块链技术博客
+  
+  </title>
+  
+  
+  
+    <link rel="stylesheet" href="static/css/foundation.min.css">
+    <link rel="stylesheet" href="static/css/docs1.css">
+    <script src="static/js/modernizr.js"></script>
+    <script src="static/js/jquery.js"></script>
+  <script src="static/js/highlight.pack.js"></script>
+  <link href="static/css/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <!-- 增加google ad -->
+  <script async="" src="static/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-6188337887319489",
+      enable_page_level_ads: true
+    });
+  </script>
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:me.tryblockchain.org ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas="">
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar="">
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index1.html" style="font-size: 18px">主页</a></li>
+        
+        <li id=""><a target="_self" href="index2.html" style="font-size: 18px">Solidity文档</a></li>
+        
+        <li id=""><a target="_self" href="index.html" style="font-size: 18px">Web3.js文档</a></li>
+        
+        <li id=""><a target="_self" href="index3.html" style="font-size: 18px">Truffle文档</a></li>
+        
+        <li id=""><a target="_self" href="index4.html" style="font-size: 18px">Open Zeppelin</a></li>
+        
+        <li id=""><a target="_self" href="aboutme.html" style="font-size: 18px">关于本站</a></li>
+        
+        <li id=""><a target="_self" href="archives.html" style="font-size: 18px">归档</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="">
+    <input tabindex="1" type="search" id="search_input" placeholder="Search">
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; 区块链技术博客</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+         <li><a href="index1.html">主页</a></li>
+        
+         <li><a href="index2.html">Solidity文档</a></li>
+        
+         <li><a href="index.html">Web3.js文档</a></li>
+        
+         <li><a href="index3.html">Truffle文档</a></li>
+        
+         <li><a href="index4.html">Open Zeppelin</a></li>
+        
+         <li><a href="aboutme.html">关于本站</a></li>
+        
+         <li><a href="archives.html">归档</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="Solidity深入浅出系列.html">Solidity深入浅出系列</a></li>
+        
+            <li><a href="文档翻译.html">文档翻译</a></li>
+        
+            <li><a href="其它.html">其它</a></li>
+        
+            <li><a href="Solidity入门系列.html">Solidity入门系列</a></li>
+        
+            <li><a href="热点.html">热点</a></li>
+        
+            <li><a href="项目.html">项目</a></li>
+        
+            <li><a href="whitepaper.html">whitepaper</a></li>
+        
+            <li><a href="热点深度.html">热点深度</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1></h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2018/1/20</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='文档翻译.html'>文档翻译</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <p>注意：本文是一篇翻译文章，原文观点不代表译者观点，同时也不代表译者同意文中观点。在<a href="javascript:window.open('https://medium.com/chain-cloud-company-blog/plasma-in-10-minutes-c856da94e339');">这里</a>查看原文。</p>
+
+<h1 id="toc_0">Plasma简述</h1>
+
+<p>Plasma是以太坊的一种二层协议扩容方案。方案最早在twitter上公布，<a href="javascript:window.open('http://plasma.io/');">白皮书</a>。</p>
+
+<p>下面会尽量以简单的方式来说明其工作方式，来帮助大家入门。</p>
+
+<p>扩容比特币有个闪电解决方案，以太坊对应的叫<a href="javascript:window.open('https://github.com/raiden-network/raiden');">雷电网络</a>。</p>
+
+<span id="more"></span><!-- more -->
+
+<blockquote>
+<p>这些解决方案的根本的思路是，把小笔交易由链上转移到链下，通过生成代币转移的签名信息，用户间私下交换这些签名信息来实现代币转移。当用户需要兑现转移后的代币，才会把已经签名的交易放到区块链上执行。</p>
+</blockquote>
+
+<p><strong>雷电网络</strong>实现了一个P2P通道，并把以太坊作为存款网络来保证在区块链上达到预期的共识。</p>
+
+<p><strong>雷电网络</strong>实现为以太坊的一个扩展。雷电网络会与以太坊网络并行运行，同时与其它的雷电节点通信，实现价值转移；同时也与以太坊网络通信，来管理存款。</p>
+
+<p>即使你发送数百万次的离线交易，你的<strong>gas</strong>花费仍会非常低，因为只需要极少量的链上的交易来保证交易结算的安全。</p>
+
+<p>随着多个渠道并行在链上清算，可支持的交易量可以大幅增加。支付可以路由到这样一些清算渠道组成的网络上。但雷电或闪电网络并不只限于解决支付问题。它可以用来解决合约状态变化的扩容问题。当然这也正是<strong>Plasma</strong>正在解决的。</p>
+
+<p><strong>Plasma</strong>通过在以太坊整个网络之上增加了一层协议来解决这个问题，下面是架构图：</p>
+
+<p><img src="https://me.tryblockchain.org/media/15164298788859/15164469365795.jpg" alt=""></p>
+
+<h2 id="toc_1">区块链中的区块链</h2>
+
+<p>与闪电网络类似，<strong>Plasma</strong>是一系列的运行在区块链上的智能合约（比如，以太坊主链）。主网络合约只需要处理来自子区块链非常少量的承诺，然而却能在大多数情况下能够执行令人难以置信的大量计算。承诺会周期性的从子链向主链广播。大家可以把主链看做最高法，而所有下级法院从中获得权利。</p>
+
+<p>然而，不是所有的数据都需要传播到所有的参与方（仅仅只有那些需要验证某个特定状态的才需要），但参与方有义务周期性的监控某些他们感兴趣的特定链，并惩罚其中的违规行为。当攻击发生时，所有的参与者，可以快速和低成本的从某个连到主链的子链中<strong>退出</strong>。</p>
+
+<p>区块链可以按分层的方式以树状进行排列。这将允许创建一个足够平衡的系统，来最大化数据可用性、安全，同时减少成本。挖矿以绝对安全的方式，仅在主链上，使用主链的安全和有效性证明。</p>
+
+<p>额外的缩放为了消除必须要查看链状态的需要，大家需要时刻监督子链来保证正确的行为。</p>
+
+<blockquote>
+<p>有许多的系统，比如Cosmos、Polkadot也是以层级的方式来排列区块链的。</p>
+</blockquote>
+
+<p>每一个子链都可以有自己的token（一种对矿工的糖果奖励）来激励这个链的验证者持续运行下去，同时提供对欺诈状态的保护，这个状态由欺诈证明规则检查（Fraud Proofs rules）（译者注：多链模型？糖果？）。一旦欺诈被检测到（扣留攻击或者一般的数据可用性问题），流氓验证者的存款（比如，押金，债券）就被没收了。</p>
+
+<p><img src="https://me.tryblockchain.org/media/15164298788859/15164490008721.jpg" alt=""></p>
+
+<h2 id="toc_2">欺诈证明（Fraud proofs）</h2>
+
+<p>子链里的所有状态都强制需要通过欺诈证明（智能合约逻辑保证），它可以向各方保证没有无效块，并假定区块数据的有效性。欺诈证明保证所有的状态转换都是有效的。此外，欺诈证明强制执行一个资金提取协议，类似于闪电网络需要一定时间的才能取款退出机制。</p>
+
+<h2 id="toc_3">译者注</h2>
+
+<p>是不是读完之后，也仍然不太明白是怎么一回事。</p>
+
+<p>我说说我自己的理解，可能有差错的，大家要保持自己的思考，谢谢。如果想讨论的，可以在<strong>关于本站</strong>，找到我的联系方式。</p>
+
+<p><strong>以下内容非常有可能有错，注意，一定要保持您的独立思考</strong></p>
+
+<p>如果你看过Polkadot或者Cosmos是不是发现会有些相似。但他们非常不同。它们实现了一些独立的网络，网络中会有一个独立的，比如Polkadot共识机制来检验所有并行链的共识，而Cosmos则是使用Tendermint共识机制来与其它并行链交互。本质相当于把各个异构链的共识抽象成一个统一共识来实现真正跨链。</p>
+
+<p>而Plasma，是基于某个主链，比如以太坊，更像是对以太坊功能的扩展。类似一个，内部生态网络。子链上可以增加隐私，加密等各种功能，这种功能增强，通过一种类闪电网络的方式，但他可以不止实现闪电网络的支付，还能实现状态转移。</p>
+
+<p>这样一听是不是很鸡肋。但是，对，凡事有个但是。想像一下以太坊内的DAPP，本质上只有部分需要上共识，如果以后每个DAPP都用Plasma都做一个子链，子链解决大部分共识，小部分才上主链。这样是不是一种解决扩容的方案呢。有人说，这与eos的多链方案有点像哦。</p>
+
+
+        <!-- newly added20190331 
+        <h2>如需交流，可加微信: 「TryBlockchain」</h2>
+        <p><img src="https://me.tryblockchain.org/media/14873893253965/wechat-TryBlockchain.jpg" alt="wechat-qr-code"/></p>   -->
+        <!-- newly added2018 
+        <h2>感谢您对本站的支持</h2>
+        <p><img src="https://me.tryblockchain.org/media/14873893253965/wechat-zan.jpg" alt="zan-code"/></p>
+        -->
+        <blockquote>
+        <p>处于某些特定的环境下，可以看到评论框，欢迎留言交流^_^。</p>
+        </blockquote>
+        <!-- 去掉赞码，增加广告 20190914 中秋节-->
+      </div>
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="blockchain-ethereum-plasma-white1.html" title="Previous Post: Plasma白皮书（一）">&laquo; Plasma白皮书（一）</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a href="bitcoin-blockchain-misunderstand.html" title="Next Post: 一些关于比特币和区块链的误解">一些关于比特币和区块链的误解 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          <script async="" src="static/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-6188337887319489",
+    enable_page_level_ads: true
+  });
+</script><script id="dsq-count-scr" src="https://tryblockchain-org.disqus.com/count.js" async=""></script>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://tryblockchain-org.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="javascript:window.open('https://disqus.com/?ref_noscript');">comments powered by Disqus.</a></noscript>
+                            
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>区块链技术博客</h1>
+                <div class="site-des">区块链相关技术博客，专注基于以太坊的区块链技术，Solidity编程语言，Truffle框架，web3.js。</div>
+
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>个人微信: 「TryBlockchain」</h2>
+                </div>
+              </div>
+
+
+                <div class="social">
+                  <img src="static/picture/wechat-TryBlockchain.jpg" width="230px">
+                </div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="files/atom.xml" title="RSS">RSS</a>
+
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="Solidity深入浅出系列.html"><strong>Solidity深入浅出系列</strong></a>
+        
+            <a href="文档翻译.html"><strong>文档翻译</strong></a>
+        
+            <a href="其它.html"><strong>其它</strong></a>
+        
+            <a href="Solidity入门系列.html"><strong>Solidity入门系列</strong></a>
+        
+            <a href="热点.html"><strong>热点</strong></a>
+        
+            <a href="项目.html"><strong>项目</strong></a>
+        
+            <a href="whitepaper.html"><strong>whitepaper</strong></a>
+        
+            <a href="热点深度.html"><strong>热点深度</strong></a>
+        
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="dex-uniswap-ox-hydro.html">去中心化的交易所正在打一场恶战，新选手不断加入</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="coinbase-custody-staking.html">coinbase的托管生意又有大动作了</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15462405993032.html">基于第三代互联网的数据经济</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15462215241005.html">Curation Markets</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="4-eras-of-blockchain-computing-d.html">区块链计算的四个阶段</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+ <div class="page-bottom clearfix">
+  <div class="row">
+     <p class="copyright">Copyright &copy; 2016-2019 tryblockchain.org. All rights reserved. 
+  &nbsp; 交流微信：TryBlockchain
+</p>
+<p style="font-size: 14px;margin: 0 0.93rem;">友情链接： <a href="javascript:window.open('https://bitshuo.com/');">区块链技术中文社区</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:window.open('https://learnblockchain.cn/');">深入浅出区块链</a></p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="static/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="static/js/MathJax-TeX-AMS-MML_HTMLorMML.js"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?a7f98ca019147491b75cb037fb3aec14";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89122146-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  </body>
+</html>

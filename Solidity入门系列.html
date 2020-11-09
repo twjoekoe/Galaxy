@@ -1,0 +1,1071 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+    
+  Solidity入门系列 - 区块链技术博客
+  
+  </title>
+  
+  
+  
+    <link rel="stylesheet" href="static/css/foundation.min.css">
+    <link rel="stylesheet" href="static/css/docs1.css">
+    <script src="static/js/modernizr.js"></script>
+    <script src="static/js/jquery.js"></script>
+  <script src="static/js/highlight.pack.js"></script>
+  <link href="static/css/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <!-- 增加google ad -->
+  <script async="" src="static/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-6188337887319489",
+      enable_page_level_ads: true
+    });
+  </script>
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:me.tryblockchain.org ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas="">
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar="">
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index1.html" style="font-size: 18px">主页</a></li>
+        
+        <li id=""><a target="_self" href="index2.html" style="font-size: 18px">Solidity文档</a></li>
+        
+        <li id=""><a target="_self" href="index.html" style="font-size: 18px">Web3.js文档</a></li>
+        
+        <li id=""><a target="_self" href="index3.html" style="font-size: 18px">Truffle文档</a></li>
+        
+        <li id=""><a target="_self" href="index4.html" style="font-size: 18px">Open Zeppelin</a></li>
+        
+        <li id=""><a target="_self" href="aboutme.html" style="font-size: 18px">关于本站</a></li>
+        
+        <li id=""><a target="_self" href="archives.html" style="font-size: 18px">归档</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="">
+    <input tabindex="1" type="search" id="search_input" placeholder="Search">
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; 区块链技术博客</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+         <li><a href="index1.html">主页</a></li>
+        
+         <li><a href="index2.html">Solidity文档</a></li>
+        
+         <li><a href="index.html">Web3.js文档</a></li>
+        
+         <li><a href="index3.html">Truffle文档</a></li>
+        
+         <li><a href="index4.html">Open Zeppelin</a></li>
+        
+         <li><a href="aboutme.html">关于本站</a></li>
+        
+         <li><a href="archives.html">归档</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="Solidity深入浅出系列.html">Solidity深入浅出系列</a></li>
+        
+            <li><a href="文档翻译.html">文档翻译</a></li>
+        
+            <li><a href="其它.html">其它</a></li>
+        
+            <li><a href="">Solidity入门系列</a></li>
+        
+            <li><a href="热点.html">热点</a></li>
+        
+            <li><a href="项目.html">项目</a></li>
+        
+            <li><a href="whitepaper.html">whitepaper</a></li>
+        
+            <li><a href="热点深度.html">热点深度</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
+</script>
+<div class="row">
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="javascript:window.open('https://me.tryblockchain.org/blockchain-solidity-library-bestpractice.html');">
+                
+                  <h1>Solidity的库驱动开发并重构ERC20 StandardToken最佳实践（二十八）|入门系列</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>这是一篇关于如何在EVM上通过使用库来开发更模块化，可重复、优雅的智能合约的实践文章<sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup>。</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="javascript:window.open('https://me.tryblockchain.org/blockchain-solidity-library-bestpractice.html');">阅读更多→</a>&nbsp;&nbsp; 
+                    <span class="date">2017/6/17</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href=''>Solidity入门系列</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="javascript:window.open('https://me.tryblockchain.org/blockchain-solidity-Libraries.html');">
+                
+                  <h1>Solidity的库（二十七）|入门系列</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>库与合约类型，但他们的目的是重用代码<sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup>。通过EVM中的<code>DELEGATECALL</code>特性来调用部署到某个位置的库代码，就实现了复用。</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="javascript:window.open('https://me.tryblockchain.org/blockchain-solidity-Libraries.html');">阅读更多→</a>&nbsp;&nbsp; 
+                    <span class="date">2017/6/17</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href=''>Solidity入门系列</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="javascript:window.open('https://me.tryblockchain.org/blockchain-solidity-multi-inherit-and-call-chain.html');">
+                
+                  <h1>Solidity的继承中的调用关系与多继承（二十六）|入门系列</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>在继承链中，由于继承实现是代码复制。如果出现函数名重写，最终使用的是继承链上哪个合约定义的代码呢？实际执行时，依据的是最远继承的原则（most derived）<sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup>。下面来看一个例子：</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="javascript:window.open('https://me.tryblockchain.org/blockchain-solidity-multi-inherit-and-call-chain.html');">阅读更多→</a>&nbsp;&nbsp; 
+                    <span class="date">2017/6/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href=''>Solidity入门系列</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="javascript:window.open('https://me.tryblockchain.org/blockchain-solidity-inheritance.html');">
+                
+                  <h1>Solidity的继承（二十五）|入门系列</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>Solidity语言为我们提供了继承的支持<sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup>，实现的方式是通过复制包括多态的代码到子类来实现的。</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="javascript:window.open('https://me.tryblockchain.org/blockchain-solidity-inheritance.html');">阅读更多→</a>&nbsp;&nbsp; 
+                    <span class="date">2017/6/11</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href=''>Solidity入门系列</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="javascript:window.open('https://me.tryblockchain.org/blockchain-solidity-send-ether-bestpractice.html');">
+                
+                  <h1>Solidity发送ether最佳实践（二十四）|入门系列</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>发送ether的最佳实践<sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup>。</p>
+
+<h2 id="toc_0">send()与fallback()：</h2>
+
+<p>Solidity中当签名不匹配任何的函数方法时，将会触发回退函数。比如，当你调用<code>address.call(bytes4(bytes32(sha3(&quot;thisShouldBeAFunction(uint,bytes32)&quot;))), 1, &quot;test&quot;)</code>时，EVM实际尝试调用地址中的<code>thisShouldBeAFunction()</code>，当这个函数不存在，会触发fallback函数。</p>
+
+<p>由于<code>send()</code>函数指定了一个空函数签名，所以当fallback函数存在时，它总是会调用它。</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="javascript:window.open('https://me.tryblockchain.org/blockchain-solidity-send-ether-bestpractice.html');">阅读更多→</a>&nbsp;&nbsp; 
+                    <span class="date">2017/6/3</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href=''>Solidity入门系列</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="javascript:window.open('https://me.tryblockchain.org/blockchain-solidity-fallback.html');">
+                
+                  <h1>Solidity的fallback函数（二十三）|入门系列</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>fallback函数，回退函数，是合约里的特殊无名函数，有且仅有一个<sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup>。它在合约调用没有匹配到函数签名，或者调用没有带任何数据时被自动调用。</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="javascript:window.open('https://me.tryblockchain.org/blockchain-solidity-fallback.html');">阅读更多→</a>&nbsp;&nbsp; 
+                    <span class="date">2017/6/3</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href=''>Solidity入门系列</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="javascript:window.open('https://me.tryblockchain.org/Blockchain-event-bestpractice.html');">
+                
+                  <h1>Solidity的event的支持指引（二十二）|入门系列</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>这篇文章是来自<code>ConsenSys</code><sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup>。事件和日志在以太坊中异常重要。因为它是合约之间，合约与终端间的沟通桥梁。在传统的Web开发中，服务器通过前端回调函数返回结果（这里更多的想说明的是结果同步返回）。在以太坊中，当交易打包后，某个事件才真正发生，合约将这个事件写入区块链后，前端才能进行对应的响应。有各种方式来跟踪事件和日志。这个技术指引将会解释一些关于事件的困惑，以及对应的解决方案示例。</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="javascript:window.open('https://me.tryblockchain.org/Blockchain-event-bestpractice.html');">阅读更多→</a>&nbsp;&nbsp; 
+                    <span class="date">2017/5/28</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href=''>Solidity入门系列</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="javascript:window.open('https://me.tryblockchain.org/blockchain-solidity-event.html');">
+                
+                  <h1>Solidity的event事件（二十一）|入门系列</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>在介绍事件前，我们先明确事件，日志这两个概念。事件发生后被记录到区块链上成为了日志。总的来说，事件强调功能，一种行为；日志强调存储，内容。</p>
+
+<p>事件是以太坊EVM提供的一种日志基础设施。事件可以用来做操作记录，存储为日志。也可以用来实现一些交互功能，比如通知UI，返回函数调用结果等<sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup>。</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="javascript:window.open('https://me.tryblockchain.org/blockchain-solidity-event.html');">阅读更多→</a>&nbsp;&nbsp; 
+                    <span class="date">2017/5/28</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href=''>Solidity入门系列</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="javascript:window.open('https://me.tryblockchain.org/blockchain-solidity-functionModifier-bestPractice.html');">
+                
+                  <h1>Solidity的函数修改器的一些最佳实践（二十）|入门系列</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>在上篇系列文章中，我们介绍了函数修改器相关知识。这篇文章，我们来看一些应用函数修改器的最佳实践<sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup>。主要是对于单管理员，多管理员，数据检验，以及防重入漏洞等相关问题，应用函数修改器的实践。</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="javascript:window.open('https://me.tryblockchain.org/blockchain-solidity-functionModifier-bestPractice.html');">阅读更多→</a>&nbsp;&nbsp; 
+                    <span class="date">2017/5/21</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href=''>Solidity入门系列</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="javascript:window.open('https://me.tryblockchain.org/blockchain-solidity-functionModifier.html');">
+                
+                  <h1>Solidity的函数修改器（十九）|入门系列</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>函数修改器（Function Modifiers）<sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup>可以方便的控制函数的逻辑，比如可以在某个行为执行前检查某个前置条件，函数修改器还支持继承和重写。可以大家会想，一些检查行为提升为一个语言级特性到底是必要的么？由于整个区块链运行环境是透明的，分布式的，且是图灵完备的。为保证其上运行的代码安全，势必存在大量的检查行为，升级为语言特性可以让检查代码复用，看起来也更简洁。</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="javascript:window.open('https://me.tryblockchain.org/blockchain-solidity-functionModifier.html');">阅读更多→</a>&nbsp;&nbsp; 
+                    <span class="date">2017/5/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href=''>Solidity入门系列</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="javascript:window.open('https://me.tryblockchain.org/solidity-getter.html');">
+                
+                  <h1>Solidity的getter访问器（十八）|入门系列</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>对于所有<code>public</code>的状态变量，Solidity语言编译器，提供了自动为状态变量生成对应的<code>getter（访问器）</code>的特性<sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup>。语言暂不提供<code>setter</code>，因为不能很好控制访问权限的改值函数，不一定实用。</p>
+
+<p>状态变量所创建的访问器函数，与变量同名。以<code>interal</code>访问时，按状态变量的方式使用，若以<code>external</code>的方式访问时，则要通过访问器函数，下面来看一个的例子：</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="javascript:window.open('https://me.tryblockchain.org/solidity-getter.html');">阅读更多→</a>&nbsp;&nbsp; 
+                    <span class="date">2017/5/14</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href=''>Solidity入门系列</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="javascript:window.open('https://me.tryblockchain.org/solidity-contract-create.html');">
+                
+                  <h1>在以太坊上创建一个智能合约（十七）|入门系列</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>我们写好一个合约后，一个合约如何部署到以太坊网络，并实现合约函数的调用呢？合约部署到以太坊网络上，也是一个类似交易的过程。首先向全网发送一个合约创建的交易，待矿工打包交易，并获得全网的认可从而生效后，则得到合约的地址；既而向这个地址发送消息调用，实现调用合约的某个函数。</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="javascript:window.open('https://me.tryblockchain.org/solidity-contract-create.html');">阅读更多→</a>&nbsp;&nbsp; 
+                    <span class="date">2017/5/13</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href=''>Solidity入门系列</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="javascript:window.open('https://me.tryblockchain.org/solidity-declare-initial-scope.html');">
+                
+                  <h1>Solidity变量的声明及作用域（十五）|入门系列</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>Solidity中的作用域规则同于Javascript。<sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup></p>
+
+<h2 id="toc_0">1. 声明及默认值</h2>
+
+<p>变量声明后均有一个初值，是对应类型的“零态”，意即对应的类型的字节表示的全<code>0</code>。使用中需要特别小心的是这与其它语言的默认值如<code>null</code>或<code>undefined</code>有所不同，因为有时<code>0</code>也是一种业务值。下面我们来看一些常见类型的声明，以及它们的默认值：</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="javascript:window.open('https://me.tryblockchain.org/solidity-declare-initial-scope.html');">阅读更多→</a>&nbsp;&nbsp; 
+                    <span class="date">2017/5/7</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href=''>Solidity入门系列</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="javascript:window.open('https://me.tryblockchain.org/solidity-conversions.html');">
+                
+                  <h1>Solidity中的基本类型转换（十四）|入门系列</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<blockquote>
+<p>点击查看原文，获得优化的排版。</p>
+</blockquote>
+
+<h2 id="toc_0">1. 隐式转换</h2>
+
+<p>如果一个运算符能支持不同类型。编译器会隐式的尝试将一个操作数的类型，转为另一个操作数的类型，赋值同理。</p>
+
+<p>一般来说，值类型间的互相转换只要不丢失信息，语义可通则可转换。下面，我们来看一个整数转换的例子：</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="javascript:window.open('https://me.tryblockchain.org/solidity-conversions.html');">阅读更多→</a>&nbsp;&nbsp; 
+                    <span class="date">2017/4/29</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href=''>Solidity入门系列</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="javascript:window.open('https://me.tryblockchain.org/solidity-delete.html');">
+                
+                  <h1>Solidity的delete操作符深入详解(十三)|入门系列</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>Solidity中有个特殊的操作符<code>delete</code>用于释放空间，因为区块链做为一种公用资源，为避免大家滥用。且鼓励主动对空间的回收，释放空间将会返还一些<code>gas</code>。</p>
+
+<p><code>delete</code><sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup>关键字的作用是对某个类型值<code>a</code>赋予初始值。比如如果删除整数<code>delete a</code>等同于<code>a = 0</code>。</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="javascript:window.open('https://me.tryblockchain.org/solidity-delete.html');">阅读更多→</a>&nbsp;&nbsp; 
+                    <span class="date">2017/4/26</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href=''>Solidity入门系列</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="javascript:window.open('https://me.tryblockchain.org/solidity-mapping.html');">
+                
+                  <h1>Solidity的映射类型深入详解(十二)|入门系列</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><code>映射</code><sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup>是一种引用类型，存储键值对，提供根据键查找值，与其它语言中的字典，<code>map</code>等类似，但也有非常大的不同，尤其它在区块链中独特的存储模型。</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="javascript:window.open('https://me.tryblockchain.org/solidity-mapping.html');">阅读更多→</a>&nbsp;&nbsp; 
+                    <span class="date">2017/4/23</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href=''>Solidity入门系列</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="javascript:window.open('https://me.tryblockchain.org/solidity-struct.html');">
+                
+                  <h1>Solidity的自定义结构体深入详解(十一)|入门系列</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>结构体，Solidity中的自定义类型。我们可以使用Solidity的关键字<code>struct</code>来进行自定义。结构体内可以包含字符串，整型等基本数据类型，以及数组，映射，结构体等复杂类型。数组，映射，结构体也支持自定义的结构体。我们来看一个自定义结构体的定义：</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="javascript:window.open('https://me.tryblockchain.org/solidity-struct.html');">阅读更多→</a>&nbsp;&nbsp; 
+                    <span class="date">2017/4/8</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href=''>Solidity入门系列</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="javascript:window.open('https://me.tryblockchain.org/solidity-array.html');">
+                
+                  <h1>Solidity的数组特性深入详解（十）| 入门系列</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>数组在所有的语言当中都是一种常见类型。在Solidity中，可以支持编译期定长数组和变长数组。一个类型为T，长度为k的数组，可以声明为<code>T[k]</code>，而一个变长的数组则声明为<code>T[]</code>。</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="javascript:window.open('https://me.tryblockchain.org/solidity-array.html');">阅读更多→</a>&nbsp;&nbsp; 
+                    <span class="date">2017/4/4</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href=''>Solidity入门系列</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="javascript:window.open('https://me.tryblockchain.org/solidity-data-location.html');">
+                
+                  <h1>Solidity的数据位置特性深入详解（九）| 入门系列（老是遇到转换问题的来看看）</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>代码在执行前，一般会编译成指令。指令就是一个个逻辑，逻辑操作的是数据。代码，或者说业务，操作的其实是数据。非区块链中，代码操作的数据，一般会存到数据库中。</p>
+
+<p>在区块链里，区块链本身就是一个数据库。如果你使用区块链标记物产的所有权，归属信息将会被记录到区块链上，所有人都无法篡改，以标明不可争议的拥有权。所以在区块链中编程中，有一个数据位置的属性用来标识变量是否需要持久化到区块链中。</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="javascript:window.open('https://me.tryblockchain.org/solidity-data-location.html');">阅读更多→</a>&nbsp;&nbsp; 
+                    <span class="date">2017/4/3</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href=''>Solidity入门系列</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="javascript:window.open('https://me.tryblockchain.org/web3js-sign-ecrecover-decode.html');">
+                
+                  <h1>区块链语言Solidity校验椭圆曲线加密数字签名（附实例）</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>我们知道整个比特币，以太坊的基石就是椭圆曲线加密算法。所有的数据均需要发起者通过私匙签发，其它人通过非对称的公匙验证确实消息的真实性。下面我们就一起来了解一下椭圆曲线加密算法，并使用以太坊提供的工具对要发送的数据进行数字签名，以及使用Solidity区块链编程语言的<code>ecrecover()</code>校验数字签名的合法性。</p>
+
+<h2 id="toc_0">椭圆曲线DSA(ECDSA)简介</h2>
+
+<p>假如Alice要对消息m加上数字签名，而Bob需要验证该签名。</p>
+
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                   <a href="javascript:window.open('https://me.tryblockchain.org/web3js-sign-ecrecover-decode.html');">阅读更多→</a>&nbsp;&nbsp; 
+                    <span class="date">2017/3/25</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href=''>Solidity入门系列</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
+
+
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			 <a href="javascript:window.open('https://me.tryblockchain.org/Solidity入门系列_1.html');">&raquo; Next Page</a> 
+			</p>
+			  </div>
+			</div>
+		</div>
+	</div><!-- large 8 -->
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>区块链技术博客</h1>
+                <div class="site-des">区块链相关技术博客，专注基于以太坊的区块链技术，Solidity编程语言，Truffle框架，web3.js。</div>
+
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>个人微信: 「TryBlockchain」</h2>
+                </div>
+              </div>
+
+
+                <div class="social">
+                  <img src="static/picture/wechat-TryBlockchain.jpg" width="230px">
+                </div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="files/atom.xml" title="RSS">RSS</a>
+
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="Solidity深入浅出系列.html"><strong>Solidity深入浅出系列</strong></a>
+        
+            <a href="文档翻译.html"><strong>文档翻译</strong></a>
+        
+            <a href="其它.html"><strong>其它</strong></a>
+        
+            <a href=""><strong>Solidity入门系列</strong></a>
+        
+            <a href="热点.html"><strong>热点</strong></a>
+        
+            <a href="项目.html"><strong>项目</strong></a>
+        
+            <a href="whitepaper.html"><strong>whitepaper</strong></a>
+        
+            <a href="热点深度.html"><strong>热点深度</strong></a>
+        
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="dex-uniswap-ox-hydro.html">去中心化的交易所正在打一场恶战，新选手不断加入</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="coinbase-custody-staking.html">coinbase的托管生意又有大动作了</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15462405993032.html">基于第三代互联网的数据经济</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15462215241005.html">Curation Markets</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="4-eras-of-blockchain-computing-d.html">区块链计算的四个阶段</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+ <div class="page-bottom clearfix">
+  <div class="row">
+     <p class="copyright">Copyright &copy; 2016-2019 tryblockchain.org. All rights reserved. 
+  &nbsp; 交流微信：TryBlockchain
+</p>
+<p style="font-size: 14px;margin: 0 0.93rem;">友情链接： <a href="javascript:window.open('https://bitshuo.com/');">区块链技术中文社区</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:window.open('https://learnblockchain.cn/');">深入浅出区块链</a></p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="static/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="static/js/MathJax-TeX-AMS-MML_HTMLorMML.js"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?a7f98ca019147491b75cb037fb3aec14";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89122146-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  </body>
+</html>

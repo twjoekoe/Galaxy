@@ -1,0 +1,676 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+  
+  区块链技术-智能合约Solidity编程语言
+  
+  </title>
+ <meta name="description" content="区块链相关技术，以太坊(Ethereum)智能合约编程语言，Solidity语言.">
+ 
+    <link rel="stylesheet" href="static/css/foundation.min.css">
+    <link rel="stylesheet" href="static/css/docs.css">
+
+    <script src="static/js/modernizr.js"></script>
+    <script src="static/js/jquery.js"></script>
+    <script src="static/js/highlight.pack.js"></script>
+    <link href="static/css/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <!-- 增加google ad -->
+    <script async="" src="static/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-6188337887319489",
+        enable_page_level_ads: true
+      });
+    </script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body class="antialiased hide-extras">
+
+    <div class="marketing off-canvas-wrap" data-offcanvas="">
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar="">
+
+<div id="header">
+    <h1><a href="javascript:window.open('https://solidity.tryblockchain.org/index.html');">区块链技术-智能合约Solidity编程语言</a>   <a href="index1.html" style="float: right;color: lightgray;">返回博客</a></h1>
+</div>
+
+</nav>
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; 区块链技术-智能合约Solidity编程语言</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+      <li><a href="index1.html">回到博客</a></li>
+      <li><a href="javascript:window.open('https://solidity.tryblockchain.org/index.html');">主页</a></li>
+      
+        <li class="divider"></li>
+        <li><label>智能合约介绍</label></li>
+
+          
+            <li><a title="【文档翻译系列】Solidity语言" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-语言介绍.html');">【文档翻译系列】Solidity语言</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Solidity语法详解</label></li>
+
+          
+            <li><a title="源文件映射" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-source-mapping.html');">源文件映射</a></li>
+          
+            <li><a title="特殊特性（Esoteric Features）" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-EsotericFeatures-特殊特性.html');">特殊特性（Esoteric Features）</a></li>
+          
+            <li><a title="内部机制" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-theOptimizer-优化.html');">内部机制</a></li>
+          
+            <li><a title="调用数据的布局(Layout of CallData)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-LayoutOfCallData-调用数据的布局.html');">调用数据的布局(Layout of CallData)</a></li>
+          
+            <li><a title="内存变量的布局（Layout in Memory）" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-LayoutInMemory-内存变量的布局.html');">内存变量的布局（Layout in Memory）</a></li>
+          
+            <li><a title="状态变量的存储模型(Layout of State Variables in Storage)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-LayoutOfStateVariablesInStorage-状态变量的存储模型.html');">状态变量的存储模型(Layout of State Variables in Storage)</a></li>
+          
+            <li><a title="独立的汇编语言" href="javascript:window.open('https://solidity.tryblockchain.org/solidity-standalone-inline-assembly.html');">独立的汇编语言</a></li>
+          
+            <li><a title="Solidity Assembly" href="javascript:window.open('https://solidity.tryblockchain.org/blockchain-solidity-assembly.html');">Solidity Assembly</a></li>
+          
+            <li><a title="库(Libraries)" href="javascript:window.open('https://solidity.tryblockchain.org/solidity-libraries-库.html');">库(Libraries)</a></li>
+          
+            <li><a title="接口" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-interface-接口.html');">接口</a></li>
+          
+            <li><a title="抽象(Abstract Contracts)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-AbstractContractsOrInterface-接口抽象合约.html');">抽象(Abstract Contracts)</a></li>
+          
+            <li><a title="继承(Inheritance)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-Inheritance-多继承.html');">继承(Inheritance)</a></li>
+          
+            <li><a title="事件(Events)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-eventsAndLogs-事件与日志.html');">事件(Events)</a></li>
+          
+            <li><a title="回退函数(fallback function)" href="javascript:window.open('https://solidity.tryblockchain.org/14825685263030.html');">回退函数(fallback function)</a></li>
+          
+            <li><a title="常量(constant state variables)" href="javascript:window.open('https://solidity.tryblockchain.org/solidity-ConstantStateVariables-常状态变量.html');">常量(constant state variables)</a></li>
+          
+            <li><a title="函数修改器(Function Modifiers)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-FunctionModifiers-函数修改器.html');">函数修改器(Function Modifiers)</a></li>
+          
+            <li><a title="访问函数(Getter Functions)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-AccessorFunction-访问函数.html');">访问函数(Getter Functions)</a></li>
+          
+            <li><a title="可见性或权限控制(Visibility And Accessors)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-VisibilityandAccessors-可见性和访问控制器.html');">可见性或权限控制(Visibility And Accessors)</a></li>
+          
+            <li><a title="合约" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-contract-合约.html');">合约</a></li>
+          
+            <li><a title="内联汇编(Inline Assembly)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-InlineAssembly-内联汇编.html');">内联汇编(Inline Assembly)</a></li>
+          
+            <li><a title="异常(Excepions)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-Exceptions-异常.html');">异常(Excepions)</a></li>
+          
+            <li><a title="作用范围和声明(Scoping And Decarations)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-ScopingAndDeclarations-作用范围和声明.html');">作用范围和声明(Scoping And Decarations)</a></li>
+          
+            <li><a title="赋值(Assignment)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-Assignment-赋值.html');">赋值(Assignment)</a></li>
+          
+            <li><a title="表达式的执行顺序(Order of Evaluation of Expressions)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-evalExpressions-表达式执行顺序.html');">表达式的执行顺序(Order of Evaluation of Expressions)</a></li>
+          
+            <li><a title="创建合约实例(Creating Contracts via `new`)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-CreatingContract-创建合约实例.html');">创建合约实例(Creating Contracts via `new`)</a></li>
+          
+            <li><a title="函数调用(Function Calls)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-FunctionCalls-函数调用.html');">函数调用(Function Calls)</a></li>
+          
+            <li><a title="控制结构" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-Control-控制结构.html');">控制结构</a></li>
+          
+            <li><a title="入参和出参(Input Parameters and Output Parameters)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-function-更多.html');">入参和出参(Input Parameters and Output Parameters)</a></li>
+          
+            <li><a title="地址相关(Address Related)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-AddressRelated-地址.html');">地址相关(Address Related)</a></li>
+          
+            <li><a title="数学和加密函数(Mathematical and Cryptographic Functions)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-MathematicalAndCryptographicFunction-内置函数.html');">数学和加密函数(Mathematical and Cryptographic Functions)</a></li>
+          
+            <li><a title="特殊变量及函数(Special Variables and Functions)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-SpecialVariablesFunctions-内置变量和函数.html');">特殊变量及函数(Special Variables and Functions)</a></li>
+          
+            <li><a title="时间单位(Time Units)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-TimeUnits-时间单位.html');">时间单位(Time Units)</a></li>
+          
+            <li><a title="货币单位(Ether Units)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-EtherUnits-货币单位.html');">货币单位(Ether Units)</a></li>
+          
+            <li><a title="类型推断(Type Deduction)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-TypeDeduction-类型推断.html');">类型推断(Type Deduction)</a></li>
+          
+            <li><a title="基本类型间的转换" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-Conversions-类型转换.html');">基本类型间的转换</a></li>
+          
+            <li><a title="左值的相关运算符" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-LValues-左值运算.html');">左值的相关运算符</a></li>
+          
+            <li><a title="映射/字典(mappings)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-mapping-映射.html');">映射/字典(mappings)</a></li>
+          
+            <li><a title="结构体(struct)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-Struct-数据结构.html');">结构体(struct)</a></li>
+          
+            <li><a title="数组" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-Array-数组.html');">数组</a></li>
+          
+            <li><a title="数据位置(Data location)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-DataLocation-数据位置.html');">数据位置(Data location)</a></li>
+          
+            <li><a title="引用类型(Reference Types)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-RefrenceTypes-引用类型.html');">引用类型(Reference Types)</a></li>
+          
+            <li><a title="函数(Function Types)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-Type-Function-函数.html');">函数(Function Types)</a></li>
+          
+            <li><a title="枚举" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-Type-Enum-枚举.html');">枚举</a></li>
+          
+            <li><a title="十六进制字面量" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-Type-Hex-十六进制.html');">十六进制字面量</a></li>
+          
+            <li><a title="字符串(String literal)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-Type-String-字符串.html');">字符串(String literal)</a></li>
+          
+            <li><a title="小数" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-Type-Rational-有理数.html');">小数</a></li>
+          
+            <li><a title="字节数组(byte arrays)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-Type-ByteArrays-字节数组.html');">字节数组(byte arrays)</a></li>
+          
+            <li><a title="地址(Address)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-Type-Address-地址.html');">地址(Address)</a></li>
+          
+            <li><a title="整型(Integer)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-Type-Integer-整型.html');">整型(Integer)</a></li>
+          
+            <li><a title="布尔(Booleans)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-Type-boolean-布尔.html');">布尔(Booleans)</a></li>
+          
+            <li><a title="值类型与引用类型" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-Type-类型.html');">值类型与引用类型</a></li>
+          
+            <li><a title="智能合约源文件的基本要素概览（Structure of a Contract）" href="javascript:window.open('https://solidity.tryblockchain.org/智能合约源文件的主要要素.html');">智能合约源文件的基本要素概览（Structure of a Contract）</a></li>
+          
+            <li><a title="Solidity智能合约文件结构" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity智能合约文件结构.html');">Solidity智能合约文件结构</a></li>
+          
+
+      
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+        <section id="main-content" role="main" class="scroll-container">
+
+          <div class="row">
+            <div class="large-3 medium-3 columns">
+              <div class="hide-for-small">
+                <div class="sidebar">
+                <nav>
+                  <ul id="side-nav" class="side-nav">
+
+                    
+                      <li class="side-title"><span>智能合约介绍</span></li>
+                        
+                          <li><a title="【文档翻译系列】Solidity语言" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-语言介绍.html');">【文档翻译系列】Solidity语言</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Solidity语法详解</span></li>
+                        
+                          <li><a title="源文件映射" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-source-mapping.html');">源文件映射</a></li>
+                        
+                          <li><a title="特殊特性（Esoteric Features）" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-EsotericFeatures-特殊特性.html');">特殊特性（Esoteric Features）</a></li>
+                        
+                          <li><a title="内部机制" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-theOptimizer-优化.html');">内部机制</a></li>
+                        
+                          <li><a title="调用数据的布局(Layout of CallData)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-LayoutOfCallData-调用数据的布局.html');">调用数据的布局(Layout of CallData)</a></li>
+                        
+                          <li><a title="内存变量的布局（Layout in Memory）" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-LayoutInMemory-内存变量的布局.html');">内存变量的布局（Layout in Memory）</a></li>
+                        
+                          <li><a title="状态变量的存储模型(Layout of State Variables in Storage)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-LayoutOfStateVariablesInStorage-状态变量的存储模型.html');">状态变量的存储模型(Layout of State Variables in Storage)</a></li>
+                        
+                          <li><a title="独立的汇编语言" href="javascript:window.open('https://solidity.tryblockchain.org/solidity-standalone-inline-assembly.html');">独立的汇编语言</a></li>
+                        
+                          <li><a title="Solidity Assembly" href="javascript:window.open('https://solidity.tryblockchain.org/blockchain-solidity-assembly.html');">Solidity Assembly</a></li>
+                        
+                          <li><a title="库(Libraries)" href="javascript:window.open('https://solidity.tryblockchain.org/solidity-libraries-库.html');">库(Libraries)</a></li>
+                        
+                          <li><a title="接口" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-interface-接口.html');">接口</a></li>
+                        
+                          <li><a title="抽象(Abstract Contracts)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-AbstractContractsOrInterface-接口抽象合约.html');">抽象(Abstract Contracts)</a></li>
+                        
+                          <li><a title="继承(Inheritance)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-Inheritance-多继承.html');">继承(Inheritance)</a></li>
+                        
+                          <li><a title="事件(Events)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-eventsAndLogs-事件与日志.html');">事件(Events)</a></li>
+                        
+                          <li><a title="回退函数(fallback function)" href="javascript:window.open('https://solidity.tryblockchain.org/14825685263030.html');">回退函数(fallback function)</a></li>
+                        
+                          <li><a title="常量(constant state variables)" href="javascript:window.open('https://solidity.tryblockchain.org/solidity-ConstantStateVariables-常状态变量.html');">常量(constant state variables)</a></li>
+                        
+                          <li><a title="函数修改器(Function Modifiers)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-FunctionModifiers-函数修改器.html');">函数修改器(Function Modifiers)</a></li>
+                        
+                          <li><a title="访问函数(Getter Functions)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-AccessorFunction-访问函数.html');">访问函数(Getter Functions)</a></li>
+                        
+                          <li><a title="可见性或权限控制(Visibility And Accessors)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-VisibilityandAccessors-可见性和访问控制器.html');">可见性或权限控制(Visibility And Accessors)</a></li>
+                        
+                          <li><a title="合约" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-contract-合约.html');">合约</a></li>
+                        
+                          <li><a title="内联汇编(Inline Assembly)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-InlineAssembly-内联汇编.html');">内联汇编(Inline Assembly)</a></li>
+                        
+                          <li><a title="异常(Excepions)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-Exceptions-异常.html');">异常(Excepions)</a></li>
+                        
+                          <li><a title="作用范围和声明(Scoping And Decarations)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-ScopingAndDeclarations-作用范围和声明.html');">作用范围和声明(Scoping And Decarations)</a></li>
+                        
+                          <li><a title="赋值(Assignment)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-Assignment-赋值.html');">赋值(Assignment)</a></li>
+                        
+                          <li><a title="表达式的执行顺序(Order of Evaluation of Expressions)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-evalExpressions-表达式执行顺序.html');">表达式的执行顺序(Order of Evaluation of Expressions)</a></li>
+                        
+                          <li><a title="创建合约实例(Creating Contracts via `new`)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-CreatingContract-创建合约实例.html');">创建合约实例(Creating Contracts via `new`)</a></li>
+                        
+                          <li><a title="函数调用(Function Calls)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-FunctionCalls-函数调用.html');">函数调用(Function Calls)</a></li>
+                        
+                          <li><a title="控制结构" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-Control-控制结构.html');">控制结构</a></li>
+                        
+                          <li><a title="入参和出参(Input Parameters and Output Parameters)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-function-更多.html');">入参和出参(Input Parameters and Output Parameters)</a></li>
+                        
+                          <li><a title="地址相关(Address Related)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-AddressRelated-地址.html');">地址相关(Address Related)</a></li>
+                        
+                          <li><a title="数学和加密函数(Mathematical and Cryptographic Functions)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-MathematicalAndCryptographicFunction-内置函数.html');">数学和加密函数(Mathematical and Cryptographic Functions)</a></li>
+                        
+                          <li><a title="特殊变量及函数(Special Variables and Functions)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-SpecialVariablesFunctions-内置变量和函数.html');">特殊变量及函数(Special Variables and Functions)</a></li>
+                        
+                          <li><a title="时间单位(Time Units)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-TimeUnits-时间单位.html');">时间单位(Time Units)</a></li>
+                        
+                          <li><a title="货币单位(Ether Units)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-EtherUnits-货币单位.html');">货币单位(Ether Units)</a></li>
+                        
+                          <li><a title="类型推断(Type Deduction)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-TypeDeduction-类型推断.html');">类型推断(Type Deduction)</a></li>
+                        
+                          <li><a title="基本类型间的转换" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-Conversions-类型转换.html');">基本类型间的转换</a></li>
+                        
+                          <li><a title="左值的相关运算符" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-LValues-左值运算.html');">左值的相关运算符</a></li>
+                        
+                          <li><a title="映射/字典(mappings)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-mapping-映射.html');">映射/字典(mappings)</a></li>
+                        
+                          <li><a title="结构体(struct)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-Struct-数据结构.html');">结构体(struct)</a></li>
+                        
+                          <li><a title="数组" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-Array-数组.html');">数组</a></li>
+                        
+                          <li><a title="数据位置(Data location)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-DataLocation-数据位置.html');">数据位置(Data location)</a></li>
+                        
+                          <li><a title="引用类型(Reference Types)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-RefrenceTypes-引用类型.html');">引用类型(Reference Types)</a></li>
+                        
+                          <li><a title="函数(Function Types)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-Type-Function-函数.html');">函数(Function Types)</a></li>
+                        
+                          <li><a title="枚举" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-Type-Enum-枚举.html');">枚举</a></li>
+                        
+                          <li><a title="十六进制字面量" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-Type-Hex-十六进制.html');">十六进制字面量</a></li>
+                        
+                          <li><a title="字符串(String literal)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-Type-String-字符串.html');">字符串(String literal)</a></li>
+                        
+                          <li><a title="小数" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-Type-Rational-有理数.html');">小数</a></li>
+                        
+                          <li><a title="字节数组(byte arrays)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-Type-ByteArrays-字节数组.html');">字节数组(byte arrays)</a></li>
+                        
+                          <li><a title="地址(Address)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-Type-Address-地址.html');">地址(Address)</a></li>
+                        
+                          <li><a title="整型(Integer)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-Type-Integer-整型.html');">整型(Integer)</a></li>
+                        
+                          <li><a title="布尔(Booleans)" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-Type-boolean-布尔.html');">布尔(Booleans)</a></li>
+                        
+                          <li><a title="值类型与引用类型" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity-Type-类型.html');">值类型与引用类型</a></li>
+                        
+                          <li><a title="智能合约源文件的基本要素概览（Structure of a Contract）" href="javascript:window.open('https://solidity.tryblockchain.org/智能合约源文件的主要要素.html');">智能合约源文件的基本要素概览（Structure of a Contract）</a></li>
+                        
+                          <li><a title="Solidity智能合约文件结构" href="javascript:window.open('https://solidity.tryblockchain.org/Solidity智能合约文件结构.html');">Solidity智能合约文件结构</a></li>
+                        
+
+                    
+                  </ul>
+                </nav>
+                </div>
+              </div>
+            </div>
+            <div class="large-9 medium-9 columns">
+ 
+
+
+	
+		<div class="markdown-body">
+		<h1>【文档翻译系列】Solidity语言</h1>
+
+		<p>Solidity是一种智能合约高级语言，运行在Ethereum虚拟机（EVM）之上。</p>
+
+<h2 id="toc_0">Solidity与其它语言相关的特点？</h2>
+
+<p>它的语法接近于Javascript，是一种面向对象的语言。但作为一种真正意义上运行在网络上的去中心合约，它又有很多的不同，下面列举一些：</p>
+
+<ul>
+<li>以太坊底层是基于帐户，而非UTXO的，所以有一个特殊的<code>Address</code>的类型。用于定位用户，定位合约，定位合约的代码（合约本身也是一个帐户）。</li>
+<li>由于语言内嵌框架是支持支付的，所以提供了一些关键字，如<code>payable</code>，可以在语言层面直接支持支付，而且超级简单。</li>
+<li>存储是使用网络上的区块链，数据的每一个状态都可以永久存储，所以需要确定变量使用内存，还是区块链。</li>
+<li>运行环境是在去中心化的网络上，会比较强调合约或函数执行的调用的方式。因为原来一个简单的函数调用变为了一个网络上的节点中的代码执行，分布式的感觉。</li>
+<li>最后一个非常大的不同则是它的异常机制，一旦出现异常，所有的执行都将会被回撤，这主要是为了保证合约执行的原子性，以避免中间状态出现的数据不一致。</li>
+</ul>
+
+<span id="more"></span><!-- more -->
+
+<h2 id="toc_1">Hello Wolrd!</h2>
+
+<p>听起来高大上，其实入手玩起来也可以很简单：</p>
+
+<pre><code class="language-text">pragma solidity ^0.4.0;
+
+contract HelloWorld{
+    uint balance;
+    function update(uint amount) returns (address, uint){
+        balance += amount;
+        return (msg.sender, balance);
+    }
+}
+</code></pre>
+
+<p>通过读取参数输入的新值，并将之累加至合约的变量中，返回发送人的地址，和最终的累计值。</p>
+
+<h2 id="toc_2">浏览器编译器Remix</h2>
+
+<p>使用无需安装的浏览器编译器<a href="javascript:window.open('https://ethereum.github.io/browser-solidity/');">Remix</a>可以立即看到效果。打开后，如下图所示：</p>
+
+<p><img src="http://oidhvqtj9.bkt.clouddn.com/2016-12-18-14820476779521.jpg" alt=""></p>
+
+<p>输入上述代码，点击Create按钮，就能在浏览器中创建能调用函数的按钮。在<code>update</code>按钮旁输入入参，点击按钮，就能执行函数调用并打印出函数返回的结果了。</p>
+
+<p><img src="http://oidhvqtj9.bkt.clouddn.com/2016-12-18-14820479186745.jpg" alt=""></p>
+
+<p><em>备注</em></p>
+
+<p>如果出现错误，可以等待浏览器资源加载完成，或强制刷新后再试。</p>
+
+<h2 id="toc_3">Solidity的完整语法：</h2>
+
+<h4 id="toc_4">入门说明：</h4>
+
+<ul>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity智能合约文件结构.html');">Solidity智能合约文件结构</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/智能合约源文件的主要要素.html');">智能合约源文件的基本要素概览（Structure of a Contract）</a></li>
+</ul>
+
+<h4 id="toc_5">值类型：</h4>
+
+<ul>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-Type-类型.html');">类型</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-Type-boolean-布尔.html');">布尔(Booleans)</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-Type-Integer-整型.html');">整型(Integer)</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-Type-Address-地址.html');">地址(Address)</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-Type-ByteArrays-字节数组.html');">字节数组(byte arrays)</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-Type-Rational-有理数.html');">小数</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-Type-String-字符串.html');">字符串(String literal)</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-Type-Hex-十六进制.html');">十六进制字面量</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-Type-Enum-枚举.html');">枚举</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-Type-Function-函数.html');">函数(Function Types)</a></li>
+</ul>
+
+<h4 id="toc_6">引用类型：</h4>
+
+<ul>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-RefrenceTypes-引用类型.html');">引用类型(Reference Types)</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-DataLocation-数据位置.html');">数据位置(Data location)</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-Array-数组.html');">数组(Arrays)</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-Struct-数据结构.html');">数据结构(struct)</a></li>
+</ul>
+
+<h4 id="toc_7">杂项：</h4>
+
+<ul>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-mapping-映射.html');">映射/字典(mappings)</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-LValues-左值运算.html');">左值运算符(Operators Involving LValues)</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-Conversions-类型转换.html');">类型间的转换(Conversions between Elementary Types)</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-TypeDeduction-类型推断.html');">类型推断(Type Deduction)</a></li>
+</ul>
+
+<h4 id="toc_8">单位：</h4>
+
+<ul>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-EtherUnits-货币单位.html');">货币单位(Ether Units)</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-TimeUnits-时间单位.html');">时间单位(Time Units)</a></li>
+</ul>
+
+<h4 id="toc_9">语言内置特性：</h4>
+
+<ul>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-SpecialVariablesFunctions-内置变量和函数.html');">特殊变量及函数(Special Variables and Functions)</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-MathematicalAndCryptographicFunction-内置函数.html');">数学和加密函数(Mathematical and Cryptographic Functions)</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-AddressRelated-地址.html');">地址相关(Address Related)</a></li>
+</ul>
+
+<h4 id="toc_10">进阶：</h4>
+
+<ul>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-function-更多.html');">入参和出参(Input Parameters and Output Parameters)</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-Control-控制结构.html');">控制结构</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-FunctionCalls-函数调用.html');">函数调用(Function Calls)</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-CreatingContract-创建合约实例.html');">创建合约实例(Creating Contracts via <code>new</code>)</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-evalExpressions-表达式执行顺序.html');">表达式的执行顺序(Order of Evaluation of Expressions)</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-Assignment-赋值.html');">赋值(Assignment)</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-ScopingAndDeclarations-作用范围和声明.html');">作用范围和声明(Scoping And Decarations)</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-Exceptions-异常.html');">异常(Excepions)</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-InlineAssembly-内联汇编.html');">内联汇编(Inline Assembly)</a></li>
+</ul>
+
+<h4 id="toc_11">合约详解：</h4>
+
+<ul>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-contract-合约.html');">合约</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-VisibilityandAccessors-可…%A7%81性和访问控制器.html');">可见性或权限控制(Visibility And Accessors)</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-AccessorFunction-访问函数.html');">访问函数(Accessor Functions)</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-FunctionModifiers-函数修改器.html');">函数修改器(Function Modifiers)</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/solidity-ConstantStateVariables-常状态变量.html');">常状态变量(constant state variables)</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/14825685263030.html');">回退函数(fallback function)</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-eventsAndLogs-事件与日志.html');">事件(Events)</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-Inheritance-多继承.html');">继承(Inheritance)</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-AbstractContractsOrInterface-接口抽象合约.html');">接口(Abstract Contracts)</a></li>
+</ul>
+
+<h4 id="toc_12">其它：</h4>
+
+<ul>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/solidity-libraries-库.html');">库(Libraries)</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-LayoutOfStateVariablesInStorage-…%80%81变量的存储模型.html');">状态变量的存储模型(Layout of State Variables in Storage)</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-LayoutInMemory-内存变量的布局.html');">内存变量的存局（Layout in Memory）</a></li>
+<li><a href="javascript:window.open('http://solidity.tryblockchain.org/Solidity-LayoutOfCallData-调用数据的布局.html');">调用数据的布局(Layout of CallData)</a></li>
+</ul>
+
+
+		</div>
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+ 
+	
+
+  
+  
+</div></div>
+
+
+<div class="page-bottom">
+  <div class="row">
+  <hr>
+  <div class="small-9 columns">
+  <p class="copyright">Copyright &copy; 2016-2019 tryblockchain.org. All rights reserved. 
+  &nbsp; 交流微信：TryBlockchain
+</p>
+  </div>
+  <div class="small-3 columns">
+  <p class="copyright text-right"><a href="#header">TOP</a></p>
+  </div>
+   
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+    
+    
+    <script src="static/js/foundation.min.js"></script>
+    <script src="static/js/foundation.offcanvas.js"></script>
+    <script>
+      $(document).foundation();
+
+     
+    </script>
+    
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0002cf30347684df542e1a931f356875";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89122146-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>

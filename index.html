@@ -1,0 +1,257 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+  
+  Web3.js API 中文文档
+  
+  </title>
+ <meta name="description" content="以太坊的Web3.js的API参考文档中文版">
+ 
+    <link rel="stylesheet" href="static/css/foundation.min.css">
+    <link rel="stylesheet" href="static/css/docs.css">
+
+    <script src="static/js/modernizr.js"></script>
+    <script src="static/js/jquery.js"></script>
+    <script src="static/js/highlight.pack.js"></script>
+    <link href="static/css/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <!-- 增加google ad -->
+    <script async="" src="static/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-6188337887319489",
+        enable_page_level_ads: true
+      });
+    </script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body class="antialiased hide-extras">
+
+    <div class="marketing off-canvas-wrap" data-offcanvas="">
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar="">
+
+<div id="header">
+    <h1><a href="">Web3.js API 中文文档</a>   <a href="index1.html" style="float: right;color: lightgray;">返回博客</a></h1>
+</div>
+
+</nav>
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; Web3.js API 中文文档</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+      <li><a href="index1.html">回到博客</a></li>
+      <li><a href="">主页</a></li>
+      
+        <li class="divider"></li>
+        <li><label>API</label></li>
+
+          
+            <li><a title="web3.js编译Solidity，发布，调用全部流程（手把手教程）" href="web3-js-in-action.html">web3.js编译Solidity，发布，调用全部流程（手把手教程）</a></li>
+          
+            <li><a title="Web3.js API 中文文档" href="Web3.js-api-refrence.html">Web3.js API 中文文档</a></li>
+          
+            <li><a title="Web3.js API 基本" href="ethereum-web3.js-入门说明.html">Web3.js API 基本</a></li>
+          
+
+      
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+        <section id="main-content" role="main" class="scroll-container">
+
+          <div class="row">
+            <div class="large-3 medium-3 columns">
+              <div class="hide-for-small">
+                <div class="sidebar">
+                <nav>
+                  <ul id="side-nav" class="side-nav">
+
+                    
+                      <li class="side-title"><span>API</span></li>
+                        
+                          <li><a title="web3.js编译Solidity，发布，调用全部流程（手把手教程）" href="web3-js-in-action.html">web3.js编译Solidity，发布，调用全部流程（手把手教程）</a></li>
+                        
+                          <li><a title="Web3.js API 中文文档" href="Web3.js-api-refrence.html">Web3.js API 中文文档</a></li>
+                        
+                          <li><a title="Web3.js API 基本" href="ethereum-web3.js-入门说明.html">Web3.js API 基本</a></li>
+                        
+
+                    
+                  </ul>
+                </nav>
+                </div>
+              </div>
+            </div>
+            <div class="large-9 medium-9 columns">
+ 
+
+
+	
+		<div class="markdown-body">
+		<h1>Web3.js API 基本</h1>
+
+		<p>为了让你的Ðapp运行上以太坊，一种选择是使用<a href="javascript:window.open('https://github.com/ethereum/web3.js');">web3.js library</a>提供的<code>web3。</code>对象。底层实现上，它通过<a href="javascript:window.open('https://github.com/ethereum/wiki/wiki/JSON-RPC');">RPC 调用</a>与本地节点通信。web3.js可以与任何暴露了RPC接口的以太坊节点连接。</p>
+
+<p><code>web3</code>中有<code>eth</code>对象 - <code>web3.eth</code> 具体来表示与以太坊区块链之间的交互。<code>shh</code>对象 - <code>web3.shh</code>表示<code>Whisper</code>协议的相关交互。后续我们会继续介绍其它一些web3协议中的对象。可用的<a href="javascript:window.open('https://github.com/ethereum/web3.js/tree/master/example');">example can be found here</a></p>
+
+<p>如果你想找一些更复杂的示例，可以看看这里<a href="javascript:window.open('https://github.com/ethereum/wiki/wiki/Useful-Ðapp-Patterns');">useful Ðapp patterns</a>.</p>
+
+<h3 id="toc_0">入门</h3>
+
+<h4 id="toc_1">添加web3</h4>
+
+<p>首先你需要将web3引入到你的工程中，通过如下步骤：</p>
+
+<ul>
+<li>npm: <code>npm install web3</code></li>
+<li>bower: <code>bower install web3</code></li>
+<li>metor: <code>meteor add ethereum:web3</code></li>
+<li>vanilla: <code>dist./web3.min.js</code></li>
+</ul>
+
+<p>然后你需要创建一个web3的实例，设置一个<code>provider</code>。为了保证你不会覆盖一个已有的<code>provider</code>，比如使用Mist时有内置，需要先检查是否<code>web3</code>实例已存在。</p>
+
+<pre><code class="language-text">if (typeof web3 !== &#39;undefined&#39;) {
+  web3 = new Web3(web3.currentProvider);
+} else {
+  // set the provider you want from Web3.providers
+  web3 = new Web3(new Web3.providers.HttpProvider(&quot;http://localhost:8545&quot;));
+}
+</code></pre>
+
+<p>成功引入后，你现在可以使用<code>web3</code>的相关<a href="javascript:window.open('https://github.com/ethereum/wiki/wiki/web3js-api-reference');">API</a>了。</p>
+
+<h4 id="toc_2">使用callback</h4>
+
+<p>由于这套API被设计来与本地的RPC结点交互，所有函数默认使用同步的HTTP的请求。</p>
+
+<p>如果你想发起一个异步的请求。大多数函数允许传一个跟在参数列表后的可选的回调函数来支持异步。回调函数支持<a href="javascript:window.open('http://fredkschott.com/post/2014/03/understanding-error-first-callbacks-in-node-js/');">error first callback</a>的风格。</p>
+
+<pre><code class="language-text">web3.eth.getBlock(48, function(error, result){
+    if(!error)
+        console.log(result)
+    else
+        console.error(error);
+})
+</code></pre>
+
+<h4 id="toc_3">批量请求</h4>
+
+<p>可以允许将多个请求放入队列，并一次执行。</p>
+
+<p><em>注意</em>：批量请求并不会更快，在某些情况下，同时发起多个请求，由于是异步的，会变得更快。但这里的批量请求主要目的是用来保证请求的串行执行。</p>
+
+<h4 id="toc_4">关于web3.js中的<code>Big Number</code>的说明</h4>
+
+<p>数据类型的返回结果，你将始终会得到一个<code>BigNumber</code>对象，因为Javascript不能正确的处理<code>BigNumber</code>，如下面的例子：</p>
+
+<pre><code class="language-text">&quot;101010100324325345346456456456456456456&quot;
+// &quot;101010100324325345346456456456456456456&quot;
+101010100324325345346456456456456456456
+// 1.0101010032432535e+38
+</code></pre>
+
+<p>所以web3.js依赖<a href="javascript:window.open('https://github.com/MikeMcl/bignumber.js/');">BigNumber Library</a><sup id="fnref1"><a href="#fn1" rel="footnote">1</a></sup>，且会自动进行引入。</p>
+
+<pre><code class="language-text">var balance = new BigNumber(&#39;131242344353464564564574574567456&#39;);
+// or var balance = web3.eth.getBalance(someAddress);
+
+balance.plus(21).toString(10); // toString(10) converts it to a number string
+// &quot;131242344353464564564574574567477&quot;
+</code></pre>
+
+<p>下一个例子中，我们会看到，如果有20位以上的浮点值，仍会导致出错。所以，我们推荐尽量让帐户余额以<code>wei</code>为单位，仅仅在需要向用户展示时，才转换为其它单位。</p>
+
+<pre><code class="language-text">var balance = new BigNumber(&#39;13124.234435346456466666457455567456&#39;);
+
+balance.plus(21).toString(10); // toString(10) converts it to a number string, but can only show max 20 floating points 
+// &quot;13145.23443534645646666646&quot; // you number would be cut after the 20 floating point
+</code></pre>
+
+<div class="footnotes">
+<hr>
+<ol>
+
+<li id="fn1">
+<p>Big Number 文档链接： <a href="javascript:window.open('https://github.com/MikeMcl/bignumber.js');">https://github.com/MikeMcl/bignumber.js</a>&nbsp;<a href="#fnref1" rev="footnote">&#8617;</a></p>
+</li>
+
+</ol>
+</div>
+
+
+		</div>
+	
+
+ 
+	
+
+ 
+	
+
+  
+  
+</div></div>
+
+
+<div class="page-bottom">
+  <div class="row">
+  <hr>
+  <div class="small-9 columns">
+  <p class="copyright">Copyright &copy; 2016-2019 tryblockchain.org. All rights reserved. 
+  &nbsp; 交流微信：TryBlockchain
+</p>
+  </div>
+  <div class="small-3 columns">
+  <p class="copyright text-right"><a href="#header">TOP</a></p>
+  </div>
+   
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+    
+    
+    <script src="static/js/foundation.min.js"></script>
+    <script src="static/js/foundation.offcanvas.js"></script>
+    <script>
+      $(document).foundation();
+
+     
+    </script>
+    
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?86cdacc9141147c9022f0801e48f2034";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89122146-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>

@@ -1,0 +1,633 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+    
+  OpenZeppelin集成Truffle编写健壮安全的合约 - 区块链技术博客
+  
+  </title>
+  
+  
+  
+    <link rel="stylesheet" href="static/css/foundation.min.css">
+    <link rel="stylesheet" href="static/css/docs1.css">
+    <script src="static/js/modernizr.js"></script>
+    <script src="static/js/jquery.js"></script>
+  <script src="static/js/highlight.pack.js"></script>
+  <link href="static/css/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <!-- 增加google ad -->
+  <script async="" src="static/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-6188337887319489",
+      enable_page_level_ads: true
+    });
+  </script>
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:me.tryblockchain.org ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas="">
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar="">
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index1.html" style="font-size: 18px">主页</a></li>
+        
+        <li id=""><a target="_self" href="index2.html" style="font-size: 18px">Solidity文档</a></li>
+        
+        <li id=""><a target="_self" href="index.html" style="font-size: 18px">Web3.js文档</a></li>
+        
+        <li id=""><a target="_self" href="index3.html" style="font-size: 18px">Truffle文档</a></li>
+        
+        <li id=""><a target="_self" href="index4.html" style="font-size: 18px">Open Zeppelin</a></li>
+        
+        <li id=""><a target="_self" href="aboutme.html" style="font-size: 18px">关于本站</a></li>
+        
+        <li id=""><a target="_self" href="archives.html" style="font-size: 18px">归档</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="">
+    <input tabindex="1" type="search" id="search_input" placeholder="Search">
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; 区块链技术博客</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+         <li><a href="index1.html">主页</a></li>
+        
+         <li><a href="index2.html">Solidity文档</a></li>
+        
+         <li><a href="index.html">Web3.js文档</a></li>
+        
+         <li><a href="index3.html">Truffle文档</a></li>
+        
+         <li><a href="index4.html">Open Zeppelin</a></li>
+        
+         <li><a href="aboutme.html">关于本站</a></li>
+        
+         <li><a href="archives.html">归档</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="Solidity深入浅出系列.html">Solidity深入浅出系列</a></li>
+        
+            <li><a href="文档翻译.html">文档翻译</a></li>
+        
+            <li><a href="其它.html">其它</a></li>
+        
+            <li><a href="Solidity入门系列.html">Solidity入门系列</a></li>
+        
+            <li><a href="热点.html">热点</a></li>
+        
+            <li><a href="项目.html">项目</a></li>
+        
+            <li><a href="whitepaper.html">whitepaper</a></li>
+        
+            <li><a href="热点深度.html">热点深度</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>OpenZeppelin集成Truffle编写健壮安全的合约</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2017/8/5</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='文档翻译.html'>文档翻译</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <p>原文：<a href="javascript:window.open('http://truffleframework.com/tutorials/robust-smart-contracts-with-openzeppelin');">http://truffleframework.com/tutorials/robust-smart-contracts-with-openzeppelin</a></p>
+
+<p>因为智能合约往往涉及金钱，保证Soldity代码没有错误，以及足够的安全是非常根本的。<a href="javascript:window.open('https://zeppelin.solutions/');">Zeppelin Solutions</a>，一个智能合约审查服务商，已经意识到相关的需求。建立在他们的合约审查经验之上，他们把一些最佳实践整理到了<a href="javascript:window.open('http://truffleframework.com/tutorials/robust-smart-contracts-with-openzeppelin');">OpenZeppelin</a>。</p>
+
+<p>我们可以使用和扩展这些合约，以在更少的时间内创建更安全的DAPP。OpenZeppelin为各种各样重要的功能提供了广泛的智能合约（<a href="javascript:window.open('https://github.com/OpenZeppelin/zeppelin-solidity');">在这里查看全部支持合约</a>）。而今天，我们来看看其中的代币合约。具体来说，我们打算扩展其中提供了<code>StandardToken.sol</code>来创建一个我们自己的支持ERC-20标准的代币。</p>
+
+<span id="more"></span><!-- more -->
+
+<h2 id="toc_0">环境</h2>
+
+<p>这个教程需要你对Truffle、Ethereum和Solidity已经有一些了解。你可以先从<a href="javascript:window.open('http://truffleframework.com/tutorials/pet-shop');">宠物商店</a>这个教程开始。</p>
+
+<p>查看更多相关的信息</p>
+
+<ul>
+<li><a href="javascript:window.open('http://truffleframework.com/docs/');">Truffle的文档</a></li>
+<li><a href="javascript:window.open('https://ethereum.org/');">以太坊概述</a></li>
+<li><p><a href="javascript:window.open('https://solidity.readthedocs.io/en/develop/');">Solidity语言文档</a></p>
+<p>我们倾向于在教程中使用命令行。所以你需要了解一些如何在你所在环境使用命令行的一些知识。</p></li>
+</ul>
+
+<h2 id="toc_1">概述</h2>
+
+<p>在这个教程里你将学到下述的知识：</p>
+
+<ul>
+<li>拆箱即用的前端</li>
+<li>使用OpenZeppelin的<code>StandardToken</code>来创建自己的<code>TutorialToken</code></li>
+<li>编译和部署智能合约到<code>testrpc</code></li>
+<li>与自己新创建的前端交互</li>
+</ul>
+
+<h2 id="toc_2">拆箱即用的前端</h2>
+
+<p>开发的主要精力应该放在智能合约上。为达到这个目的，Truffle以truffle box的方式提供了拆箱即用的前端。打开命令行，进入到某个工作空间。在这里我们选择工作空间<code>oz-workspace</code>。</p>
+
+<pre><code class="language-text">$ cd oz-workspace
+$ truffle unbox tutorialtoken
+</code></pre>
+
+<blockquote>
+<p>备注: Truffle要升级到最新版，可以用命令<code>sudo npm i -g truffle</code>升级。</p>
+
+<p>当前文章的Truffle版本：</p>
+
+<pre><code class="language-text">$ truffle version
+Truffle v3.4.7 (core: 3.4.7)
+Solidity v0.4.13 (solc-js)
+</code></pre>
+</blockquote>
+
+<p>成功安装后的目录如下：</p>
+
+<p><img src="static/picture/15019775841600.jpg" alt=""></p>
+
+<p>下一步，我们要集成OpenZeppelin。最新版本的OpenZeppelin可以通过npm来安装使用。</p>
+
+<pre><code class="language-text">npm install zeppelin-solidity
+</code></pre>
+
+<p>集成成功后，在<code>node_modules</code>有<code>zeppelin-solidity</code>的依赖，如下图所示：</p>
+
+<p><img src="static/picture/15024973595631.jpg" alt=""></p>
+
+<h2 id="toc_3">2. 创建TutorialToken智能合约</h2>
+
+<p>使用已经搭建好的前端环境，现在让我们来创建<code>TutorialToken</code>合约。在<code>contracts</code>目录下，创建名为<code>TutorialToken.sol</code>的智能合约，内容如下：</p>
+
+<pre><code class="language-text">pragma solidity ^0.4.4;
+import &#39;zeppelin-solidity/contracts/token/StandardToken.sol&#39;;
+
+contract TutorialToken is StandardToken {
+
+}
+</code></pre>
+
+<p>在上面的代码中，<code>import</code>了<code>StandardToken.sol</code>，并声明<code>TutorialToken</code>继承自<code>StandardToken</code>。这样就继承了<code>StandardToken</code>合约中所有变量和函数。继承的合约可以被覆盖，只要在子类重定义对应的变量与函数就行了。</p>
+
+<p>接下来，设置代币的参数，需要定义自己的<code>name</code>，<code>symbol</code>，<code>decimals</code>和<code>INITIAL_SUPPLY</code>。</p>
+
+<pre><code class="language-text">string public name = &#39;TutorialToken&#39;;
+string public symbol = &#39;TT&#39;;
+uint public decimals = 2;
+uint public INITIAL_SUPPLY = 12000;
+</code></pre>
+
+<p><code>name</code>和<code>symbol</code>变量，定义了代币的一个独一无二的标识。<code>decimals</code>变量定义了代币可被细分的程度。在上面的例子里<code>decimals</code>我们的取值为<code>2</code>，效果类似于美元和美分。最后，<code>INITIAL_SUPPLY</code>变量定义了在合约部署时，代币将创建的数量。在这个例子中，我们选择的是12000。</p>
+
+<p>最后在构造函数中我们简单设置<code>totalSupply</code>来等于<code>INITIAL_SUPPLY</code>，同时把所有的币赋值给部署者的帐户。</p>
+
+<pre><code class="language-text">function TutorialToken() {
+  totalSupply = INITIAL_SUPPLY;
+  balances[msg.sender] = INITIAL_SUPPLY;
+}
+</code></pre>
+
+<p>这样，使用小于15行手写的Solidity代码，我们创建了一个自己的ERC-20的代币。下一步，我们将部署代币，并与代币进行交互。</p>
+
+<h2 id="toc_4">3. 编译与部署</h2>
+
+<p>在<code>/migrations</code>目录下，用下述内容创建文件<code>2_deploy_contracts.js</code>：</p>
+
+<pre><code class="language-text">var TutorialToken = artifacts.require(&quot;./TutorialToken.sol&quot;);
+
+module.exports = function(deployer) {
+  deployer.deploy(TutorialToken);
+};
+</code></pre>
+
+<p><code>TutorialToken</code>合约内的<code>import</code>语句会由编译器进行自动处理，它会自动导入<code>StandardToken</code>内的相关引用包。</p>
+
+<p>现在，我们可以编译与部署了：</p>
+
+<pre><code class="language-text">## 启动testrpc
+$ testrpc
+## 编译合约
+$ truffle compile
+## 部署合约
+$ truffle migrate
+</code></pre>
+
+<blockquote>
+<p><code>migrate</code>时默认选择的网络是<code>development</code><br>
+你当前的Truffle默认配置truffle.js应该如下（即默认部署到<code>testrpc</code>）：</p>
+</blockquote>
+
+<pre><code class="language-text">module.exports = {
+  networks: {
+    development: {
+      host: &quot;localhost&quot;,
+      port: 8545,
+      network_id: &quot;*&quot; // Match any network id
+    }
+  }
+};
+</code></pre>
+
+<h2 id="toc_5">4. 与TutorialToken交互</h2>
+
+<p>对于这部分的教程，我们推荐使用MetaMask的Chrome插件。它能轻松的在不同的帐户间快速切换，对于测试我们新创建代币的转发非常方便。<a href="javascript:window.open('http://truffleframework.com/tutorials/pet-shop#setting-up-the-development-environment');">这里有设置metamask与testrpc的教程</a></p>
+
+<p>另外，我们已经为你安装了<code>lite-server</code>，所以可以在<code>oz-workspace</code>目录，跑下面的命令，跑起来一个简单的页面：</p>
+
+<pre><code class="language-text">npm run dev
+</code></pre>
+
+<p>运行后会弹出一个界面如下：</p>
+
+<p><img src="static/picture/15024964731678.png" alt=""></p>
+
+<p>这个简单的dapp显示了当前的余额。</p>
+
+<p>可以尝试转移一些代币到其它的帐户，下面这里，转移了2000TT到第二个帐户。</p>
+
+<p><img src="static/picture/15024966632151.png" alt=""></p>
+
+<h2 id="toc_6">Truffle + OpenZeeelin 超级开发体验</h2>
+
+<p>Truflle很激动的看到，类似Zeppelin Solutions这样解决方案对于合约标准化，以及提升安全性上的贡献。结合OpenZeppelin的合约和Truffle的工具集，可以非常容易的创建工业级的分布式应用。</p>
+
+<p>enjoy。</p>
+
+<h2 id="toc_7">update20170902:好多人说，看不到余额？显示是TT。</h2>
+
+<p>确保你已经安装了MetaMask，这个浏览器插件，帮你注入web3.js到前端中。</p>
+
+<p>官网：<a href="javascript:window.open('https://metamask.io/');">https://metamask.io</a> ，google插件应该在这里：<a href="javascript:window.open('https://chrome.google.com/webstore/detail/nkbihfbeogaeaoehlefnkodbefgpgknn');">https://chrome.google.com/webstore/detail/nkbihfbeogaeaoehlefnkodbefgpgknn</a></p>
+
+<p>详细集成TestRpc与MetaMask教程：<a href="javascript:window.open('http://truffleframework.com/tutorials/pet-shop#using-our-dapp-in-chrome');">http://truffleframework.com/tutorials/pet-shop#using-our-dapp-in-chrome</a></p>
+
+<blockquote>
+<p>一个小插曲，使用MetaMask，一直连不上我的TestRpc。于是我使用 <a href="javascript:window.open('http://localhost:8545/');">http://localhost:8545</a> 放到浏览器中，一直显示<code>400 bad request</code>。这个尝试误导了我，其实MetaMask是通过配置的IP与端口，以RPC方式访问，直接http访问是不行。但我的MetaMask就是不能切换到TestRPC，结果花了两个小时，发现是我的电脑开了全局代理。浏览器，走了代理，所以不行，/笑哭。</p>
+</blockquote>
+
+<h3 id="toc_8">1. 首先部署</h3>
+
+<p>部署成功后，你能看到<code>successful字样</code></p>
+
+<p><img src="static/picture/15043238557740.jpg" alt=""></p>
+
+<h3 id="toc_9">2. 导入帐户</h3>
+
+<p>由于Truffle默认是使用TestRpc的第一个帐户来进行发布的，所以代币也是初始分配给了第一个帐号。所以我们要回到TestRpc，找到第一个帐户并导入到MetaMask。</p>
+
+<p><img src="static/picture/15043240134606.jpg" alt=""></p>
+
+<p>这是我本地的TestRpc的启动输出结果。由于是可以通过私匙推出公匙，所以MetaMask导入时，使用私匙导入就可以，选择下面的<code>Import Account</code>。</p>
+
+<p><img src="static/picture/15043241283078.jpg" alt=""></p>
+
+<p>输入第一个私匙，其实就是创建合约的那个帐户。切换到这个帐户后，你就能看到你自己代币的余额了。</p>
+
+<p><img src="static/picture/15043243366439.jpg" alt=""></p>
+
+<p>成功后，可以看到下面的界面了。</p>
+
+<p><img src="static/picture/15043244231715.jpg" alt=""></p>
+
+
+        <!-- newly added20190331 
+        <h2>如需交流，可加微信: 「TryBlockchain」</h2>
+        <p><img src="https://me.tryblockchain.org/media/14873893253965/wechat-TryBlockchain.jpg" alt="wechat-qr-code"/></p>   -->
+        <!-- newly added2018 
+        <h2>感谢您对本站的支持</h2>
+        <p><img src="https://me.tryblockchain.org/media/14873893253965/wechat-zan.jpg" alt="zan-code"/></p>
+        -->
+        <blockquote>
+        <p>处于某些特定的环境下，可以看到评论框，欢迎留言交流^_^。</p>
+        </blockquote>
+        <!-- 去掉赞码，增加广告 20190914 中秋节-->
+      </div>
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="getting-up-to-speed-on-ethereum.html" title="Previous Post: 以太坊开发入门，完整入门篇（小白可以看看，高手看看自己有没有遗漏的）">&laquo; 以太坊开发入门，完整入门篇（小白可以看看，高手看看自己有没有遗漏的）</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a href="eos-howtobuild.html" title="Next Post: 编译并搭建EOS的环境（MAC踩坑填坑版）">编译并搭建EOS的环境（MAC踩坑填坑版） &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          <script async="" src="static/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-6188337887319489",
+    enable_page_level_ads: true
+  });
+</script><script id="dsq-count-scr" src="https://tryblockchain-org.disqus.com/count.js" async=""></script>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://tryblockchain-org.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="javascript:window.open('https://disqus.com/?ref_noscript');">comments powered by Disqus.</a></noscript>
+                            
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>区块链技术博客</h1>
+                <div class="site-des">区块链相关技术博客，专注基于以太坊的区块链技术，Solidity编程语言，Truffle框架，web3.js。</div>
+
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>个人微信: 「TryBlockchain」</h2>
+                </div>
+              </div>
+
+
+                <div class="social">
+                  <img src="static/picture/wechat-TryBlockchain.jpg" width="230px">
+                </div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="files/atom.xml" title="RSS">RSS</a>
+
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="Solidity深入浅出系列.html"><strong>Solidity深入浅出系列</strong></a>
+        
+            <a href="文档翻译.html"><strong>文档翻译</strong></a>
+        
+            <a href="其它.html"><strong>其它</strong></a>
+        
+            <a href="Solidity入门系列.html"><strong>Solidity入门系列</strong></a>
+        
+            <a href="热点.html"><strong>热点</strong></a>
+        
+            <a href="项目.html"><strong>项目</strong></a>
+        
+            <a href="whitepaper.html"><strong>whitepaper</strong></a>
+        
+            <a href="热点深度.html"><strong>热点深度</strong></a>
+        
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="dex-uniswap-ox-hydro.html">去中心化的交易所正在打一场恶战，新选手不断加入</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="coinbase-custody-staking.html">coinbase的托管生意又有大动作了</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15462405993032.html">基于第三代互联网的数据经济</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15462215241005.html">Curation Markets</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="4-eras-of-blockchain-computing-d.html">区块链计算的四个阶段</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+ <div class="page-bottom clearfix">
+  <div class="row">
+     <p class="copyright">Copyright &copy; 2016-2019 tryblockchain.org. All rights reserved. 
+  &nbsp; 交流微信：TryBlockchain
+</p>
+<p style="font-size: 14px;margin: 0 0.93rem;">友情链接： <a href="javascript:window.open('https://bitshuo.com/');">区块链技术中文社区</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:window.open('https://learnblockchain.cn/');">深入浅出区块链</a></p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="static/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+<script type="text/javascript" src="static/js/MathJax-TeX-AMS-MML_HTMLorMML.js"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?a7f98ca019147491b75cb037fb3aec14";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89122146-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  </body>
+</html>
